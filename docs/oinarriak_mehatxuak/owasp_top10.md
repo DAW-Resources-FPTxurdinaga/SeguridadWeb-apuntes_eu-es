@@ -52,22 +52,66 @@ Datuak zifratzeko erabiltzen diren ahultasunak edo akatsak.
 ## 3. Injekzioa (Injection)
 
 
-Erasotzaileak kode maltzurra sartzen du interpretatzen den komando edo kontsulta baten barruan.
+Injekzioa gaur egungo web-aplikazioen segurtasunerako arrisku larrienetakoa da. Erasotzaileak datu maltzurrak sartzen ditu aplikazio batek interpretatzen dituen komando edo kontsulta batean. Horrela, aplikazioaren kontrola hartu, datu pertsonalak eskuratu edo datu-basea manipula dezake.
 <a href="https://owasp.org/Top10/A03_2021-Injection/" target="_blank">OWASP Top 10 - Injection</a>
 
 ### Adibideak
-- **SQL injekzioa**: 
-  ```sql
-  -- Erabiltzailearen sarrera: ' OR '1'='1
-  SELECT * FROM users WHERE username = '' OR '1'='1' AND password = '...'
-  ```
-- **Komando-injekzioa**: `; rm -rf /`
-- **LDAP injekzioa**: `*)(uid=*))(|(uid=*`
+- **SQL Injekzioa (SQL Injection)**: 
+
+Hau da injekzio-eraso ohikoena. Datu-baseetan eragiten du.
+
+```sql
+-- Adibidez: Erabiltzailearen sarrera: ' OR '1'='1' --
+
+-- SQL kontsulta:
+
+SELECT * FROM users WHERE username = '' OR '1'='1' -- AND password = '...'
+
+-- Aurreko SQL-ean geratuko dena izango da guk sartutako kodearen ondoren dagoen guztia ez dela exekutatuko.
+```
+
+- **OS Komando Injekzioa (OS Command Injection)**: 
+
+OS Komando Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa egiteko, erasotzaileak webgunearen bidez lortzen du zerbitzariaren sistema eragilean komandoak sartzea eta exekutatzea.
+
+```bash
+-- Adibidez:
+ping 127.0.0.1 ; ls -l
+
+-- Imajinatu web-aplikazio batek formulario bat duela, non erabiltzaileak IP helbide bat sartzen duen. Aplikazioak, atzealdean, sistema eragilearen ping komandoa exekutatzen du, helbidea eskuragarri dagoen egiaztatzeko.
+Emandako adibidearekin, ping egin ostean, ls -l exekutatzean, Unix eta Linux sistemetan, komando honek uneko direktorioko fitxategiak eta karpetak zerrendatzen ditu.
+  
+```
+
+- **LDAP Injekzioa (LDAP Injection)**: 
+
+LDAP protokoloa (Lightweight Directory Access Protocol) sareko direktorio-zerbitzuak atzitzeko eta kudeatzeko erabiltzen den protokolo estandar bat da. LDAP-en funtzio nagusia autentifikazioa eta baimenen kudeaketa zentralizatzea da.
+
+LDAP Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa egiteko, erasotzaileak webgunearen bidez lortzen du zerbitzariaren sistema eragilean komandoak sartzea eta exekutatzea.
+
+```bash
+-- Adibidez:
+*)(uid=*))(|(uid=*
+
+-- Imajinatu web-aplikazio batek erabiltzaileen autentifikazioa LDAP zerbitzari baten bidez egiten duela. Erabiltzaileak bere UID (erabiltzaile-identifikatzailea) eta pasahitza sartzen ditu, eta aplikazioak LDAP kontsulta bat eraikitzen du horrekin.
+- Jatorrizko LDAP kontsulta (normalean ezkutuan):
+(uid=erabiltzailearen_sarrera)(userPassword=pasahitza)
+- Erasoa: Erasotzaileak LDAP sintaxiaren karaktere bereziak (adibidez, *, (, |) erabiltzen ditu kontsultaren logika aldatzeko. Horrek SQL Injekzioaren ' OR '1'='1' adibidearen antzeko efektua sortzen du.
+
+*)(uid=*))(|(uid=*
+
+- Lortutako kontsulta:
+(uid=*)(uid=*))(|(uid=*)(userPassword=pasahitza)
+
+- Ondorioa: Kontsulta hau, LDAP-ek aztertuta, hainbat baldintza sortzen ditu. Horrek uid eta pasahitz-baldintza originala saihesten du, eta erabiltzaile guztien datuak itzultzen ditu edo autentifikazioa gainditzen du. Erasotzaileak lortzen du LDAP zerbitzarian saioa hastea, pasahitza jakin gabe, edo erabiltzaile-informazio sentikorra lortzea.
+
+```
 
 ### Prebentzioa
 - Parametro kontsultak erabili (prepared statements)
-- ORM seguruak erabili
+- ORM seguruak erabiliz, SQL kontsulta zuzenak saihestu
 - Sarrera guztiak balioztatu eta garbitu
+- Pribilegio minimoen printzipioa aplikatu
 
 ### Erronkak
 
