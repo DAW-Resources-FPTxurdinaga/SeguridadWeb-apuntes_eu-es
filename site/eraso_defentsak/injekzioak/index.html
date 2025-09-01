@@ -1,0 +1,1129 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Zibersegurtasunari buruzko ikasgaiak eta baliabideak">
+      
+      
+        <meta name="author" content="FP Txurdinaga">
+      
+      
+        <link rel="canonical" href="https://zibersegurtasun-fptxurdinaga.eus/eraso_defentsak/injekzioak/">
+      
+      
+        <link rel="prev" href="../../oinarriak_mehatxuak/owasp_top10/">
+      
+      
+        <link rel="next" href="../autentifikazioa/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon-96x96-1.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>2.1. Injekzioen aurkako defentsak - Zibersegurtasuna Web Garapenean</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#0056b3" data-md-color-accent="#ff6b00">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21-injekzioen-aurkako-defentsak" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean" class="md-header__button md-logo" aria-label="Zibersegurtasuna Web Garapenean" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Home3.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Zibersegurtasuna Web Garapenean
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.1. Injekzioen aurkako defentsak
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hasiera
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../oinarriak_mehatxuak/sarrera/" class="md-tabs__link">
+          
+  
+  
+  1. Oinarriak eta mehatxu arruntak
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  2. Eraso eta defentsa oinarrizkoak
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datu_babesa/datu_sentikorrak/" class="md-tabs__link">
+          
+  
+  
+  3. Datuen babesa eta tresna praktikoak
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean" class="md-nav__button md-logo" aria-label="Zibersegurtasuna Web Garapenean" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Home3.png" alt="logo">
+
+    </a>
+    Zibersegurtasuna Web Garapenean
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hasiera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1. Oinarriak eta mehatxu arruntak
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Oinarriak eta mehatxu arruntak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1. Web Garapenean Zibersegurtasunaren Sarrera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/web_oinarriak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2. Webaren funtzionamenduaren oinarriak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/owasp_top10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Web ahultasun arrunten ikuspegi orokorra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    2. Eraso eta defentsa oinarrizkoak
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Eraso eta defentsa oinarrizkoak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.1. Injekzioen aurkako defentsak
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. Injekzioen aurkako defentsak
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sql-injekzioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL injekzioa
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQL injekzioa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zer-da-sql-injekzioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zer da SQL injekzioa?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nola-funtzionatzen-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nola funtzionatzen du?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nola-ekidin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nola ekidin?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nola ekidin?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parametro-kontsultak-erabili-prepared-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parametro kontsultak erabili (Prepared Statements)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xss-cross-site-scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS (Cross-Site Scripting)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XSS (Cross-Site Scripting)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xss-motak" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS motak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nola-ekidin-xss-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nola ekidin XSS-a?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nola ekidin XSS-a?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-irteera-kodifikatu" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Irteera kodifikatu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-erabili-seguruak-diren-api-ak" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Erabili seguruak diren API-ak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-content-security-policy-csp-erabili" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Content Security Policy (CSP) erabili
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beste-injekzio-batzuk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beste injekzio batzuk
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beste injekzio batzuk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#komando-injekzioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Komando-injekzioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-injekzioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDAP injekzioa
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ariketa-praktikoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ariketa praktikoa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurrengo urratsak
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autentifikazioa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. Autentifikazio eta saioen segurtasuna
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sarbide_kontrola/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3. Sarbide-kontrola eta konfigurazio segurua
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    3. Datuen babesa eta tresna praktikoak
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. Datuen babesa eta tresna praktikoak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/datu_sentikorrak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.1. Datu sentikorren babesa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/api_segurtasuna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.2. APIen eta dependentzien segurtasuna
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/tresnak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.3. Tresna praktikoen sarrera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="21-injekzioen-aurkako-defentsak">2.1 Injekzioen aurkako defentsak<a class="headerlink" href="#21-injekzioen-aurkako-defentsak" title="Permanent link">&para;</a></h1>
+<h2 id="sql-injekzioa">SQL injekzioa<a class="headerlink" href="#sql-injekzioa" title="Permanent link">&para;</a></h2>
+<h3 id="zer-da-sql-injekzioa">Zer da SQL injekzioa?<a class="headerlink" href="#zer-da-sql-injekzioa" title="Permanent link">&para;</a></h3>
+<p>SQL injekzioa datu-basearen kontsulta bat aldatzen duen eraso mota bat da, erabiltzailearen sarrera egoki balioztatu gabe kontsultan txertatzen denean gertatzen dena.</p>
+<h3 id="nola-funtzionatzen-du">Nola funtzionatzen du?<a class="headerlink" href="#nola-funtzionatzen-du" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Erabiltzailearen sarrera: &#39; OR &#39;1&#39;=&#39;1</span>
+<span class="c1">-- Kontsulta originala:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hasia&#39;</span>
+
+<span class="c1">-- Injekzioaren ondoren:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hasia&#39;</span>
+<span class="c1">-- &#39;1&#39;=&#39;1&#39; beti egia denez, kontsultak erabiltzaile guztiak itzuliko ditu</span>
+</code></pre></div>
+
+<h3 id="nola-ekidin">Nola ekidin?<a class="headerlink" href="#nola-ekidin" title="Permanent link">&para;</a></h3>
+<h4 id="1-parametro-kontsultak-erabili-prepared-statements">1. Parametro kontsultak erabili (Prepared Statements)<a class="headerlink" href="#1-parametro-kontsultak-erabili-prepared-statements" title="Permanent link">&para;</a></h4>
+<p><strong>Python adibidea (SQLite):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login_segurua</span><span class="p">(</span><span class="n">erabiltzailea</span><span class="p">,</span> <span class="n">pasahitza</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;datu_basea.db&#39;</span><span class="p">)</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="c1"># Parametro kontsulta erabiliz</span>
+    <span class="n">kontsulta</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">kontsulta</span><span class="p">,</span> <span class="p">(</span><span class="n">erabiltzailea</span><span class="p">,</span> <span class="n">pasahitza</span><span class="p">))</span>
+
+    <span class="n">erabiltzailea</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">erabiltzailea</span>
+</code></pre></div>
+
+<p><strong>PHP adibidea (PDO):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$erabiltzailea</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;erabiltzailea&#39;</span><span class="p">];</span>
+<span class="nv">$pasahitza</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;pasahitza&#39;</span><span class="p">];</span>
+
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">&#39;mysql:host=localhost;dbname=nire_db&#39;</span><span class="p">,</span> <span class="s1">&#39;erabiltzailea&#39;</span><span class="p">,</span> <span class="s1">&#39;pasahitza&#39;</span><span class="p">);</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE username = :erabiltzailea AND password = :pasahitza&#39;</span><span class="p">);</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">&#39;erabiltzailea&#39;</span> <span class="o">=&gt;</span> <span class="nv">$erabiltzailea</span><span class="p">,</span> <span class="s1">&#39;pasahitza&#39;</span> <span class="o">=&gt;</span> <span class="nv">$pasahitza</span><span class="p">]);</span>
+<span class="nv">$erabiltzailea</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h2 id="xss-cross-site-scripting">XSS (Cross-Site Scripting)<a class="headerlink" href="#xss-cross-site-scripting" title="Permanent link">&para;</a></h2>
+<h3 id="xss-motak">XSS motak<a class="headerlink" href="#xss-motak" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Ispatutako XSS (Reflected)</strong></li>
+<li>Erasotzaileak biktimari URL maltzur bat bidaltzen dio</li>
+<li>Webguneak erantzunean script-a islatzen du</li>
+<li>
+<p>Script-a biktimaren nabigatzailean exekutatzen da</p>
+</li>
+<li>
+<p><strong>Gordetako XSS (Stored)</strong></p>
+</li>
+<li>Script maltzurra datu-basean gordetzen da</li>
+<li>Erabiltzaileak orria kargatzen duenean exekutatzen da</li>
+<li>
+<p>Kalte handiagoak eragin ditzake</p>
+</li>
+<li>
+<p><strong>DOM XSS</strong></p>
+</li>
+<li>Nabigatzailean gertatzen da soilik</li>
+<li>Dokumentuaren objektu-eredua (DOM) aldatzen du</li>
+</ol>
+<h3 id="nola-ekidin-xss-a">Nola ekidin XSS-a?<a class="headerlink" href="#nola-ekidin-xss-a" title="Permanent link">&para;</a></h3>
+<h4 id="1-irteera-kodifikatu">1. Irteera kodifikatu<a class="headerlink" href="#1-irteera-kodifikatu" title="Permanent link">&para;</a></h4>
+<p><strong>JavaScript (Node.js):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">escapeHtml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;&amp;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&gt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&quot;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;&#39;&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#x27;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;/&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#x2F;&#39;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[&amp;&lt;&gt;&quot;&#39;/]/g</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">map</span><span class="p">[</span><span class="nx">m</span><span class="p">]);</span>
+<span class="p">};</span>
+
+<span class="c1">// Erabilera</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sarreraArriskutsua</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;script&gt;kodea&lt;/script&gt;&quot;</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">sarreraArriskutsua</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="2-erabili-seguruak-diren-api-ak">2. Erabili seguruak diren API-ak<a class="headerlink" href="#2-erabili-seguruak-diren-api-ak" title="Permanent link">&para;</a></h4>
+<p><strong>JavaScript segurua:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Txarra</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">erabiltzailearenSarrera</span><span class="p">;</span>
+
+<span class="c1">// Hobea</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">erabiltzailearenSarrera</span><span class="p">;</span>
+</code></pre></div>
+
+<h4 id="3-content-security-policy-csp-erabili">3. Content Security Policy (CSP) erabili<a class="headerlink" href="#3-content-security-policy-csp-erabili" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="err">Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;self&#39; https://apis.google.com</span>
+</code></pre></div>
+
+<h2 id="beste-injekzio-batzuk">Beste injekzio batzuk<a class="headerlink" href="#beste-injekzio-batzuk" title="Permanent link">&para;</a></h2>
+<h3 id="komando-injekzioa">Komando-injekzioa<a class="headerlink" href="#komando-injekzioa" title="Permanent link">&para;</a></h3>
+<p><strong>Adibide arriskutsua (Python):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ping_helbidea</span><span class="p">(</span><span class="n">helbidea</span><span class="p">):</span>
+    <span class="c1"># Arriskutsua: erabiltzailearen sarrerak komandoak exekuta ditzake</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ping -c 4 </span><span class="si">{</span><span class="n">helbidea</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Segurua:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ping_helbidea_segurua</span><span class="p">(</span><span class="n">helbidea</span><span class="p">):</span>
+    <span class="c1"># Segurua: parametro modura bidaltzen da</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;ping&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="n">helbidea</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="ldap-injekzioa">LDAP injekzioa<a class="headerlink" href="#ldap-injekzioa" title="Permanent link">&para;</a></h3>
+<p><strong>Adibide arriskutsua:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ldap</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">autentifikatu</span><span class="p">(</span><span class="n">erabiltzailea</span><span class="p">,</span> <span class="n">pasahitza</span><span class="p">):</span>
+    <span class="c1"># Arriskutsua: sarrera garbitu gabe</span>
+    <span class="n">kontsulta</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(uid=</span><span class="si">{</span><span class="n">erabiltzailea</span><span class="si">}</span><span class="s2">)(userPassword=</span><span class="si">{</span><span class="n">pasahitza</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="c1"># LDAP kontsulta egin</span>
+</code></pre></div>
+
+<p><strong>Segurua:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ldap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ldap.filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape_filter_chars</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">autentifikatu_segurua</span><span class="p">(</span><span class="n">erabiltzailea</span><span class="p">,</span> <span class="n">pasahitza</span><span class="p">):</span>
+    <span class="c1"># Karaktere bereziak iragazita</span>
+    <span class="n">erab_garbitua</span> <span class="o">=</span> <span class="n">escape_filter_chars</span><span class="p">(</span><span class="n">erabiltzailea</span><span class="p">)</span>
+    <span class="n">pass_garbitua</span> <span class="o">=</span> <span class="n">escape_filter_chars</span><span class="p">(</span><span class="n">pasahitza</span><span class="p">)</span>
+    <span class="n">kontsulta</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(uid=</span><span class="si">{</span><span class="n">erab_garbitua</span><span class="si">}</span><span class="s2">)(userPassword=</span><span class="si">{</span><span class="n">pass_garbitua</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="c1"># LDAP kontsulta egin</span>
+</code></pre></div>
+
+<h2 id="ariketa-praktikoa">Ariketa praktikoa<a class="headerlink" href="#ariketa-praktikoa" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Sortu web orri sinple bat erabiltzaile-izen eta pasahitzarekin</li>
+<li>Inplementatu SQL injekzioaren aurkako babesa</li>
+<li>Gehitu XSS babesa sarrera eta irteeran</li>
+<li>Probatu zure babesak sarrera arriskutsuekin</li>
+</ol>
+<h2 id="hurrengo-urratsak">Hurrengo urratsak<a class="headerlink" href="#hurrengo-urratsak" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../autentifikazioa/">Autentifikazio eta saioen segurtasuna</a></li>
+<li><a href="../../oinarriak_mehatxuak/owasp_top10/">Atzera itzuli aurreko atalera</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.highlight", "content.code.copy", "navigation.top"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -4,23 +4,20 @@ Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek seg
 
 ## Ikastaroaren Egitura
 
-1. **Oinarriak eta mehatxu arruntak**
+### [1. Oinarriak eta mehatxu arruntak](oinarriak_mehatxuak/sarrera/)
+- [Web Garapenean Zibersegurtasunaren Sarrera](oinarriak_mehatxuak/sarrera/)
+- [Webaren funtzionamenduaren oinarriak](oinarriak_mehatxuak/web_oinarriak/)
+- [Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)](oinarriak_mehatxuak/owasp_top10/)
 
-   - Web Garapenean Zibersegurtasunaren Sarrera
-   - Webaren funtzionamenduaren oinarriak
-   - Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)
+### [2. Eraso eta defentsa oinarrizkoak](eraso_defentsak/injekzioak/)
+- [Injekzioen aurkako defentsak](eraso_defentsak/injekzioak/)
+- [Autentifikazio eta saioen segurtasuna](eraso_defentsak/autentifikazioa/)
+- [Sarbide-kontrola eta konfigurazio segurua](eraso_defentsak/sarbide_kontrola/)
 
-2. **Eraso eta defentsa oinarrizkoak**
-
-   - Injekzioen aurkako defentsak
-   - Autentifikazio eta saioen segurtasuna
-   - Sarbide-kontrola eta konfigurazio segurua
-
-3. **Datuen babesa eta tresna praktikoak**
-
-   - Datu sentikorren babesa
-   - APIen eta dependentzien segurtasuna
-   - Tresna praktikoen sarrera
+### [3. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak/)
+- [Datu sentikorren babesa](datu_babesa/datu_sentikorrak/)
+- [APIen eta dependentzien segurtasuna](datu_babesa/api_segurtasuna/)
+- [Tresna praktikoen sarrera](datu_babesa/tresnak/)
 
 ## Nola erabili apunte hauek
 
