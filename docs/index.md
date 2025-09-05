@@ -1,6 +1,6 @@
 # Zibersegurtasuna Web Garapenean
 
-Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek segurtasun informatikoaren oinarrizko kontzeptuak eta praktika onenak lantzen ditu web garapenean.
+Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek segurtasun informatikoaren oinarrizko kontzeptuak eta praktika onenak lantzen ditu web garapenean. FROGA
 
 ## Ikastaroaren Egitura
 
