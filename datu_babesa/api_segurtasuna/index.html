@@ -1,0 +1,1627 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Lecciones y recursos sobre ciberseguridad">
+      
+      
+        <meta name="author" content="FP Txurdinaga">
+      
+      
+        <link rel="canonical" href="https://ciberseguridad-fptxurdinaga.eus/datu_babesa/api_segurtasuna/">
+      
+      
+        <link rel="prev" href="../datu_sentikorrak/">
+      
+      
+        <link rel="next" href="../tresnak/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon-96x96-1.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>3.2. Seguridad de APIs y dependencias - Ciberseguridad en el Desarrollo Web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#0056b3" data-md-color-accent="#ff6b00">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#32-apis-seguras-y-autenticacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-header__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Home3.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ciberseguridad en el Desarrollo Web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.2. Seguridad de APIs y dependencias
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../oinarriak_mehatxuak/sarrera/" class="md-tabs__link">
+          
+  
+  
+  1. Fundamentos y amenazas comunes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../eraso_defentsak/injekzioak/" class="md-tabs__link">
+          
+  
+  
+  2. Ataques y defensas básicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../datu_sentikorrak/" class="md-tabs__link">
+          
+  
+  
+  3. Protección de datos y herramientas prácticas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ariketak/injection/" class="md-tabs__link">
+          
+  
+  
+  4. Ejercicios
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-nav__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Home3.png" alt="logo">
+
+    </a>
+    Ciberseguridad en el Desarrollo Web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1. Fundamentos y amenazas comunes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Fundamentos y amenazas comunes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1. Introducción a la Ciberseguridad en el Desarrollo Web
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/web_oinarriak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2. Fundamentos del funcionamiento web
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/owasp_top10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Visión general de vulnerabilidades web comunes (OWASP Top 10)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2. Ataques y defensas básicas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Ataques y defensas básicas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/injekzioak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. Defensas contra inyecciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/autentifikazioa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. Seguridad de autenticación y sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/sarbide_kontrola/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3. Control de acceso y configuración segura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    3. Protección de datos y herramientas prácticas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. Protección de datos y herramientas prácticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datu_sentikorrak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.1. Protección de datos sensibles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3.2. Seguridad de APIs y dependencias
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.2. Seguridad de APIs y dependencias
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#oauth-20-y-openid-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth 2.0 y OpenID Connect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OAuth 2.0 y OpenID Connect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flujo-completo-de-oauth-20-authorization-code-flow-pkce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo Completo de OAuth 2.0 (Authorization Code Flow + PKCE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-de-pkce-proof-key-for-code-exchange-react-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementación de PKCE (Proof Key for Code Exchange) (React + Node.js)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preferencias-de-seguridad-para-apis-security-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preferencias de Seguridad para APIs (Security Headers)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preferencias de Seguridad para APIs (Security Headers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-helmetjs-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de Helmet.js (Node.js)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejores-practicas-de-seguridad-para-apis-muy-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mejores Prácticas de Seguridad para APIs (¡Muy importante!)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mejores Prácticas de Seguridad para APIs (¡Muy importante!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-validacion-de-entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Validación de Entrada
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-practico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio Práctico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguientes-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Siguientes Pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tresnak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.3. Introducción a herramientas prácticas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4. Ejercicios
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Ejercicios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.1. Inyecciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/broken_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.2. Fallos de control de acceso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/cryptographic_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.3. Fallos criptográficos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/identification_authentication_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.4. Fallos de autenticación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/insecure_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.5. Diseño inseguro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/security_misconfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.5. Configuraciones inseguras
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/vulnerable_obsolete_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.6. Componentes vulnerables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/software_data_integrity_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.7. Fallos de integridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/security_logging_monitoring_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.8. Fallos de registro y monitoreo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/server_side_request_forgery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.9. Falsificación de peticiones del lado del servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="32-apis-seguras-y-autenticacion">3.2 APIs Seguras y Autenticación<a class="headerlink" href="#32-apis-seguras-y-autenticacion" title="Permanent link">&para;</a></h1>
+<h2 id="oauth-20-y-openid-connect">OAuth 2.0 y OpenID Connect<a class="headerlink" href="#oauth-20-y-openid-connect" title="Permanent link">&para;</a></h2>
+<h3 id="flujo-completo-de-oauth-20-authorization-code-flow-pkce">Flujo Completo de OAuth 2.0 (Authorization Code Flow + PKCE)<a class="headerlink" href="#flujo-completo-de-oauth-20-authorization-code-flow-pkce" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Usuario</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Aplicación_Cliente</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Servidor_Autorización</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Servidor_Recursos</span>
+
+<span class="w">    </span><span class="n">Usuario</span><span class="o">-&gt;&gt;</span><span class="n">Aplicación_Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Intenta</span><span class="w"> </span><span class="n">acceder</span>
+<span class="w">    </span><span class="n">Aplicación_Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Usuario</span><span class="o">:</span><span class="w"> </span><span class="n">Redirige</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="n">login</span>
+<span class="w">    </span><span class="n">Usuario</span><span class="o">-&gt;&gt;</span><span class="n">Servidor_Autorización</span><span class="o">:</span><span class="w"> </span><span class="n">Introduce</span><span class="w"> </span><span class="n">credenciales</span>
+<span class="w">    </span><span class="n">Servidor_Autorización</span><span class="o">-&gt;&gt;</span><span class="n">Usuario</span><span class="o">:</span><span class="w"> </span><span class="n">Autenticado</span><span class="p">,</span><span class="w"> </span><span class="n">redirige</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">callback</span>
+<span class="w">    </span><span class="n">Aplicación_Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Servidor_Autorización</span><span class="o">:</span><span class="w"> </span><span class="n">Intercambia</span><span class="w"> </span><span class="n">código</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="kt">token</span>
+<span class="w">    </span><span class="n">Servidor_Autorización</span><span class="o">--&gt;&gt;</span><span class="n">Aplicación_Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Devuelve</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">refresh_token</span>
+<span class="w">    </span><span class="n">Aplicación_Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Servidor_Recursos</span><span class="o">:</span><span class="w"> </span><span class="n">Petición</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">access_token</span>
+<span class="w">    </span><span class="n">Servidor_Recursos</span><span class="o">--&gt;&gt;</span><span class="n">Aplicación_Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Devuelve</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">datos</span>
+</code></pre></div>
+
+<h3 id="implementacion-de-pkce-proof-key-for-code-exchange-react-nodejs">Implementación de PKCE (Proof Key for Code Exchange) (React + Node.js)<a class="headerlink" href="#implementacion-de-pkce-proof-key-for-code-exchange-react-nodejs" title="Permanent link">&para;</a></h3>
+<p><strong>Lado del Cliente (React):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Funciones auxiliares para generar código PKCE</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint32Array</span><span class="p">(</span><span class="nx">length</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">getRandomValues</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span><span class="w"> </span><span class="nx">dec</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">dec</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">)).</span><span class="nx">substr</span><span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">sha256</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">plain</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TextEncoder</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">encoder</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">plain</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;SHA-256&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">hash</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">base64URLEncode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">btoa</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">str</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\+/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\//g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/=+$/</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Función de inicio de sesión</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">handleLogin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 1. Crear code_verifier y code_challenge</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeVerifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="mf">64</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hashed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">sha256</span><span class="p">(</span><span class="nx">codeVerifier</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeChallenge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">base64URLEncode</span><span class="p">(</span><span class="nx">hashed</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 2. Guardar code_verifier en la sesión</span>
+<span class="w">  </span><span class="nx">sessionStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;code_verifier&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">codeVerifier</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 3. Redirigir al usuario al endpoint de autorización</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;https://auth.tu-servidor.com/authorize&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">response_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;code&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tu_client_id&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">redirect_uri</span><span class="o">:</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/callback&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">code_challenge</span><span class="o">:</span><span class="w"> </span><span class="nx">codeChallenge</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">code_challenge_method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;S256&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;openid profile email&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">authUrl</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authUrl</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p><strong>Lado del Servidor (Node.js + Express):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createHmac</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsonwebtoken&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="c1">// Almacenamiento en memoria (en producción usar una base de datos)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">codeVerifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">refreshTokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+
+<span class="c1">// 1. Devolver código de autorización</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/authorize&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">client_id</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect_uri</span><span class="p">,</span><span class="w"> </span><span class="nx">code_challenge</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Verificar cliente y URI de redirección</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">client_id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;tu_client_id&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;ID de cliente no válido&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Guardar code_challenge (normalmente en una sesión)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="mf">32</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">codeVerifiers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">authCode</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">codeChallenge</span><span class="o">:</span><span class="w"> </span><span class="nx">code_challenge</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="nx">client_id</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">redirectUri</span><span class="o">:</span><span class="w"> </span><span class="nx">redirect_uri</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// Mostrar página de consentimiento al usuario y luego...</span>
+<span class="w">  </span><span class="c1">// Después de que el usuario dé su consentimiento, redirigir al callback</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">redirectUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">redirect_uri</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authCode</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Intercambiar código por token</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/token&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">client_id</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">code_verifier</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect_uri</span><span class="p">,</span><span class="w"> </span><span class="nx">grant_type</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Validar parámetros</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">grant_type</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;authorization_code&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Tipo de concesión no válido&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Validar código</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">codeVerifiers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">codeData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Código no válido&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Validar code_verifier</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hashed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">sha256</span><span class="p">(</span><span class="nx">code_verifier</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeChallenge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">base64URLEncode</span><span class="p">(</span><span class="nx">hashed</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">codeChallenge</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">codeData</span><span class="p">.</span><span class="nx">codeChallenge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Verificador de código incorrecto&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Crear tokens</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">accessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user123&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">client_id</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1h&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">refreshToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="mf">64</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">refreshTokens</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">refreshToken</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user123&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">client_id</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">expiresAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="c1">// 30 días</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// Eliminar código para evitar reutilización</span>
+<span class="w">  </span><span class="nx">codeVerifiers</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Devolver tokens</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">access_token</span><span class="o">:</span><span class="w"> </span><span class="nx">accessToken</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">token_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bearer&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">expires_in</span><span class="o">:</span><span class="w"> </span><span class="mf">3600</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">refresh_token</span><span class="o">:</span><span class="w"> </span><span class="nx">refreshToken</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">id_token</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;...&#39;</span><span class="w"> </span><span class="c1">// Para OpenID Connect</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Verificar token (Servidor de Recursos)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">authenticateToken</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mf">401</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mf">403</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/datos&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authenticateToken</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Devolver datos del usuario</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Datos obtenidos correctamente&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// Funciones auxiliares</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">generarCadenaAleatoria</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">).</span><span class="nx">randomBytes</span><span class="p">(</span><span class="nx">length</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sha256</span><span class="p">(</span><span class="nx">plain</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TextEncoder</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">encoder</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">plain</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;SHA-256&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">hash</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">codificarBase64URL</span><span class="p">(</span><span class="nx">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">buffer</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\+/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\//g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/=+$/</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Zerbitzaria </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb"> portuan entzuten...`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="preferencias-de-seguridad-para-apis-security-headers">Preferencias de Seguridad para APIs (Security Headers)<a class="headerlink" href="#preferencias-de-seguridad-para-apis-security-headers" title="Permanent link">&para;</a></h2>
+<h3 id="uso-de-helmetjs-nodejs">Uso de Helmet.js (Node.js)<a class="headerlink" href="#uso-de-helmetjs-nodejs" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">helmet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;helmet&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">// Medidas de seguridad generales</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
+
+<span class="c1">// Política de Seguridad de Contenido (CSP)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">directives</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">defaultSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">scriptSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;&#39;unsafe-inline&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Eliminar esto lo antes posible</span>
+<span class="w">        </span><span class="s2">&quot;https://apis.google.com&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nx">styleSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&#39;unsafe-inline&#39;&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">imgSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://*.example.com&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">connectSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://api.tu-servidor.com&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">fontSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://fonts.gstatic.com&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">objectSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;none&#39;&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">upgradeInsecureRequests</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">);</span>
+
+<span class="c1">// Protección XSS</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">xssFilter</span><span class="p">());</span>
+
+<span class="c1">// Prevenir MIME-type sniffing</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noSniff</span><span class="p">());</span>
+
+<span class="c1">// Prevenir clickjacking</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;deny&#39;</span><span class="w"> </span><span class="p">}));</span>
+
+<span class="c1">// HSTS (Forzar HTTPS)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">oneYearInSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">31536000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hsts</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="nx">oneYearInSeconds</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">includeSubDomains</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}));</span>
+
+<span class="c1">// Ocultar X-Powered-By</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hidePoweredBy</span><span class="p">());</span>
+
+<span class="c1">// Control de precarga DNS</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">dnsPrefetchControl</span><span class="p">({</span><span class="w"> </span><span class="nx">allow</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}));</span>
+
+<span class="c1">// Opciones de descarga (IE8+)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">ieNoOpen</span><span class="p">());</span>
+
+<span class="c1">// Opciones de tipo de contenido</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noSniff</span><span class="p">());</span>
+
+<span class="c1">// Políticas cruzadas de dominios permitidos</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">permittedCrossDomainPolicies</span><span class="p">());</span>
+
+<span class="c1">// Opciones de marco (previene clickjacking)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;deny&#39;</span><span class="w"> </span><span class="p">}));</span>
+
+<span class="c1">// Filtro XSS (obsoleto, pero para compatibilidad)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;X-XSS-Protection&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1; mode=block&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="mejores-practicas-de-seguridad-para-apis-muy-importante">Mejores Prácticas de Seguridad para APIs (¡Muy importante!)<a class="headerlink" href="#mejores-practicas-de-seguridad-para-apis-muy-importante" title="Permanent link">&para;</a></h2>
+<h3 id="1-validacion-de-entrada">1. Validación de Entrada<a class="headerlink" href="#1-validacion-de-entrada" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Usando express-validator</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">validationResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-validator&#39;</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/usuarios&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="c1">// Nombre: 2-50 caracteres, solo letras y espacios</span>
+<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">isLength</span><span class="p">({</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="sr">/^[\p{L}\s]+$/u</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;El nombre debe tener entre 2 y 50 caracteres y solo puede contener letras y espacios&#39;</span><span class="p">),</span>
+
+<span class="w">  </span><span class="c1">// Email: debe ser un correo electrónico válido</span>
+<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">isEmail</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">normalizeEmail</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;Por favor, introduce una dirección de correo electrónico válida&#39;</span><span class="p">),</span>
+
+<span class="w">  </span><span class="c1">// Contraseña: 8+ caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial</span>
+<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;contrasena&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">isStrongPassword</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">minLength</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">minLowercase</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">minUppercase</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">minNumbers</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">minSymbols</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial&#39;</span><span class="p">)</span>
+<span class="p">],</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Verificar resultados de validación</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validationResult</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">array</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Continuar con el procesamiento</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Crear usuario...</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Usuario creado correctamente&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error al crear el usuario:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Error en el servidor&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Límite de Tasa (Rate Limiting)</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">rateLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-rate-limit&#39;</span><span class="p">);</span>
+
+<span class="c1">// Límite de tasa básico</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">apiLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Ventana de 15 minutos</span>
+<span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// Número máximo de solicitudes por ventana</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Demasiadas solicitudes, por favor inténtalo de nuevo más tarde&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">standardHeaders</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Incluir información de límite en las cabeceras `RateLimit-*`</span>
+<span class="w">  </span><span class="nx">legacyHeaders</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// Deshabilitar las cabeceras `X-RateLimit-*`</span>
+<span class="p">});</span>
+
+<span class="c1">// Aplicar límite a la API</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">apiLimiter</span><span class="p">);</span>
+
+<span class="c1">// Límite de tasa basado en el usuario</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1 hora</span>
+<span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Obtener ID de usuario (por ejemplo, del token)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Obtener plan del usuario (por ejemplo, de una base de datos)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getUserPlan</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Devolver límite según el plan</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">userPlan</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;free&#39;</span><span class="o">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;pro&#39;</span><span class="o">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;enterprise&#39;</span><span class="o">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">10000</span><span class="p">;</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">keyGenerator</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Tu plan de usuario tiene un límite de solicitudes por hora&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/usuario/datos&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">userLimiter</span><span class="p">);</span>
+
+<span class="c1">// 3. Manejo Seguro de Errores</span>
+
+<span class="c1">// Manejador de errores global</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Mensaje de error genérico</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Error en el servidor&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;internal_server_error&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="c1">// Usando una cabecera request-id</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// Información adicional en desarrollo</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">details</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">stack</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="p">,</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">err</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Código de estado HTTP</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">500</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Enviar respuesta</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Manejo de 404</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;No se encontró el recurso solicitado&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;not_found&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">path</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="ejercicio-practico">Ejercicio Práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Implementa OAuth 2.0 + PKCE en tu aplicación React/Node.js</li>
+<li>Configura CSP en tu sitio web y prueba con Content-Security-Policy-Report-Only</li>
+<li>Verifica la seguridad de tu API usando OWASP ZAP o Burp Suite</li>
+<li>Implementa límite de tasa (rate limiting) en tus APIs críticas</li>
+</ol>
+<h2 id="siguientes-pasos">Siguientes Pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../tresnak/">Herramientas prácticas y evaluación de seguridad</a></li>
+<li><a href="../datu_sentikorrak/">Volver a la sección anterior</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.highlight", "content.code.copy", "navigation.top"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

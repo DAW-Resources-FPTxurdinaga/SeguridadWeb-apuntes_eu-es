@@ -1,0 +1,1431 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Lecciones y recursos sobre ciberseguridad">
+      
+      
+        <meta name="author" content="FP Txurdinaga">
+      
+      
+        <link rel="canonical" href="https://ciberseguridad-fptxurdinaga.eus/eraso_defentsak/injekzioak/">
+      
+      
+        <link rel="prev" href="../../oinarriak_mehatxuak/owasp_top10/">
+      
+      
+        <link rel="next" href="../autentifikazioa/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon-96x96-1.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>2.1. Defensas contra inyecciones - Ciberseguridad en el Desarrollo Web</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#0056b3" data-md-color-accent="#ff6b00">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21-defensas-contra-inyecciones" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-header__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Home3.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ciberseguridad en el Desarrollo Web
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.1. Defensas contra inyecciones
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../oinarriak_mehatxuak/sarrera/" class="md-tabs__link">
+          
+  
+  
+  1. Fundamentos y amenazas comunes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  2. Ataques y defensas básicas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datu_babesa/datu_sentikorrak/" class="md-tabs__link">
+          
+  
+  
+  3. Protección de datos y herramientas prácticas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ariketak/injection/" class="md-tabs__link">
+          
+  
+  
+  4. Ejercicios
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-nav__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+      
+  <img src="../../assets/images/Logo_Home3.png" alt="logo">
+
+    </a>
+    Ciberseguridad en el Desarrollo Web
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1. Fundamentos y amenazas comunes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Fundamentos y amenazas comunes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1. Introducción a la Ciberseguridad en el Desarrollo Web
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/web_oinarriak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2. Fundamentos del funcionamiento web
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/owasp_top10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Visión general de vulnerabilidades web comunes (OWASP Top 10)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    2. Ataques y defensas básicas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Ataques y defensas básicas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.1. Defensas contra inyecciones
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. Defensas contra inyecciones
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inyeccion-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inyección SQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inyección SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-la-inyeccion-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es la inyección SQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo funciona?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-prevenirlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo prevenirlo?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Cómo prevenirlo?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-usar-consultas-parametrizadas-prepared-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Usar consultas parametrizadas (Prepared Statements)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xss-cross-site-scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      XSS (Cross-Site Scripting)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XSS (Cross-Site Scripting)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-xss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de XSS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-prevenir-xss" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo prevenir XSS?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Cómo prevenir XSS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-codificar-la-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Codificar la salida
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-usar-apis-seguras" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Usar APIs seguras
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-usar-content-security-policy-csp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Usar Content Security Policy (CSP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otras-inyecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Otras inyecciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Otras inyecciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inyeccion-de-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inyección de comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inyeccion-ldap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inyección LDAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-practico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio práctico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autentifikazioa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. Seguridad de autenticación y sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sarbide_kontrola/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3. Control de acceso y configuración segura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    3. Protección de datos y herramientas prácticas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. Protección de datos y herramientas prácticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/datu_sentikorrak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.1. Protección de datos sensibles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/api_segurtasuna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.2. Seguridad de APIs y dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/tresnak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.3. Introducción a herramientas prácticas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4. Ejercicios
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Ejercicios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.1. Inyecciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/broken_access_control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.2. Fallos de control de acceso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/cryptographic_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.3. Fallos criptográficos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/identification_authentication_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.4. Fallos de autenticación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/insecure_design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.5. Diseño inseguro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/security_misconfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.5. Configuraciones inseguras
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/vulnerable_obsolete_components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.6. Componentes vulnerables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/software_data_integrity_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.7. Fallos de integridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/security_logging_monitoring_failures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.8. Fallos de registro y monitoreo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ariketak/server_side_request_forgery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.9. Falsificación de peticiones del lado del servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="21-defensas-contra-inyecciones">2.1 Defensas contra inyecciones<a class="headerlink" href="#21-defensas-contra-inyecciones" title="Permanent link">&para;</a></h1>
+<h2 id="inyeccion-sql">Inyección SQL<a class="headerlink" href="#inyeccion-sql" title="Permanent link">&para;</a></h2>
+<h3 id="que-es-la-inyeccion-sql">¿Qué es la inyección SQL?<a class="headerlink" href="#que-es-la-inyeccion-sql" title="Permanent link">&para;</a></h3>
+<p>La inyección SQL es un tipo de ataque que modifica una consulta a la base de datos, lo que ocurre cuando la entrada del usuario se inserta en la consulta sin la validación adecuada.</p>
+<h3 id="como-funciona">¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- Entrada del usuario: &#39; OR &#39;1&#39;=&#39;1</span>
+<span class="c1">-- Consulta original:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span>
+
+<span class="c1">-- Después de la inyección:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span>
+<span class="c1">-- Como &#39;1&#39;=&#39;1&#39; siempre es verdadero, la consulta devolverá todos los usuarios</span>
+</code></pre></div>
+
+<h3 id="como-prevenirlo">¿Cómo prevenirlo?<a class="headerlink" href="#como-prevenirlo" title="Permanent link">&para;</a></h3>
+<h4 id="1-usar-consultas-parametrizadas-prepared-statements">1. Usar consultas parametrizadas (Prepared Statements)<a class="headerlink" href="#1-usar-consultas-parametrizadas-prepared-statements" title="Permanent link">&para;</a></h4>
+<p><strong>Ejemplo en Python (SQLite):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login_seguro</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contraseña</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;base_de_datos.db&#39;</span><span class="p">)</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="c1"># Usando consulta parametrizada</span>
+    <span class="n">consulta</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">consulta</span><span class="p">,</span> <span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contraseña</span><span class="p">))</span>
+
+    <span class="n">usuario</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">usuario</span>
+</code></pre></div>
+
+<p><strong>Ejemplo en PHP (PDO):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$usuario</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;usuario&#39;</span><span class="p">];</span>
+<span class="nv">$contraseña</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;contraseña&#39;</span><span class="p">];</span>
+
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">&#39;mysql:host=localhost;dbname=mi_bd&#39;</span><span class="p">,</span> <span class="s1">&#39;usuario&#39;</span><span class="p">,</span> <span class="s1">&#39;contraseña&#39;</span><span class="p">);</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE username = :usuario AND password = :contraseña&#39;</span><span class="p">);</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">&#39;usuario&#39;</span> <span class="o">=&gt;</span> <span class="nv">$usuario</span><span class="p">,</span> <span class="s1">&#39;contraseña&#39;</span> <span class="o">=&gt;</span> <span class="nv">$contraseña</span><span class="p">]);</span>
+<span class="nv">$usuario</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h2 id="xss-cross-site-scripting">XSS (Cross-Site Scripting)<a class="headerlink" href="#xss-cross-site-scripting" title="Permanent link">&para;</a></h2>
+<h3 id="tipos-de-xss">Tipos de XSS<a class="headerlink" href="#tipos-de-xss" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>XSS Reflejado (Reflected)</strong></li>
+<li>El atacante envía un enlace malicioso a la víctima</li>
+<li>El sitio web refleja el script en la respuesta</li>
+<li>
+<p>El script se ejecuta en el navegador de la víctima</p>
+</li>
+<li>
+<p><strong>XSS Almacenado (Stored)</strong></p>
+</li>
+<li>El script malicioso se guarda en la base de datos</li>
+<li>Se ejecuta cuando un usuario carga la página</li>
+<li>
+<p>Puede causar más daño ya que afecta a múltiples usuarios</p>
+</li>
+<li>
+<p><strong>XSS basado en DOM</strong></p>
+</li>
+<li>Ocurre únicamente en el navegador</li>
+<li>Modifica el Modelo de Objetos del Documento (DOM)</li>
+</ol>
+<h3 id="como-prevenir-xss">¿Cómo prevenir XSS?<a class="headerlink" href="#como-prevenir-xss" title="Permanent link">&para;</a></h3>
+<h4 id="1-codificar-la-salida">1. Codificar la salida<a class="headerlink" href="#1-codificar-la-salida" title="Permanent link">&para;</a></h4>
+<p><strong>JavaScript (Node.js):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">escapeHtml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">texto</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;&amp;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&gt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&quot;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;&#39;&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#x27;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;/&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#x2F;&#39;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">texto</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[&amp;&lt;&gt;&quot;&#39;/]/g</span><span class="p">,</span><span class="w"> </span><span class="nx">caracter</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">mapa</span><span class="p">[</span><span class="nx">caracter</span><span class="p">]);</span>
+<span class="p">};</span>
+
+<span class="c1">// Uso</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">entradaPeligrosa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;script&gt;código&lt;/script&gt;&quot;</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">entradaPeligrosa</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="2-usar-apis-seguras">2. Usar APIs seguras<a class="headerlink" href="#2-usar-apis-seguras" title="Permanent link">&para;</a></h4>
+<p><strong>JavaScript seguro:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Incorrecto</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">entradaUsuario</span><span class="p">;</span>
+
+<span class="c1">// Correcto</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">entradaUsuario</span><span class="p">;</span>
+</code></pre></div>
+
+<h4 id="3-usar-content-security-policy-csp">3. Usar Content Security Policy (CSP)<a class="headerlink" href="#3-usar-content-security-policy-csp" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="err">Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;self&#39; https://apis.google.com</span>
+</code></pre></div>
+
+<h2 id="otras-inyecciones">Otras inyecciones<a class="headerlink" href="#otras-inyecciones" title="Permanent link">&para;</a></h2>
+<h3 id="inyeccion-de-comandos">Inyección de comandos<a class="headerlink" href="#inyeccion-de-comandos" title="Permanent link">&para;</a></h3>
+<p><strong>Ejemplo peligroso (Python):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hacer_ping</span><span class="p">(</span><span class="n">direccion</span><span class="p">):</span>
+    <span class="c1"># Peligroso: la entrada del usuario puede ejecutar comandos</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ping -c 4 </span><span class="si">{</span><span class="n">direccion</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Seguro:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hacer_ping_seguro</span><span class="p">(</span><span class="n">direccion</span><span class="p">):</span>
+    <span class="c1"># Seguro: los parámetros se envían como lista</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;ping&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="n">direccion</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="inyeccion-ldap">Inyección LDAP<a class="headerlink" href="#inyeccion-ldap" title="Permanent link">&para;</a></h3>
+<p><strong>Ejemplo peligroso:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ldap</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">autenticar</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contraseña</span><span class="p">):</span>
+    <span class="c1"># Peligroso: entrada sin validar</span>
+    <span class="n">consulta</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(uid=</span><span class="si">{</span><span class="n">usuario</span><span class="si">}</span><span class="s2">)(userPassword=</span><span class="si">{</span><span class="n">contraseña</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="c1"># Realizar consulta LDAP</span>
+</code></pre></div>
+
+<p><strong>Seguro:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ldap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ldap.filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape_filter_chars</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">autenticar_seguro</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contraseña</span><span class="p">):</span>
+    <span class="c1"># Caracteres especiales escapados</span>
+    <span class="n">usuario_limpio</span> <span class="o">=</span> <span class="n">escape_filter_chars</span><span class="p">(</span><span class="n">usuario</span><span class="p">)</span>
+    <span class="n">pass_limpio</span> <span class="o">=</span> <span class="n">escape_filter_chars</span><span class="p">(</span><span class="n">contraseña</span><span class="p">)</span>
+    <span class="n">consulta</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(uid=</span><span class="si">{</span><span class="n">usuario_limpio</span><span class="si">}</span><span class="s2">)(userPassword=</span><span class="si">{</span><span class="n">pass_limpio</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="c1"># Realizar consulta LDAP</span>
+</code></pre></div>
+
+<h2 id="ejercicio-practico">Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Crea una página web simple con inicio de sesión</li>
+<li>Implementa protección contra inyección SQL</li>
+<li>Añade protección XSS en la entrada y salida de datos</li>
+<li>Prueba tus defensas con entradas maliciosas</li>
+</ol>
+<h2 id="proximos-pasos">Próximos pasos<a class="headerlink" href="#proximos-pasos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../autentifikazioa/">Seguridad en autenticación y sesiones</a></li>
+<li><a href="../../oinarriak_mehatxuak/owasp_top10/">Volver a la sección anterior</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.highlight", "content.code.copy", "navigation.top"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
