@@ -1,8 +1,27 @@
 /* Estilos para mejorar la jerarquía visual de los títulos */
 
+/* Estilo para el título principal del sitio y menú de navegación */
+.md-header,
+.md-header--shadow,
+.md-header--shadow-visible,
+.md-tabs {
+    background-color: #1984c2 !important;
+}
+
+/* Asegurar que los enlaces del menú sean legibles */
+.md-tabs__link {
+    color: white !important;
+    opacity: 0.9;
+}
+
+.md-tabs__link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 /* Nivel 1 (Página) - No se usa comúnmente en MkDocs */
 .md-typeset h1 {
-    color: #1a365d;
+    color: #1984c2;
     font-weight: 700;
     font-size: 2em;
     margin: 1em 0 0.8em 0;
