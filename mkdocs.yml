@@ -34,7 +34,8 @@ nav:
   - '1. Oinarriak eta mehatxu arruntak':
     - '1.1. Web Garapenean Zibersegurtasunaren Sarrera': oinarriak_mehatxuak/sarrera.md
     - '1.2. Webaren funtzionamenduaren oinarriak': oinarriak_mehatxuak/web_oinarriak.md
-    - '1.3. Web ahultasun arrunten ikuspegi orokorra': oinarriak_mehatxuak/owasp_top10.md
+    - '1.3. Web Hacking-erako sarrera': oinarriak_mehatxuak/web_hacking_sarrera.md
+    - '1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)': oinarriak_mehatxuak/owasp_top10.md
   - '2. Eraso eta defentsa oinarrizkoak':
     - '2.1. Injekzioen aurkako defentsak': eraso_defentsak/injekzioak.md
     - '2.2. Autentifikazio eta saioen segurtasuna': eraso_defentsak/autentifikazioa.md
