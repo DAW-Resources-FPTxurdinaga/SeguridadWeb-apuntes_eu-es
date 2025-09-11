@@ -1,34 +1,42 @@
-site_name: Zibersegurtasuna Web Garapenean
-site_url: https://zibersegurtasun-fptxurdinaga.eus
-site_author: FP Txurdinaga
-site_description: Zibersegurtasunari buruzko ikasgaiak eta baliabideak
-
-# Configuración del tema
+site_name: DWS Apunteak - 2025-2026
 theme:
   name: material
-  palette:
-    primary: '#0056b3'  # Azul corporativo
-    accent: '#ff6b00'   # Naranja corporativo
-  font:
-    text: Roboto
-    code: Roboto Mono
+  language: eu
+  logo: images/logo.png
+  favicon: http://fptxurdinaga.eus/wp-content/uploads/2022/10/favicon-96x96-1.png
   features:
-    - navigation.tabs
+    - navigation.tracking
     - navigation.sections
-    - navigation.expand
-    - toc.integrate
-    - search.highlight
-    - content.code.copy
     - navigation.top
-  logo: assets/images/Logo_Home3.png
-  favicon: assets/images/favicon-96x96-1.png
-  icon:
-    logo: material/library
-
-# CSS personalizado
+    - navigation.indexes
+    - navigation.instant
+    - navigation.expand # Esto permite expandir/colapsar, pero necesitamos ajustar el CSS
+  palette:
+    - scheme: default
+      primary: '#004c95'
+      accent: '#e95f15'
+    - scheme: slate
+      primary: '#004c95'
+      accent: '#e95f15'
+      toggle:
+        icon: material/weather-night
+        name: Modu iluna
 extra_css:
-  - css/custom.css
-
+- stylesheets/extra.css
+extra_javascript:
+- scripts/checkboxes.js
+- javascripts/sidebar.js
+plugins:
+- search
+markdown_extensions:
+- admonition
+- pymdownx.tasklist:          # ← nuevo
+    clickable_checkbox: true  #  hace los checkboxes interactivos
+    custom_checkbox: true     #  usa los iconos de Material
+- toc:
+    permalink: true
+- footnotes
+- tables
 nav:
   - Hasiera: index.md
   - '1. Oinarriak eta mehatxu arruntak':

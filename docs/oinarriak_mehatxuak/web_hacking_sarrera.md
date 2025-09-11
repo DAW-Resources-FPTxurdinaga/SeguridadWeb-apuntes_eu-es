@@ -53,99 +53,67 @@ Page source-a ikusita, hainbat elementu interesgarri aurki ditzakegu:
 ## Garatzaile Tresnak (Developers Tools)
 
 ### 1. Inspektorea
-- Web-orriaren HTML eta CSS ikusteko eta editatzeko aukera ematen du.
-- Elementuak zuzenean alda ditzakezu: testua, koloreak, tamainak...
 
-### 2. Araztailea (Debugger)
-- JavaScript kodea pausoz pauso exekutatzeko aukera ematen du.
-- "Breakpoint"-ak jarri daitezke kodea gelditzeko.
-- Aldagaiak eta funtzio-deien emaitzak ikus daitezke.
+Web-orrian une horretan agertzen denaren “argazki bizia” erakusten du.
+Orriko iturburu-kodea (HTML) beti ez da berdina, CSS edo JavaScript-ek alda dezakeelako. Inspektoreak benetan zer ikusten ari garen erakusten digu.
+Elementuak zuzenean alda ditzakezu: testua, koloreak, tamainak… horrela, akatsak errazago aurkitzen eta konpontzen dira.
 
-### 3. Sarea (Network)
-- Orrialde batek egiten dituen eskaera guztiak ikus daitezke.
-- Eskaera bakoitzaren xehetasunak ikus daitezke: URL-a, metodoa, erantzun-kodea, tamaina, denbora...
+
+### 2. Debugger
+Orriko JavaScript kodeari pausoz pauso jarraitzeko balioko digu.
+
+“Breakpoint”-ak jartzen dira, hau da, kodea geldi dadin nahi dugun puntuan.
+Horri esker, aldagaiak eta funtzio-deien emaitzak une berean ikus ditzakegu, eta ulertu zergatik gertatzen diren akatsak.
+
+Garatzaileen tresnetako panel hau JavaScript arazteko pentsatuta dago, eta berriro ere ezaugarri bikaina da zerbait zergatik ez dabilen funtzionatzen landu nahi duten web garatzaileentzat. Baina sartze-probatzaile gisa, JavaScript kodean sakontzeko aukera ematen digu. Firefox eta Safari nabigatzaileetan ezaugarri honek Debugger du izena, baina Google Chrome nabigatzailean Sources du izena.
+
+Laburbilduz, breakpointak menderatzeak bezero-kodearen exekuzioa erabat kontrolatzen du:
+
+- Irakurketa: barne aldagaiak eta funtzio “pribatuak” ikusten dituzu.
+- Aldaketa: balio berriak injektatzen dituzu edo funtzionalitateak mozten dituzten kodearen adarrak saihesten dituzu.
+- Birbidaltzea: harrapaketak eta irteerako eskaerak aldatzea.
+
+Hori guztia, segurtasun-ikuskaritzei, pentestei edo arazketa sinpleari aplikatuta, logika-ahultasunak aurkitzeko, sarbide-kontrolak ez egiteko edo garatzaileak zuzenean azaldu nahi izan ez zituen datu sentikorrak aurkitzeko aukera ematen du.
+
+
+### 3. Network
+Garatzailearen tresnen sare-fitxa web orri batek egiten duen kanpoko eskaera bakoitzaren jarraipena egiteko erabil daiteke. Sarea fitxan klik egin eta gero orria freskatzen baduzu, orria eskatzen ari den fitxategi guztiak ikusiko dituzu.
+
 
 ## Edukien Aurkikuntza
 
+### Zer da edukien aurkikuntza?
+Lehenik eta behin, galdetu behar dugu, web aplikazioen segurtasunaren testuinguruan, zer da edukia? Edukia gauza asko izan daiteke, fitxategi bat, bideoa, irudia, segurtasun-kopia, webgunearen eginbidea. Edukien aurkikuntzaz hitz egiten dugunean, ez gara webgune batean ikus ditzakegun gauza nabariez ari; berehala aurkezten ez zaizkigun eta beti sarbide publikora bideratuta ez zeuden gauzez ari gara.
+
+Eduki hori izan liteke, adibidez, langileen erabilerarako orriak edo atariak, webgunearen bertsio zaharragoak, babeskopia-fitxategiak, konfigurazio-fitxategiak, administrazio-panelak, etab.
+Edukiak ezagutzeko hiru modu nagusi daude landuko dugun webgune batean: Eskuz, automatizatua eta OSINT (Open-Source Intelligence).
+
 ### Robots.txt
-Webgune baten erroan egoten den fitxategia da, eta bilatzaileei zein orri indexatu daitezkeen edo ez adierazten die.
+`robots.txt` fitxategia bilatzaileei zein orri diren eta bilatzaileen emaitzetan erakusteko baimenik ez duten edo bilatzaile zehatzei webgunea guztiz arakatzea debekatzen dien dokumentua da. Ohikoa izan daiteke web gune jakin batzuk mugatzea bilatzaileen emaitzetan ez bistaratzeko. Orrialde hauek administrazio atariak edo webgunearen bezeroentzako fitxategiak izan daitezke.
+Fitxategi honek webguneko kokapenen zerrenda handia ematen digu, jabeek sartze-probatzaile gisa aurkitzerik nahi ez dutena.
+
 
 ### Favicon
-Nabigatzaileko helbide-barran edo fitxan agertzen den ikono txikia. Batzuetan framework baten favicon lehenetsia ikus daiteke, webguneak erabiltzen duen teknologiari buruzko informazioa emanez.
+Favicon nabigatzaileko helbide-barran edo fitxan agertzen den ikono txiki bat da, webgune bat markatzeko erabiltzen dena.
+
+Batzuetan, webgune bat eraikitzeko markoak erabiltzen direnean, instalazioaren parte den favicon bat soberan geratzen da, eta webgunearen garatzaileak hau pertsonalizatutako beste batekin ordezkatzen ez badu, horrek pista bat eman diezaguke erabiltzen ari den markoari buruz. OWASPek esparru-ikono komunen datu-base bat ostatatzen du, helburuen favicon-arekin <a href="https://wiki.owasp.org/index.php/OWASP_favicon_database">OWASP_favicon_database</a>. Alderatzeko erabil dezakezuna. Behin esparru-pila ezagututa, kanpoko baliabideak erabil ditzakegu hari buruz gehiago jakiteko.
+Eguneratuago dago beste webgune hau: <a href="https://owasp.org/www-community/favicons_database">OWASP_favicon_database</a> 
 
 ### Sitemap.xml
-Webgunearen orri garrantzitsuenen zerrenda bat duen fitxategia da, bilatzaileek gunea hobeto indexatu dezaten.
+`robots.txt` fitxategiak ez bezala, bilaketa-motorreko arakatzaileek ikus dezaketena murrizten baitu, `sitemap.xml` fitxategiak webgunearen jabeak bilatzaile batean zerrendatzea nahi duen fitxategi bakoitzaren zerrenda ematen du. 
+Horiek, batzuetan, nabigatzeko zailxeagoak diren webguneko eremuak izan ditzakete, edo baita uneko guneak jada erabiltzen ez dituen baina eszenen atzean lanean jarraitzen duten web orri zahar batzuk zerrendatzea ere.
+
 
 ## HTTP Goiburuak
 
-Webgune batera konektatzen garenean, HTTP goiburuak bidaltzen dira. Hauek informazio garrantzitsua dute:
-- **User-Agent**: Erabiltzen ari zaren nabigatzailea eta sistema eragilea
-- **Accept**: Zer motatako edukia onartzen duen nabigatzaileak
-- **Cookie**: Saioaren informazioa
+Web-zerbitzariari eskaerak egiten dizkiogunean, zerbitzariak hainbat HTTP goiburu itzultzen ditu. Goiburu horiek, batzuetan, informazio erabilgarria izan dezakete, hala nola webzerbitzariaren softwarea eta, agian, erabiltzen ari den programazio-/script-lengoaia. 
 
-## DNS Xehetasunean
+Beheko adibidean, webzerbitzaria NGINX 1.18.0 bertsioa da eta PHP 7.4.3 bertsioa exekutatzen du. Informazio hori erabiliz, erabiltzen ari diren softwarearen bertsio ahulak aurki genitzake.
 
-### Zer da DNS?
-DNS (Domain Name System) domeinu-izenak IP helbide bihurtzen dituen sistema bat da.
+Saiatu beheko <a href="https://www.hostinger.com/es/tutoriales/comando-curl">curl komandoa</a> web zerbitzariaren aurka exekutatzen, non -v kommutadoreak verbose modua gaitzen duen, goiburuak aterako dituena (zerbait interesgarria egon daiteke! ).
 
-### Domeinuaren Zatiak
-- **TLD (Top Level Domain)**: .com, .org, .es...
-- **Bigarren mailako domeinua**: tryhackme.com-en "tryhackme"
-- **Azpidomeinua**: blog.tryhackme.com-en "blog"
+### Framework Stack
 
-### DNS Erregistro Motak
-- **A**: IPv4 helbidea
-- **AAAA**: IPv6 helbidea
-- **CNAME**: Domeinu baten beste baten ordezpena
-- **MX**: Posta elektronikorako zerbitzariak
-- **TXT**: Testu erregistroak (SPF, DKIM...)
+Webgune baten markoa ezarri ondoren, bai aurreko favicon adibidearekin edo orriaren iturburuan pistak bilatuz, hala nola iruzkinak, copyright oharrak edo kredituak, ondoren webgunearen framework-a aurki dezakezu. 
+Hortik aurrera, softwareari eta beste informazio batzuei buruz gehiago ikasi ahal izango dugu, agian aurkitu dezakegun eduki gehiagora eramanez.
 
-## HTTP Xehetasunez
-
-### HTTP vs HTTPS
-- **HTTP**: Datuak testu argian bidaltzen dira
-- **HTTPS**: Datuak zifratuta bidaltzen dira (SSL/TLS)
-
-### HTTP Metodoak
-- **GET**: Baliabideak eskuratzeko
-- **POST**: Datu berriak bidaltzeko
-- **PUT**: Baliabideak eguneratzeko
-- **DELETE**: Baliabideak ezabatzeko
-
-### HTTP Egoera Kodeak
-- **1xx**: Informazioa
-- **2xx**: Arrakasta (200 OK)
-- **3xx**: Birbideraketa (301 Moved Permanently)
-- **4xx**: Bezeroaren errorea (404 Not Found)
-- **5xx**: Zerbitzariaren errorea (500 Internal Server Error)
-
-## HTML, CSS eta JavaScript
-
-### HTML
-- Web orrien egitura definitzen du
-- Etiketak erabiltzen ditu: `<html>`, `<head>`, `<body>`, `<p>`, `<a>`, etc.
-
-### CSS
-- Estiloak definitzen ditu: koloreak, letra-tipoak, tamainak...
-- Klaseak (`class`) eta ID-ak erabiltzen ditu elementuak identifikatzeko
-
-### JavaScript
-- Orriari interaktibitatea ematen dio
-- Gertaerak kudeatzen ditu (saguaren klikak, teklatuko sarrerak...)
-- AJAX erabiliz zerbitzarirako eskaerak egin ditzake
-
-## Segurtasun Kontzeptuak
-
-### Datu Sentikorraren Azalpena
-- Webguneek ez luke inoiz datu sentikorrik erakutsi behar iturburu kodean
-- Adibide txarrak: pasahitzak, API gakoak, barne estekak...
-
-### HTML Injekzioa
-- Erabiltzailearen sarrera HTML gisa interpretatzen denean gertatzen da
-- Erabiltzailearen sarrera beti garbitu behar da errendatu aurretik
-- Adibide txarra: `<script>alert('Hacked!')</script>`
-
-## Estekak
-- [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
-- [Mozilla Developer Network (MDN) Web Docs](https://developer.mozilla.org/)
-- [PortSwigger Web Security Academy](https://portswigger.net/web-security)
