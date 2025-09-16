@@ -7,20 +7,21 @@ Pribilegioen gorakadak esan nahi du erabiltzaile batek eskubidea ez duten pribil
 ## Erronkak
 
 ### 1. erronka: Miscellaneous > Score Board
-Find the carefully hidden 'Score Board' page.
+    Find the carefully hidden 'Score Board' page.
 
-Hau izan beharko da gure lehengo ariketa. Score Borad atalean topatuko bait ditugu gainontzeko ariketak.
+    Hau izan beharko da gure lehengo ariketa. Score Borad atalean topatuko bait ditugu gainontzeko ariketak.
 
 ### 2. erronka: What's the Administrator's email address?
-Saiatuko dugu admin erabiltzailearen emaila topatzen.
+    Saiatuko dugu admin erabiltzailearen emaila topatzen.
 
 ### 3. erronka: What parameter is used for searching? 
-Bilaketa bat egiterakoan, zein da kontsultan erabilitako parametroa?
+    Bilaketa bat egiterakoan, zein da kontsultan erabilitako parametroa?
 
 ### 4. erronka: Access the administration section of the store
 
-Score-board-ekin gertatu den bezala, ez dugu administrazio atalera sartzeko esteka zuzena. Guk aurkitu beharko dugu. Hainbat aukera egon daitezke atala topatzeko
-Hau egiteko SQL injection pixkatxo bat ikusi behar dugu.
+    Score-board-ekin gertatu den bezala, ez dugu administrazio atalera sartzeko esteka zuzena. Guk aurkitu beharko dugu. Hainbat aukera egon daitezke atala topatzeko.
+
+    Hau egiteko SQL injection pixkatxo bat ikusi behar dugu.
 
 
 
