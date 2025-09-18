@@ -1,48 +1,52 @@
 /* Estilos para mejorar la jerarquía visual de los títulos */
 
-/* Nivel 1 (Página) - No se usa comúnmente en MkDocs */
+/* Fuente principal */
+:root {
+    --md-text-font: 'Roboto', sans-serif;
+    --md-code-font: 'Roboto Mono', monospace;
+}
+
+/* Nivel 1 (Página) */
 .md-typeset h1 {
-    color: #1a365d;
+    color: #1565c0;  /* Azul más oscuro */
     font-weight: 700;
-    font-size: 2em;
+    font-size: 2.2em;
     margin: 1em 0 0.8em 0;
     padding-bottom: 0.3em;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid #e0e0e0;
+    text-align: center;
 }
 
 /* Nivel 2 (##) - Títulos principales de sección */
 .md-typeset h2 {
-    color: #2c5282;
+    color: #1976d2;  /* Azul Material Design */
     font-weight: 600;
-    font-size: 1.6em;
-    margin: 1.8em 0 0.8em 0;
+    font-size: 1.8em;
+    margin: 1.5em 0 0.8em 0;
     padding: 0.5em 0 0.5em 0.8em;
-    border-left: 5px solid #4299e1;
-    background-color: #f7fafc;
+    border-left: 4px solid #1976d2;
+    background-color: #f5f9ff;
     border-radius: 0 4px 4px 0;
 }
 
 /* Nivel 3 (###) - Subtítulos */
 .md-typeset h3 {
-    color: #2b6cb0;
+    color: #0d47a1;  /* Azul oscuro */
     font-weight: 500;
-    font-size: 1.3em;
-    margin: 1.6em 0 0.7em 1.5em;  /* Aumentado de 0.5em a 1.5em */
-    padding: 0.3em 0 0.3em 1em;    /* Añadido padding izquierdo */
-    border-bottom: 1px dashed #cbd5e0;
-    border-left: 3px solid #90cdf4; /* Línea vertical sutil */
-    padding-left: 1em;             /* Espacio entre la línea y el texto */
+    font-size: 1.4em;
+    margin: 1.6em 0 0.7em 0;
+    padding: 0.3em 0 0.3em 0.8em;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 /* Nivel 4 (####) - Sub-subtítulos */
 .md-typeset h4 {
-    color: #2c5282;
+    color: #1565c0;
     font-weight: 500;
-    font-size: 1.1em;
-    margin: 1.4em 0 0.6em 1em;
-    font-style: normal;
+    font-size: 1.2em;
+    margin: 1.4em 0 0.6em 0;
+    padding-left: 0.8em;
     position: relative;
-    padding-left: 1em;
 }
 
 /* Añadir viñeta a los h4 */
@@ -168,3 +172,32 @@
     border: 0;
     border-top: 1px solid #e2e8f0;
 }
+
+/* Custom heading styles */
+
+/* H2 (##) */
+h2 {
+  color: #004c95; /* azul corporativo */
+  border-bottom: 2px solid #e95f15;
+  padding-bottom: 0.2em;
+  margin-top: 1.5em;
+}
+
+/* H3 (###) */
+h3 {
+  color: #e95f15; /* naranja corporativo */
+  margin-top: 1.2em;
+}
+
+.md-header {
+  background-color: #1984c2;
+}
+
+/* Center all images inside markdown content */
+.md-typeset img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+

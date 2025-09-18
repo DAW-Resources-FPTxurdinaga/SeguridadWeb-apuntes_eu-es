@@ -4,7 +4,7 @@ Lehenik eta behin, iragaitzazko eta atsedeneko datuen babes-beharrak zehaztu beh
 
 Datu horiengatik guztiengatik:
 
-- Testu argian transmititzen al da daturen bat? Honek HTTP, SMTP, FTP bezalako protokoloei eragiten die, STARTTLS bezalako TLS eguneratzeak ere erabiliz. Interneteko kanpoko trafikoa oso arriskutsua da. Barne-trafiko guztia egiaztatzea, adibidez, karga-orekatzaileen, web-zerbitzarien edo back-end sistemen artean.
+- Testu argian transmititzen al da daturen bat? Honek HTTP, SMTP, FTP bezalako protokoloei eragiten die. Interneteko kanpoko trafikoa oso arriskutsua da. Barne-trafiko guztia egiaztatzea, adibidez, karga-orekatzaileen, web-zerbitzarien edo back-end sistemen artean.
 
 - Algoritmo edo protokolo kriptografiko zahar edo ahulen bat erabiltzen da, bai lehenespenez, bai kode zaharragoan?
 
@@ -21,7 +21,14 @@ Datu horiengatik guztiengatik:
 
 ### 1. erronka: Confidential Document
 Access a confidential document.
-Saiatuko dugu dokumentu konfidenzial bat topatzen, horretarako begirada bat botako genuke privacy, about us eta horrelakoetan, ezta? 
+Saiatuko dugu dokumentu konfidentzial bat topatzen, horretarako begirada bat botako genuke privacy, about us eta horrelakoetan, ezta? 
+
+### 2. erronka: Sensitive Data Exposure > Exposes credentials
+A developer was careless with hardcoding unused, but still valid credentials for a testing account on the client-side.
+
+
+
+
 
 ## Estekak
 - [OWASP Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
