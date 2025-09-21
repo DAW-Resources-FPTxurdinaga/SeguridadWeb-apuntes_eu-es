@@ -21,6 +21,7 @@ theme:
       toggle:
         icon: material/weather-night
         name: Modu iluna
+  custom_dir: docs/overrides
 extra_css:
 - stylesheets/extra.css
 extra_javascript:
@@ -28,6 +29,30 @@ extra_javascript:
 - javascripts/sidebar.js
 plugins:
 - search
+- i18n:
+    default_language: eu
+    docs_structure: folder
+    languages:
+      - locale: eu
+        name: Euskara
+        default: true
+      - locale: es
+        name: Español
+        nav_translations:
+          Hasiera: Inicio
+          '1. Oinarriak eta mehatxu arruntak': '1. Fundamentos y amenazas comunes'
+          '1.1. Web Garapenean Zibersegurtasunaren Sarrera': '1.1. Introducción a la Ciberseguridad en el Desarrollo Web'
+          '1.2. Webaren funtzionamenduaren oinarriak': '1.2. Fundamentos del funcionamiento de la web'
+          '1.3. Web Hacking-erako sarrera': '1.3. Introducción al Web Hacking'
+          '1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)': '1.4. Visión general de vulnerabilidades comunes (OWASP Top 10)'
+          '2. Eraso eta defentsa oinarrizkoak': '2. Ataques y defensas básicas'
+          '2.1. Injekzioen aurkako defentsak': '2.1. Defensas frente a inyecciones'
+          '2.2. Autentifikazio eta saioen segurtasuna': '2.2. Seguridad de autenticación y sesiones'
+          '2.3. Sarbide-kontrola eta konfigurazio segurua': '2.3. Control de acceso y configuración segura'
+          '3. Datuen babesa eta tresna praktikoak': '3. Protección de datos y herramientas prácticas'
+          '3.1. Datu sentikorren babesa': '3.1. Gestión y protección de datos sensibles'
+          '3.2. APIen eta dependentzien segurtasuna': '3.2. APIs seguras y Autenticación'
+          '3.3. Tresna praktikoen sarrera': '3.3. Herramientas prácticas de seguridad'
 markdown_extensions:
 - admonition
 - pymdownx.tasklist:          # ← nuevo

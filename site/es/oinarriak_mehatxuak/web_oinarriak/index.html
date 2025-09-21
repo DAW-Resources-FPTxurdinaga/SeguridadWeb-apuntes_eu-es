@@ -1,0 +1,1166 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../sarrera/">
+      
+      
+        <link rel="next" href="../web_hacking_sarrera/">
+      
+      
+      <link rel="icon" href="http://fptxurdinaga.eus/wp-content/uploads/2022/10/favicon-96x96-1.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>1.2. Fundamentos del funcionamiento de la web - Zibersegurtasuna Web Garapenean - 2025-2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-fundamentos-del-funcionamiento-de-la-web" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../" title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-header__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
+      
+  <img src="../../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Zibersegurtasuna Web Garapenean - 2025-2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.2. Fundamentos del funcionamiento de la web
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-label="Modu iluna"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modu iluna" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Seleccionar idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../oinarriak_mehatxuak/web_oinarriak/" hreflang="eu" class="md-select__link">
+              Euskara
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-nav__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
+      
+  <img src="../../../images/logo.png" alt="logo">
+
+    </a>
+    Zibersegurtasuna Web Garapenean - 2025-2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    1. Fundamentos y amenazas comunes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Fundamentos y amenazas comunes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1. Introducción a la Ciberseguridad en el Desarrollo Web
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1.2. Fundamentos del funcionamiento de la web
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2. Fundamentos del funcionamiento de la web
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-funciona-un-sitio-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cómo funciona un sitio web
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cómo funciona un sitio web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns-domain-name-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS (Domain Name System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-en-detalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP en detalle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP en detalle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigos-de-estado-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Códigos de estado HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cabeceras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cabeceras
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-funcionan-los-sitios-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo funcionan los sitios web?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-componentes-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Otros componentes importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_hacking_sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Introducción al Web Hacking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../owasp_top10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.4. Visión general de vulnerabilidades comunes (OWASP Top 10)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    2. Ataques y defensas básicas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Ataques y defensas básicas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/injekzioak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1. Defensas frente a inyecciones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/autentifikazioa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2. Seguridad de autenticación y sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eraso_defentsak/sarbide_kontrola/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3. Control de acceso y configuración segura
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    3. Protección de datos y herramientas prácticas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. Protección de datos y herramientas prácticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/datu_sentikorrak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.1. Gestión y protección de datos sensibles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/api_segurtasuna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.2. APIs seguras y Autenticación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datu_babesa/tresnak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.3. Herramientas prácticas de seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-funciona-un-sitio-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cómo funciona un sitio web
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cómo funciona un sitio web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns-domain-name-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS (Domain Name System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-en-detalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP en detalle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP en detalle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métodos HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigos-de-estado-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      Códigos de estado HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cabeceras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cabeceras
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-funcionan-los-sitios-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo funcionan los sitios web?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-componentes-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Otros componentes importantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12-fundamentos-del-funcionamiento-de-la-web">1.2 Fundamentos del funcionamiento de la web<a class="headerlink" href="#12-fundamentos-del-funcionamiento-de-la-web" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Comprender cómo funcionan los sitios web es esencial desde la perspectiva de la ciberseguridad. En esta sección explicamos cómo funcionan, sus componentes principales y cómo se comunican entre sí.</p>
+<h2 id="como-funciona-un-sitio-web">Cómo funciona un sitio web<a class="headerlink" href="#como-funciona-un-sitio-web" title="Permanent link">&para;</a></h2>
+<h3 id="dns-domain-name-system">DNS (Domain Name System)<a class="headerlink" href="#dns-domain-name-system" title="Permanent link">&para;</a></h3>
+<p>Para que un sitio funcione, intervienen distintos componentes y procesos automatizados. Primero, el sistema DNS se usa para resolver un dominio (p. ej., google.com) a una dirección IP. Los dominios siguen una jerarquía (subdominios, dominios de segundo nivel, TLDs) y distintos registros DNS (A, AAAA, CNAME, MX, TXT…) aportan diferentes tipos de información.</p>
+<p><img alt="DNS" src="../images/dns1.png" /></p>
+<p>Al realizar una solicitud DNS, primero se consulta la caché local; después, el servidor DNS del ISP, los servidores raíz, los servidores TLD y los servidores autoritativos se activan hasta obtener la IP. La respuesta incluye un TTL (Time To Live) que indica cuánto tiempo puede mantenerse en caché.</p>
+<p><img alt="DNS" src="../images/dns2.png" /></p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="mf">1.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Tu</span><span class="w"> </span><span class="n">ordenador</span>
+<span class="w">    </span><span class="n">Primero</span><span class="w"> </span><span class="n">mira</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">local</span><span class="p">.</span><span class="w"> </span><span class="n">Puede</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">hayas</span><span class="w"> </span><span class="n">visitado</span><span class="w"> </span><span class="n">ese</span><span class="w"> </span><span class="n">sitio</span><span class="w"> </span><span class="n">recientemente</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">recuerde</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">IP</span><span class="p">.</span>
+<span class="w">    </span><span class="nl">Resultado:</span>
+<span class="w">    </span><span class="err">✅</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Conecta</span><span class="w"> </span><span class="n">directamente</span>
+<span class="w">    </span><span class="err">❌</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Pasa</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">siguiente</span><span class="w"> </span><span class="n">paso</span>
+
+
+<span class="w">    </span><span class="mf">2.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">recursivo</span>
+<span class="w">    </span><span class="n">Es</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">proporciona</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">ISP</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">tú</span><span class="w"> </span><span class="n">elijas</span><span class="p">).</span>
+<span class="w">    </span><span class="n">También</span><span class="w"> </span><span class="n">consulta</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">propia</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">local</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Sitios</span><span class="w"> </span><span class="n">populares</span><span class="w"> </span><span class="n">como</span><span class="w"> </span><span class="n">Google</span><span class="p">,</span><span class="w"> </span><span class="n">Facebook</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">Twitter</span><span class="w"> </span><span class="n">suelen</span><span class="w"> </span><span class="n">estar</span><span class="w"> </span><span class="n">aquí</span><span class="w"> </span><span class="n">cacheados</span><span class="p">.</span>
+<span class="w">    </span><span class="nl">Resultado:</span>
+<span class="w">    </span><span class="err">✅</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Lo</span><span class="w"> </span><span class="n">devuelve</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">equipo</span>
+<span class="w">    </span><span class="err">❌</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Acude</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">servidores</span><span class="w"> </span><span class="n">raíz</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Internet</span>
+
+
+<span class="w">    </span><span class="mf">3.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidores</span><span class="w"> </span><span class="n">raíz</span><span class="w"> </span><span class="p">(</span><span class="n">Root</span><span class="w"> </span><span class="n">DNS</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="err">“</span><span class="n">columna</span><span class="w"> </span><span class="n">vertebral</span><span class="err">”</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Internet</span><span class="p">.</span><span class="w"> </span><span class="n">Miran</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">(.</span><span class="n">com</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">org</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">es</span><span class="p">...)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">envían</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">adecuado</span><span class="p">.</span>
+<span class="w">    </span><span class="n">En</span><span class="w"> </span><span class="n">nuestro</span><span class="w"> </span><span class="nl">ejemplo:</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">www</span><span class="p">.</span><span class="n">tryhackme</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">ven</span><span class="w"> </span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">envían</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
+
+<span class="w">    </span><span class="mf">4.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">TLD</span>
+<span class="w">    </span><span class="n">Indica</span><span class="w"> </span><span class="n">dónde</span><span class="w"> </span><span class="n">está</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">autoritativo</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">dominio</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Por</span><span class="w"> </span><span class="n">ejemplo</span><span class="p">,</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">tryhackme</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">servidores</span><span class="w"> </span><span class="n">autoritativos</span><span class="w"> </span><span class="nl">son:</span>
+<span class="w">    </span><span class="n">kip</span><span class="p">.</span><span class="n">ns</span><span class="p">.</span><span class="n">cloudflare</span><span class="p">.</span><span class="n">com</span>
+<span class="w">    </span><span class="n">uma</span><span class="p">.</span><span class="n">ns</span><span class="p">.</span><span class="n">cloudflare</span><span class="p">.</span><span class="n">com</span>
+
+<span class="w">    </span><span class="n">Hay</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">menos</span><span class="w"> </span><span class="n">dos</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">redundancia</span><span class="p">.</span>
+
+<span class="w">    </span><span class="mf">5.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">autoritativo</span>
+<span class="w">    </span><span class="n">Servidor</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">almacena</span><span class="w"> </span><span class="n">todos</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">registros</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">ese</span><span class="w"> </span><span class="n">dominio</span><span class="p">.</span>
+<span class="w">    </span><span class="err">¿</span><span class="n">Qué</span><span class="w"> </span><span class="n">hace</span><span class="o">?</span>
+<span class="w">    </span><span class="n">Busca</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">necesaria</span><span class="w"> </span><span class="p">(</span><span class="n">registro</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="w">    </span><span class="n">La</span><span class="w"> </span><span class="n">devuelve</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">recursivo</span>
+<span class="w">    </span><span class="n">El</span><span class="w"> </span><span class="n">recursivo</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">cachea</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">futuras</span><span class="w"> </span><span class="n">peticiones</span>
+<span class="w">    </span><span class="n">Finalmente</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">envía</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">ordenador</span>
+</code></pre></div>
+
+<h3 id="http-en-detalle">HTTP en detalle<a class="headerlink" href="#http-en-detalle" title="Permanent link">&para;</a></h3>
+<p>Una vez obtenida la IP, se realiza una solicitud HTTP o HTTPS al servidor.</p>
+<p>Es el conjunto de reglas para comunicarse con servidores web y transmitir datos.</p>
+<p>Puede transportar muchos tipos de datos:</p>
+<ul>
+<li>HTML (contenido del sitio)</li>
+<li>Imágenes (JPG, PNG, GIF...)</li>
+<li>Vídeos (MP4, AVI...)</li>
+<li>Otros archivos (PDF, documentos...)</li>
+</ul>
+<p>HTTPS es la versión segura que cifra la comunicación.</p>
+<p>Las solicitudes HTTP incluyen cabeceras (Host, User-Agent, Cookie...), y el servidor devuelve una respuesta con un código de estado (200, 404, 500...) y un cuerpo (HTML, JSON, imágenes...).</p>
+<p>La estructura de una URL incluye protocolo, usuario, host, puerto, ruta, parámetros y fragmento. Según la solicitud, el servidor devuelve un recurso concreto.</p>
+<p>Tomemos este ejemplo: <a href="http://user:password@tryhackme.com:80/view-room?id=1#task3">http://user:password@tryhackme.com:80/view-room?id=1#task3</a></p>
+<p><img alt="URL" src="../images/url1.png" /></p>
+<ul>
+<li>Scheme (Esquema): indica el protocolo a usar (http, https, ftp...).</li>
+<li>User (Usuario): user:password para servicios que requieren credenciales (hoy casi no se usa por no ser seguro).</li>
+<li>Host (Host): dominio o IP del servidor (p. ej., google.com o 192.168.1.1).</li>
+<li>Port (Puerto): número de puerto (HTTP 80 por defecto, HTTPS 443).</li>
+<li>Path (Ruta): ubicación del recurso (/blog o /images/photo.jpg).</li>
+<li>Query String (Cadena de consulta): información adicional (?id=1&amp;category=tech).</li>
+<li>Fragment (Fragmento): parte específica de la página (#task3).</li>
+</ul>
+<h4 id="metodos-http">Métodos HTTP<a class="headerlink" href="#metodos-http" title="Permanent link">&para;</a></h4>
+<p>Los métodos indican la intención del cliente al hacer una solicitud. Los más comunes son:</p>
+<ul>
+<li>GET: Obtener información del servidor.</li>
+<li>POST: Enviar datos al servidor y, posiblemente, crear registros.</li>
+<li>PUT: Enviar datos para actualizar información existente.</li>
+<li>DELETE: Eliminar información o registros del servidor.</li>
+</ul>
+<h4 id="codigos-de-estado-http">Códigos de estado HTTP<a class="headerlink" href="#codigos-de-estado-http" title="Permanent link">&para;</a></h4>
+<p>Indican el estado de la respuesta del servidor. Se agrupan en:</p>
+<ul>
+<li>100-199: Informativos</li>
+<li>200-299: Éxito</li>
+<li>300-399: Redirección</li>
+<li>400-499: Errores del cliente</li>
+<li>500-599: Errores del servidor</li>
+</ul>
+<h4 id="cabeceras">Cabeceras<a class="headerlink" href="#cabeceras" title="Permanent link">&para;</a></h4>
+<p>Pequeños datos adicionales que se envían con la solicitud. Algunas comunes:</p>
+<ul>
+<li>Solicitud: Host, User-Agent, Content-Length, Accept-Encoding, Cookie</li>
+<li>Respuesta: Set-Cookie, Cache-Control, Content-Type, Content-Encoding</li>
+</ul>
+<h4 id="cookies">Cookies<a class="headerlink" href="#cookies" title="Permanent link">&para;</a></h4>
+<p>Las cookies son pequeños datos que se almacenan en tu equipo. Se guardan cuando el servidor envía la cabecera Set-Cookie. En solicitudes posteriores, se devuelven al servidor. Dado que HTTP es sin estado, las cookies ayudan a recordar quién eres, guardar preferencias o saber si ya visitaste el sitio.</p>
+<h3 id="como-funcionan-los-sitios-web">¿Cómo funcionan los sitios web?<a class="headerlink" href="#como-funcionan-los-sitios-web" title="Permanent link">&para;</a></h3>
+<p>Cuando visitas una web, tu navegador realiza una solicitud al servidor pidiendo la información de la página. El servidor envía los datos que el navegador usará para mostrar el contenido. Un servidor web es un ordenador dedicado que procesa estas solicitudes.</p>
+<p><img alt="¿Cómo funcionan los sitios web?" src="../images/nola_funtzionatu.png" /></p>
+<p>Frontend vs Backend: el frontend es lo que ves en el navegador (HTML, CSS, JS) y el backend es lo que se ejecuta en el servidor (PHP, Node.js...). El contenido puede ser estático o dinámico y un servidor puede gestionar varios sitios mediante Virtual Host.</p>
+<p>HTML, CSS y JavaScript son las tecnologías base del front. Los elementos tienen atributos (id, class, src...), y si usan entrada de usuario pueden ser peligrosos si no se filtra correctamente.</p>
+<p>La exposición de datos sensibles ocurre a menudo en el código del front (comentarios, ficheros JS...) donde se dejan contraseñas, tokens o enlaces privados. También pueden surgir vulnerabilidades como la inyección de HTML si no se filtra y se muestra directamente en la página.</p>
+<p>Las herramientas de desarrollo del navegador (Developer Tools) son útiles para inspeccionar solicitudes, cookies, código y obtener información relevante de seguridad (Inspector, Network, Debugger...).</p>
+<h3 id="otros-componentes-importantes">Otros componentes importantes<a class="headerlink" href="#otros-componentes-importantes" title="Permanent link">&para;</a></h3>
+<p>CDNs: ayudan a reducir el tráfico sirviendo archivos estáticos desde servidores distribuidos.</p>
+<p>Balanceadores de carga: reparten el tráfico entre varios servidores cuando la carga aumenta o se necesita alta disponibilidad.</p>
+<p>WAFs (Web Application Firewall): detectan y bloquean solicitudes maliciosas.</p>
+<p>Bases de datos: almacenan y proporcionan datos a las aplicaciones.</p>
+<p><img alt="WAF" src="../images/firewall1.png" /></p>
+<h2 id="proximos-pasos">Próximos pasos<a class="headerlink" href="#proximos-pasos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../owasp_top10/">Visión general de vulnerabilidades comunes</a></li>
+<li><a href="../../">Volver al inicio</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../scripts/checkboxes.js"></script>
+      
+        <script src="../../../javascripts/sidebar.js"></script>
+      
+    
+  </body>
+</html>
