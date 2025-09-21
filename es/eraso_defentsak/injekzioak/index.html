@@ -1116,45 +1116,42 @@
 <h3 id="que-es-la-inyeccion-sql">¿Qué es la inyección SQL?<a class="headerlink" href="#que-es-la-inyeccion-sql" title="Permanent link">&para;</a></h3>
 <p>La inyección SQL es un tipo de ataque que modifica una consulta a la base de datos cuando la entrada del usuario se inserta en la consulta sin validación adecuada.</p>
 <h3 id="como-funciona">¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- Entrada del usuario: &#39; OR &#39;1&#39;=&#39;1</span>
-<span class="c1">-- Consulta original:</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hasia&#39;</span>
+<pre><code class="language-sql">-- Entrada del usuario: ' OR '1'='1
+-- Consulta original:
+SELECT * FROM users WHERE username = '' AND password = 'hasia'
 
-<span class="c1">-- Tras la inyección:</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hasia&#39;</span>
-<span class="c1">-- Como &#39;1&#39;=&#39;1&#39; siempre es verdadero, la consulta devolverá todos los usuarios</span>
-</code></pre></div>
-
+-- Tras la inyección:
+SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'hasia'
+-- Como '1'='1' siempre es verdadero, la consulta devolverá todos los usuarios
+</code></pre>
 <h3 id="como-prevenirla">¿Cómo prevenirla?<a class="headerlink" href="#como-prevenirla" title="Permanent link">&para;</a></h3>
 <h4 id="1-usar-consultas-parametrizadas-prepared-statements">1. Usar consultas parametrizadas (Prepared Statements)<a class="headerlink" href="#1-usar-consultas-parametrizadas-prepared-statements" title="Permanent link">&para;</a></h4>
 <p><strong>Ejemplo en Python (SQLite):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<pre><code class="language-python">import sqlite3
 
-<span class="k">def</span><span class="w"> </span><span class="nf">login_seguro</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contrasena</span><span class="p">):</span>
-    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;datu_basea.db&#39;</span><span class="p">)</span>
-    <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+def login_seguro(usuario, contrasena):
+    conn = sqlite3.connect('datu_basea.db')
+    cursor = conn.cursor()
 
-    <span class="c1"># Consulta parametrizada</span>
-    <span class="n">consulta</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;</span>
-    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">consulta</span><span class="p">,</span> <span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contrasena</span><span class="p">))</span>
+    # Consulta parametrizada
+    consulta = &quot;SELECT * FROM users WHERE username = ? AND password = ?&quot;
+    cursor.execute(consulta, (usuario, contrasena))
 
-    <span class="n">usuario_row</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">usuario_row</span>
-</code></pre></div>
-
+    usuario_row = cursor.fetchone()
+    conn.close()
+    return usuario_row
+</code></pre>
 <p><strong>Ejemplo en PHP (PDO):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$usuario</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;erabiltzailea&#39;</span><span class="p">];</span>
-<span class="nv">$contrasena</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;pasahitza&#39;</span><span class="p">];</span>
+<pre><code class="language-php">&lt;?php
+$usuario = $_POST['erabiltzailea'];
+$contrasena = $_POST['pasahitza'];
 
-<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">&#39;mysql:host=localhost;dbname=nire_db&#39;</span><span class="p">,</span> <span class="s1">&#39;erabiltzailea&#39;</span><span class="p">,</span> <span class="s1">&#39;pasahitza&#39;</span><span class="p">);</span>
-<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE username = :usuario AND password = :contrasena&#39;</span><span class="p">);</span>
-<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">&#39;usuario&#39;</span> <span class="o">=&gt;</span> <span class="nv">$usuario</span><span class="p">,</span> <span class="s1">&#39;contrasena&#39;</span> <span class="o">=&gt;</span> <span class="nv">$contrasena</span><span class="p">]);</span>
-<span class="nv">$fila</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
-<span class="cp">?&gt;</span>
-</code></pre></div>
-
+$pdo = new PDO('mysql:host=localhost;dbname=nire_db', 'erabiltzailea', 'pasahitza');
+$stmt = $pdo-&gt;prepare('SELECT * FROM users WHERE username = :usuario AND password = :contrasena');
+$stmt-&gt;execute(['usuario' =&gt; $usuario, 'contrasena' =&gt; $contrasena]);
+$fila = $stmt-&gt;fetch();
+?&gt;
+</code></pre>
 <h2 id="xss-cross-site-scripting">XSS (Cross-Site Scripting)<a class="headerlink" href="#xss-cross-site-scripting" title="Permanent link">&para;</a></h2>
 <h3 id="tipos-de-xss">Tipos de XSS<a class="headerlink" href="#tipos-de-xss" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1164,68 +1161,61 @@
 </ol>
 <h3 id="como-prevenir-xss">¿Cómo prevenir XSS?<a class="headerlink" href="#como-prevenir-xss" title="Permanent link">&para;</a></h3>
 <h4 id="1-codificar-la-salida">1. Codificar la salida<a class="headerlink" href="#1-codificar-la-salida" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">escapeHtml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s1">&#39;&amp;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;&gt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;&quot;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;&#39;&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#x27;&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;/&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#x2F;&#39;</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[&amp;&lt;&gt;&quot;&#39;/]/g</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">map</span><span class="p">[</span><span class="nx">m</span><span class="p">]);</span>
-<span class="p">};</span>
+<pre><code class="language-javascript">const escapeHtml = (text) =&gt; {
+  const map = {
+    '&amp;': '&amp;amp;',
+    '&lt;': '&amp;lt;',
+    '&gt;': '&amp;gt;',
+    '&quot;': '&amp;quot;',
+    &quot;'&quot;: '&amp;#x27;',
+    &quot;/&quot;: '&amp;#x2F;'
+  };
+  return text.replace(/[&amp;&lt;&gt;&quot;'/]/g, m =&gt; map[m]);
+};
 
-<span class="c1">// Uso</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">sarreraArriskutsua</span><span class="p">);</span>
-</code></pre></div>
-
+// Uso
+document.getElementById('izena').textContent = escapeHtml(sarreraArriskutsua);
+</code></pre>
 <h4 id="2-usar-apis-seguras">2. Usar APIs seguras<a class="headerlink" href="#2-usar-apis-seguras" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Mal</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">entradaUsuario</span><span class="p">;</span>
+<pre><code class="language-javascript">// Mal
+document.getElementById('izena').innerHTML = entradaUsuario;
 
-<span class="c1">// Mejor</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">entradaUsuario</span><span class="p">;</span>
-</code></pre></div>
-
+// Mejor
+document.getElementById('izena').textContent = entradaUsuario;
+</code></pre>
 <h4 id="3-content-security-policy-csp">3. Content Security Policy (CSP)<a class="headerlink" href="#3-content-security-policy-csp" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="err">Content-Security-Policy: default-src &#39;self&#39;; script-src &#39;self&#39; https://apis.google.com</span>
-</code></pre></div>
-
+<pre><code class="language-http">Content-Security-Policy: default-src 'self'; script-src 'self' https://apis.google.com
+</code></pre>
 <h2 id="otras-inyecciones">Otras inyecciones<a class="headerlink" href="#otras-inyecciones" title="Permanent link">&para;</a></h2>
 <h3 id="inyeccion-de-comandos">Inyección de comandos<a class="headerlink" href="#inyeccion-de-comandos" title="Permanent link">&para;</a></h3>
 <p>Ejemplo inseguro (Python):</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<pre><code class="language-python">import os
 
-<span class="k">def</span><span class="w"> </span><span class="nf">ping_direccion</span><span class="p">(</span><span class="n">direccion</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ping -c 4 </span><span class="si">{</span><span class="n">direccion</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
+def ping_direccion(direccion):
+    os.system(f&quot;ping -c 4 {direccion}&quot;)
+</code></pre>
 <p>Ejemplo seguro:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<pre><code class="language-python">import subprocess
 
-<span class="k">def</span><span class="w"> </span><span class="nf">ping_direccion_segura</span><span class="p">(</span><span class="n">direccion</span><span class="p">):</span>
-    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s1">&#39;ping&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="n">direccion</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-
+def ping_direccion_segura(direccion):
+    subprocess.run(['ping', '-c', '4', direccion], check=True)
+</code></pre>
 <h3 id="inyeccion-ldap">Inyección LDAP<a class="headerlink" href="#inyeccion-ldap" title="Permanent link">&para;</a></h3>
 <p>Ejemplo inseguro:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ldap</span>
+<pre><code class="language-python">import ldap
 
-<span class="k">def</span><span class="w"> </span><span class="nf">autenticar</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contrasena</span><span class="p">):</span>
-    <span class="n">consulta</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(uid=</span><span class="si">{</span><span class="n">usuario</span><span class="si">}</span><span class="s2">)(userPassword=</span><span class="si">{</span><span class="n">contrasena</span><span class="si">}</span><span class="s2">)&quot;</span>
-</code></pre></div>
-
+def autenticar(usuario, contrasena):
+    consulta = f&quot;(uid={usuario})(userPassword={contrasena})&quot;
+</code></pre>
 <p>Ejemplo seguro:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ldap</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ldap.filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">escape_filter_chars</span>
+<pre><code class="language-python">import ldap
+from ldap.filter import escape_filter_chars
 
-<span class="k">def</span><span class="w"> </span><span class="nf">autenticar_seguro</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">contrasena</span><span class="p">):</span>
-    <span class="n">usuario_ok</span> <span class="o">=</span> <span class="n">escape_filter_chars</span><span class="p">(</span><span class="n">usuario</span><span class="p">)</span>
-    <span class="n">pass_ok</span> <span class="o">=</span> <span class="n">escape_filter_chars</span><span class="p">(</span><span class="n">contrasena</span><span class="p">)</span>
-    <span class="n">consulta</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(uid=</span><span class="si">{</span><span class="n">usuario_ok</span><span class="si">}</span><span class="s2">)(userPassword=</span><span class="si">{</span><span class="n">pass_ok</span><span class="si">}</span><span class="s2">)&quot;</span>
-</code></pre></div>
-
+def autenticar_seguro(usuario, contrasena):
+    usuario_ok = escape_filter_chars(usuario)
+    pass_ok = escape_filter_chars(contrasena)
+    consulta = f&quot;(uid={usuario_ok})(userPassword={pass_ok})&quot;
+</code></pre>
 <h2 id="ejercicio-practico">Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Crea una página simple con usuario y contraseña</li>
@@ -1292,7 +1282,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

@@ -904,52 +904,48 @@
 <h1 id="32-apis-seguras-y-autenticacion">3.2 APIs seguras y Autenticación<a class="headerlink" href="#32-apis-seguras-y-autenticacion" title="Permanent link">&para;</a></h1>
 <h2 id="oauth-20-y-openid-connect">OAuth 2.0 y OpenID Connect<a class="headerlink" href="#oauth-20-y-openid-connect" title="Permanent link">&para;</a></h2>
 <h3 id="flujo-de-autorizacion-con-pkce-authorization-code-flow-pkce">Flujo de autorización con PKCE (Authorization Code Flow + PKCE)<a class="headerlink" href="#flujo-de-autorizacion-con-pkce-authorization-code-flow-pkce" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Usuario</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Autorización</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Recursos</span>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Usuario
+    participant App Cliente
+    participant Servidor de Autorización
+    participant Servidor de Recursos
 
-<span class="w">    </span><span class="n">Usuario</span><span class="o">-&gt;&gt;</span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Intenta</span><span class="w"> </span><span class="n">iniciar</span><span class="w"> </span><span class="n">sesión</span>
-<span class="w">    </span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Usuario</span><span class="o">:</span><span class="w"> </span><span class="n">Redirige</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="n">login</span>
-<span class="w">    </span><span class="n">Usuario</span><span class="o">-&gt;&gt;</span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Autorización</span><span class="o">:</span><span class="w"> </span><span class="n">Introduce</span><span class="w"> </span><span class="n">credenciales</span>
-<span class="w">    </span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Autorización</span><span class="o">-&gt;&gt;</span><span class="n">Usuario</span><span class="o">:</span><span class="w"> </span><span class="n">Autenticado</span><span class="p">,</span><span class="w"> </span><span class="n">redirige</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">callback</span>
-<span class="w">    </span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Autorización</span><span class="o">:</span><span class="w"> </span><span class="n">Intercambia</span><span class="w"> </span><span class="n">código</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="kt">token</span>
-<span class="w">    </span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Autorización</span><span class="o">--&gt;&gt;</span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">refresh_token</span>
-<span class="w">    </span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Recursos</span><span class="o">:</span><span class="w"> </span><span class="n">Petición</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">access_token</span>
-<span class="w">    </span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Recursos</span><span class="o">--&gt;&gt;</span><span class="n">App</span><span class="w"> </span><span class="n">Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Devuelve</span><span class="w"> </span><span class="n">datos</span>
-</code></pre></div>
-
+    Usuario-&gt;&gt;App Cliente: Intenta iniciar sesión
+    App Cliente-&gt;&gt;Usuario: Redirige a /login
+    Usuario-&gt;&gt;Servidor de Autorización: Introduce credenciales
+    Servidor de Autorización-&gt;&gt;Usuario: Autenticado, redirige al callback
+    App Cliente-&gt;&gt;Servidor de Autorización: Intercambia código por token
+    Servidor de Autorización--&gt;&gt;App Cliente: access_token y refresh_token
+    App Cliente-&gt;&gt;Servidor de Recursos: Petición con access_token
+    Servidor de Recursos--&gt;&gt;App Cliente: Devuelve datos
+</code></pre>
 <h3 id="pkce-en-cliente-react-y-servidor-nodejs">PKCE en cliente (React) y servidor (Node.js)<a class="headerlink" href="#pkce-en-cliente-react-y-servidor-nodejs" title="Permanent link">&para;</a></h3>
 <p>El código y ejemplos pueden mantenerse en inglés para claridad técnica.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// React: generate code_verifier &amp; code_challenge, redirect to authorize...</span>
-</code></pre></div>
-
-<div class="codehilite"><pre><span></span><code><span class="c1">// Node.js: /authorize, /token, verify JWT, etc.</span>
-</code></pre></div>
-
+<pre><code class="language-jsx">// React: generate code_verifier &amp; code_challenge, redirect to authorize...
+</code></pre>
+<pre><code class="language-javascript">// Node.js: /authorize, /token, verify JWT, etc.
+</code></pre>
 <h2 id="cabeceras-de-seguridad-para-apis">Cabeceras de seguridad para APIs<a class="headerlink" href="#cabeceras-de-seguridad-para-apis" title="Permanent link">&para;</a></h2>
 <p>Ejemplo con Helmet (Node.js):</p>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">helmet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;helmet&#39;</span><span class="p">);</span>
+<pre><code class="language-javascript">const express = require('express');
+const helmet = require('helmet');
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
+const app = express();
+app.use(helmet());
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
-<span class="w">  </span><span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">directives</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">defaultSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">scriptSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://apis.google.com&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">styleSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&#39;unsafe-inline&#39;&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">imgSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data:&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">objectSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;none&#39;&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">upgradeInsecureRequests</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">})</span>
-<span class="p">);</span>
-</code></pre></div>
-
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [&quot;'self'&quot;],
+      scriptSrc: [&quot;'self'&quot;, &quot;https://apis.google.com&quot;],
+      styleSrc: [&quot;'self'&quot;, &quot;'unsafe-inline'&quot;],
+      imgSrc: [&quot;'self'&quot;, &quot;data:&quot;],
+      objectSrc: [&quot;'none'&quot;],
+      upgradeInsecureRequests: []
+    }
+  })
+);
+</code></pre>
 <h2 id="buenas-practicas-para-apis">Buenas prácticas para APIs<a class="headerlink" href="#buenas-practicas-para-apis" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Validación de entradas en servidor</li>
@@ -957,9 +953,8 @@
 <li>Gestión segura de errores (sin filtrar datos sensibles)</li>
 <li>Logs con niveles y sin secretos</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="c1">// express-validator, rate-limit, error handler ...</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">// express-validator, rate-limit, error handler ...
+</code></pre>
 <h2 id="ejercicio-practico">Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Implementa OAuth 2.0 + PKCE en tu app</li>
@@ -1026,7 +1021,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

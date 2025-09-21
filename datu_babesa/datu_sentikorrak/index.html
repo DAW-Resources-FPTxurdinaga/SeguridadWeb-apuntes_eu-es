@@ -1123,159 +1123,156 @@
 <h4 id="1-zifraketa-simetrikoa-aes">1. Zifraketa simetrikoa (AES)<a class="headerlink" href="#1-zifraketa-simetrikoa-aes" title="Permanent link">&para;</a></h4>
 <p>Gako berbera erabiltzen da zifratu eta deszifratzeko.</p>
 <p><strong>Python adibidea (PyCryptodome):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Cipher</span><span class="w"> </span><span class="kn">import</span> <span class="n">AES</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Random</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_random_bytes</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Util.Padding</span><span class="w"> </span><span class="kn">import</span> <span class="n">pad</span><span class="p">,</span> <span class="n">unpad</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<pre><code class="language-python">from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+from Crypto.Util.Padding import pad, unpad
+import base64
 
-<span class="k">def</span><span class="w"> </span><span class="nf">zifratu</span><span class="p">(</span><span class="n">mezua</span><span class="p">,</span> <span class="n">gakoa</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">gakoa</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">gakoa</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>  <span class="c1"># 256 bit-eko gakoa</span>
+def zifratu(mezua, gakoa=None):
+    if gakoa is None:
+        gakoa = get_random_bytes(32)  # 256 bit-eko gakoa
 
-    <span class="c1"># Sortu ausazko hasieratze-vektorea (IV)</span>
-    <span class="n">iv</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    # Sortu ausazko hasieratze-vektorea (IV)
+    iv = get_random_bytes(16)
 
-    <span class="c1"># Sortu zifratzailea</span>
-    <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">gakoa</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+    # Sortu zifratzailea
+    cipher = AES.new(gakoa, AES.MODE_CBC, iv)
 
-    <span class="c1"># Zifratu mezua (paddatu behar da 16 byte-ko blokeetarako)</span>
-    <span class="n">mezua_ordokitua</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">mezua</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span>
-    <span class="n">testu_zifratua</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">mezua_ordokitua</span><span class="p">)</span>
+    # Zifratu mezua (paddatu behar da 16 byte-ko blokeetarako)
+    mezua_ordokitua = pad(mezua.encode('utf-8'), AES.block_size)
+    testu_zifratua = cipher.encrypt(mezua_ordokitua)
 
-    <span class="c1"># Itzuli base64 formatuan (IV + testu zifratua)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">iv</span> <span class="o">+</span> <span class="n">testu_zifratua</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    # Itzuli base64 formatuan (IV + testu zifratua)
+    return base64.b64encode(iv + testu_zifratua).decode('utf-8')
 
-<span class="n">deszifratu</span><span class="p">(</span><span class="n">mezua_zifratua</span><span class="p">,</span> <span class="n">gakoa</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Deskodetu base64</span>
-        <span class="n">datuak</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">mezua_zifratua</span><span class="p">)</span>
+deszifratu(mezua_zifratua, gakoa):
+    try:
+        # Deskodetu base64
+        datuak = base64.b64decode(mezua_zifratua)
 
-        <span class="c1"># Atera IV eta testu zifratua</span>
-        <span class="n">iv</span> <span class="o">=</span> <span class="n">datuak</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
-        <span class="n">testu_zifratua</span> <span class="o">=</span> <span class="n">datuak</span><span class="p">[</span><span class="mi">16</span><span class="p">:]</span>
+        # Atera IV eta testu zifratua
+        iv = datuak[:16]
+        testu_zifratua = datuak[16:]
 
-        <span class="c1"># Sortu zifratzailea</span>
-        <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">gakoa</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+        # Sortu zifratzailea
+        cipher = AES.new(gakoa, AES.MODE_CBC, iv)
 
-        <span class="c1"># Deszifratu eta kendu padding-a</span>
-        <span class="n">mezua_ordokitua</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">testu_zifratua</span><span class="p">)</span>
-        <span class="n">mezua</span> <span class="o">=</span> <span class="n">unpad</span><span class="p">(</span><span class="n">mezua_ordokitua</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        # Deszifratu eta kendu padding-a
+        mezua_ordokitua = cipher.decrypt(testu_zifratua)
+        mezua = unpad(mezua_ordokitua, AES.block_size).decode('utf-8')
 
-        <span class="k">return</span> <span class="n">mezua</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Errorea deszifratzean: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
+        return mezua
+    except Exception as e:
+        print(f&quot;Errorea deszifratzean: {e}&quot;)
+        return None
 
-<span class="c1"># Adibidea</span>
-<span class="n">gakoa</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>  <span class="c1"># Gorde seguruan gako hau!</span>
-<span class="n">mezua</span> <span class="o">=</span> <span class="s2">&quot;Hau sekretu bat da!&quot;</span>
+# Adibidea
+gakoa = get_random_bytes(32)  # Gorde seguruan gako hau!
+mezua = &quot;Hau sekretu bat da!&quot;
 
-<span class="c1"># Zifratu</span>
-<span class="n">mezua_zifratua</span> <span class="o">=</span> <span class="n">zifratu</span><span class="p">(</span><span class="n">mezua</span><span class="p">,</span> <span class="n">gakoa</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zifratua: </span><span class="si">{</span><span class="n">mezua_zifratua</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+# Zifratu
+mezua_zifratua = zifratu(mezua, gakoa)
+print(f&quot;Zifratua: {mezua_zifratua}&quot;)
 
-<span class="c1"># Deszifratu</span>
-<span class="n">deszifratua</span> <span class="o">=</span> <span class="n">deszifratu</span><span class="p">(</span><span class="n">mezua_zifratua</span><span class="p">,</span> <span class="n">gakoa</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deszifratua: </span><span class="si">{</span><span class="n">deszifratua</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
+# Deszifratu
+deszifratua = deszifratu(mezua_zifratua, gakoa)
+print(f&quot;Deszifratua: {deszifratua}&quot;)
+</code></pre>
 <h4 id="2-zifraketa-asimetrikoa-rsa">2. Zifraketa asimetrikoa (RSA)<a class="headerlink" href="#2-zifraketa-asimetrikoa-rsa" title="Permanent link">&para;</a></h4>
 <p>Gako pribatu/publiko bikotea erabiltzen du.</p>
 <p><strong>Python adibidea (cryptography):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.hazmat.primitives.asymmetric</span><span class="w"> </span><span class="kn">import</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">padding</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.hazmat.primitives</span><span class="w"> </span><span class="kn">import</span> <span class="n">serialization</span><span class="p">,</span> <span class="n">hashes</span>
+<pre><code class="language-python">from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import serialization, hashes
 
-<span class="k">def</span><span class="w"> </span><span class="nf">sortu_gakoak</span><span class="p">():</span>
-    <span class="c1"># Sortu gako pribatua</span>
-    <span class="n">pribatua</span> <span class="o">=</span> <span class="n">rsa</span><span class="o">.</span><span class="n">generate_private_key</span><span class="p">(</span>
-        <span class="n">public_exponent</span><span class="o">=</span><span class="mi">65537</span><span class="p">,</span>
-        <span class="n">key_size</span><span class="o">=</span><span class="mi">4096</span>
-    <span class="p">)</span>
+def sortu_gakoak():
+    # Sortu gako pribatua
+    pribatua = rsa.generate_private_key(
+        public_exponent=65537,
+        key_size=4096
+    )
 
-    <span class="c1"># Atera gako publikoa</span>
-    <span class="n">publikoa</span> <span class="o">=</span> <span class="n">pribatua</span><span class="o">.</span><span class="n">public_key</span><span class="p">()</span>
+    # Atera gako publikoa
+    publikoa = pribatua.public_key()
 
-    <span class="k">return</span> <span class="n">pribatua</span><span class="p">,</span> <span class="n">publikoa</span>
+    return pribatua, publikoa
 
-<span class="k">def</span><span class="w"> </span><span class="nf">zifratu_rsa</span><span class="p">(</span><span class="n">mezua</span><span class="p">,</span> <span class="n">gako_publicoa</span><span class="p">):</span>
-    <span class="c1"># Zifratu gako publikoarekin</span>
-    <span class="n">testu_zifratua</span> <span class="o">=</span> <span class="n">gako_publicoa</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span>
-        <span class="n">mezua</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
-        <span class="n">padding</span><span class="o">.</span><span class="n">OAEP</span><span class="p">(</span>
-            <span class="n">mgf</span><span class="o">=</span><span class="n">padding</span><span class="o">.</span><span class="n">MGF1</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="n">hashes</span><span class="o">.</span><span class="n">SHA256</span><span class="p">()),</span>
-            <span class="n">algorithm</span><span class="o">=</span><span class="n">hashes</span><span class="o">.</span><span class="n">SHA256</span><span class="p">(),</span>
-            <span class="n">label</span><span class="o">=</span><span class="kc">None</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">testu_zifratua</span>
+def zifratu_rsa(mezua, gako_publicoa):
+    # Zifratu gako publikoarekin
+    testu_zifratua = gako_publicoa.encrypt(
+        mezua.encode('utf-8'),
+        padding.OAEP(
+            mgf=padding.MGF1(algorithm=hashes.SHA256()),
+            algorithm=hashes.SHA256(),
+            label=None
+        )
+    )
+    return testu_zifratua
 
-<span class="n">deszifratu_rsa</span><span class="p">(</span><span class="n">testu_zifratua</span><span class="p">,</span> <span class="n">gako_pribatua</span><span class="p">):</span>
-    <span class="c1"># Deszifratu gako pribatuarekin</span>
-    <span class="n">mezua</span> <span class="o">=</span> <span class="n">gako_pribatua</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span>
-        <span class="n">testu_zifratua</span><span class="p">,</span>
-        <span class="n">padding</span><span class="o">.</span><span class="n">OAEP</span><span class="p">(</span>
-            <span class="n">mgf</span><span class="o">=</span><span class="n">padding</span><span class="o">.</span><span class="n">MGF1</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="n">hashes</span><span class="o">.</span><span class="n">SHA256</span><span class="p">()),</span>
-            <span class="n">algorithm</span><span class="o">=</span><span class="n">hashes</span><span class="o">.</span><span class="n">SHA256</span><span class="p">(),</span>
-            <span class="n">label</span><span class="o">=</span><span class="kc">None</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">mezua</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+deszifratu_rsa(testu_zifratua, gako_pribatua):
+    # Deszifratu gako pribatuarekin
+    mezua = gako_pribatua.decrypt(
+        testu_zifratua,
+        padding.OAEP(
+            mgf=padding.MGF1(algorithm=hashes.SHA256()),
+            algorithm=hashes.SHA256(),
+            label=None
+        )
+    )
+    return mezua.decode('utf-8')
 
-<span class="c1"># Adibidea</span>
-<span class="n">pribatua</span><span class="p">,</span> <span class="n">publikoa</span> <span class="o">=</span> <span class="n">sortu_gakoak</span><span class="p">()</span>
-<span class="n">mezua</span> <span class="o">=</span> <span class="s2">&quot;Hau ere sekretu bat da!&quot;</span>
+# Adibidea
+pribatua, publikoa = sortu_gakoak()
+mezua = &quot;Hau ere sekretu bat da!&quot;
 
-<span class="c1"># Zifratu</span>
-<span class="n">testu_zifratua</span> <span class="o">=</span> <span class="n">zifratu_rsa</span><span class="p">(</span><span class="n">mezua</span><span class="p">,</span> <span class="n">publikoa</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zifratua: </span><span class="si">{</span><span class="n">testu_zifratua</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+# Zifratu
+testu_zifratua = zifratu_rsa(mezua, publikoa)
+print(f&quot;Zifratua: {testu_zifratua.hex()}&quot;)
 
-<span class="c1"># Deszifratu</span>
-<span class="n">deszifratua</span> <span class="o">=</span> <span class="n">deszifratu_rsa</span><span class="p">(</span><span class="n">testu_zifratua</span><span class="p">,</span> <span class="n">pribatua</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deszifratua: </span><span class="si">{</span><span class="n">deszifratua</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
+# Deszifratu
+deszifratua = deszifratu_rsa(testu_zifratua, pribatua)
+print(f&quot;Deszifratua: {deszifratua}&quot;)
+</code></pre>
 <h2 id="datuak-transferitzerakoan-tlshttps">Datuak transferitzerakoan (TLS/HTTPS)<a class="headerlink" href="#datuak-transferitzerakoan-tlshttps" title="Permanent link">&para;</a></h2>
 <h3 id="nola-konfiguratu-https-nodejs-n-express">Nola konfiguratu HTTPS Node.js-n (Express)<a class="headerlink" href="#nola-konfiguratu-https-nodejs-n-express" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<pre><code class="language-javascript">const https = require('https');
+const fs = require('fs');
+const express = require('express');
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+const app = express();
 
-<span class="c1">// Konfiguratu segurtasun-neurriak</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
+// Konfiguratu segurtasun-neurriak
+app.use(helmet());
 
-<span class="c1">// HSTS (HTTP Strict Transport Security)</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hsts</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="mf">31536000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1 urte</span>
-<span class="w">  </span><span class="nx">includeSubDomains</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="p">}));</span>
+// HSTS (HTTP Strict Transport Security)
+app.use(helmet.hsts({
+  maxAge: 31536000, // 1 urte
+  includeSubDomains: true,
+  preload: true
+}));
 
-<span class="c1">// Beste segurtasun-headerrak</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;deny&#39;</span><span class="w"> </span><span class="p">}));</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">xssFilter</span><span class="p">());</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noSniff</span><span class="p">());</span>
+// Beste segurtasun-headerrak
+app.use(helmet.frameguard({ action: 'deny' }));
+app.use(helmet.xssFilter());
+app.use(helmet.noSniff());
 
-<span class="c1">// Irakurri SSL/TLS gakoak</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;path/to/private.key&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">cert</span><span class="o">:</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;path/to/certificate.crt&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="c1">// Aukera gehigarriak</span>
-<span class="w">  </span><span class="nx">minVersion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TLSv1.2&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">ciphers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">&#39;ECDHE-ECDSA-AES256-GCM-SHA384&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;ECDHE-RSA-AES256-GCM-SHA384&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// ...</span>
-<span class="w">  </span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-<span class="p">};</span>
+// Irakurri SSL/TLS gakoak
+const options = {
+  key: fs.readFileSync('path/to/private.key'),
+  cert: fs.readFileSync('path/to/certificate.crt'),
+  // Aukera gehigarriak
+  minVersion: 'TLSv1.2',
+  ciphers: [
+    'ECDHE-ECDSA-AES256-GCM-SHA384',
+    'ECDHE-RSA-AES256-GCM-SHA384',
+    // ...
+  ].join(':')
+};
 
-<span class="c1">// Abiarritu HTTPS zerbitzaria</span>
-<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mf">443</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;HTTPS zerbitzaria 443 portuan entzuten...&#39;</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-
+// Abiarritu HTTPS zerbitzaria
+https.createServer(options, app).listen(443, () =&gt; {
+  console.log('HTTPS zerbitzaria 443 portuan entzuten...');
+});
+</code></pre>
 <h2 id="datuak-gordetzeko-aholkuak">Datuak gordetzeko aholkuak<a class="headerlink" href="#datuak-gordetzeko-aholkuak" title="Permanent link">&para;</a></h2>
 <h3 id="1-ez-gorde-datu-sentikorrik-behar-ez-baduzu">1. Ez gorde datu sentikorrik behar ez baduzu<a class="headerlink" href="#1-ez-gorde-datu-sentikorrik-behar-ez-baduzu" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1289,79 +1286,75 @@
 <li>Iraungitzean: Datuak ezabatu epearen amaieran</li>
 </ul>
 <h3 id="3-datuak-maskatu-erakusteko">3. Datuak maskatu erakusteko<a class="headerlink" href="#3-datuak-maskatu-erakusteko" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">maskatuZenbakiKontua</span><span class="p">(</span><span class="nx">zenbakiKontua</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">zenbakiKontua</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">luzeera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">zenbakiKontua</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">luzeera</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">zenbakiKontua</span><span class="p">;</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">luzeera</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">zenbakiKontua</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">4</span><span class="p">);</span>
-<span class="p">}</span>
+<pre><code class="language-javascript">function maskatuZenbakiKontua(zenbakiKontua) {
+  if (!zenbakiKontua) return '';
+  const luzeera = zenbakiKontua.length;
+  if (luzeera &lt;= 4) return zenbakiKontua;
+  return '*'.repeat(luzeera - 4) + zenbakiKontua.slice(-4);
+}
 
-<span class="c1">// Adibidea</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">maskatuZenbakiKontua</span><span class="p">(</span><span class="s1">&#39;1234567890123456&#39;</span><span class="p">));</span><span class="w"> </span><span class="c1">// &quot;************3456&quot;</span>
-</code></pre></div>
-
+// Adibidea
+console.log(maskatuZenbakiKontua('1234567890123456')); // &quot;************3456&quot;
+</code></pre>
 <h2 id="tokenen-kudeaketa-segurua">Tokenen kudeaketa segurua<a class="headerlink" href="#tokenen-kudeaketa-segurua" title="Permanent link">&para;</a></h2>
 <h3 id="jwt-tokenak-seguru-gordetzeko">JWT tokenak seguru gordetzeko<a class="headerlink" href="#jwt-tokenak-seguru-gordetzeko" title="Permanent link">&para;</a></h3>
 <p><strong>Adibidea (React + localStorage erabiliz - ez da gomendagarria):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Tokena gordetzeko modu OSO SINPLEA (ez da segurua)</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">gordeTokena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Ezin izan da tokena gorde:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">// Tokena gordetzeko modu OSO SINPLEA (ez da segurua)
+const gordeTokena = (token) =&gt; {
+  try {
+    localStorage.setItem('token', token);
+  } catch (error) {
+    console.error('Ezin izan da tokena gorde:', error);
+  }
+};
+</code></pre>
 <p><strong>Hobea (HTTP-only Cookie erabiliz, zerbitzarian):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Zerbitzariaren erantzuna (Node.js + Express)</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// HTTPS bidez bakarrik</span>
-<span class="w">  </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;strict&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="c1">// 1 egun</span>
-<span class="p">});</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">// Zerbitzariaren erantzuna (Node.js + Express)
+res.cookie('token', token, {
+  httpOnly: true,
+  secure: true, // HTTPS bidez bakarrik
+  sameSite: 'strict',
+  maxAge: 24 * 60 * 60 * 1000 // 1 egun
+});
+</code></pre>
 <h3 id="tokenen-iraungipena">Tokenen iraungipena<a class="headerlink" href="#tokenen-iraungipena" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Token bat sortzean (Node.js)</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">sortuTokena</span><span class="p">(</span><span class="nx">erabiltzailea</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">erabiltzailea</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">iat</span><span class="o">:</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">),</span><span class="w"> </span><span class="c1">// Noiz sortua</span>
-<span class="w">      </span><span class="nx">exp</span><span class="o">:</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="p">),</span><span class="w"> </span><span class="c1">// 1 ordu barru iraungiko da</span>
-<span class="w">      </span><span class="c1">// Beste eremuak...</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">algorithm</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;HS256&#39;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
+<pre><code class="language-javascript">// Token bat sortzean (Node.js)
+function sortuTokena(erabiltzailea) {
+  return jwt.sign(
+    {
+      sub: erabiltzailea.id,
+      iat: Math.floor(Date.now() / 1000), // Noiz sortua
+      exp: Math.floor(Date.now() / 1000) + (60 * 60), // 1 ordu barru iraungiko da
+      // Beste eremuak...
+    },
+    process.env.JWT_SECRET,
+    { algorithm: 'HS256' }
+  );
+}
 
-<span class="c1">// Bezeroan tokena egiaztatu (React)</span>
-<span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">egiaztatuTokena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">erantzuna</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/egiaztatu-tokena&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">credentials</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;include&#39;</span><span class="w"> </span><span class="c1">// Cookie bidaltzeko</span>
-<span class="w">      </span><span class="p">});</span>
+// Bezeroan tokena egiaztatu (React)
+useEffect(() =&gt; {
+  const egiaztatuTokena = async () =&gt; {
+    try {
+      const erantzuna = await fetch('/api/egiaztatu-tokena', {
+        credentials: 'include' // Cookie bidaltzeko
+      });
 
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">erantzuna</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Tokena baliogabea da, erabiltzailea deskonektatu</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">deskonektatu</span><span class="p">();</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Errorea tokena egiaztatzean:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">};</span>
+      if (!erantzuna.ok) {
+        // Tokena baliogabea da, erabiltzailea deskonektatu
+        await deskonektatu();
+      }
+    } catch (error) {
+      console.error('Errorea tokena egiaztatzean:', error);
+    }
+  };
 
-<span class="w">  </span><span class="c1">// Egiaztatu tokena noizbehinka</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">egiaztatuTokena</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 5 minutero</span>
+  // Egiaztatu tokena noizbehinka
+  const interval = setInterval(egiaztatuTokena, 5 * 60 * 1000); // 5 minutero
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
-<span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
-</code></pre></div>
-
+  return () =&gt; clearInterval(interval);
+}, []);
+</code></pre>
 <h2 id="ariketa-praktikoa">Ariketa praktikoa<a class="headerlink" href="#ariketa-praktikoa" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Inplementatu zifraketa simetrikoa datu sentikorrak gordetzeko</li>
@@ -1428,7 +1421,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>

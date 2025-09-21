@@ -1035,81 +1035,72 @@
 <h2 id="desarrollo-seguro-devsecops">Desarrollo Seguro (DevSecOps)<a class="headerlink" href="#desarrollo-seguro-devsecops" title="Permanent link">&para;</a></h2>
 <h3 id="1-sast-static-application-security-testing">1. SAST (Static Application Security Testing)<a class="headerlink" href="#1-sast-static-application-security-testing" title="Permanent link">&para;</a></h3>
 <p>ESLint con plugin de seguridad (JavaScript/TypeScript):</p>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>eslint<span class="w"> </span>eslint-plugin-security
-</code></pre></div>
-
+<pre><code class="language-bash">npm install --save-dev eslint eslint-plugin-security
+</code></pre>
 <p>.eslintrc.js:</p>
-<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">extends</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s1">&#39;eslint:recommended&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;plugin:security/recommended&#39;</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;security&#39;</span><span class="p">]</span>
-<span class="p">};</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">module.exports = {
+  extends: [
+    'eslint:recommended',
+    'plugin:security/recommended'
+  ],
+  plugins: ['security']
+};
+</code></pre>
 <h3 id="2-dast-dynamic-application-security-testing">2. DAST (Dynamic Application Security Testing)<a class="headerlink" href="#2-dast-dynamic-application-security-testing" title="Permanent link">&para;</a></h3>
 <p>OWASP ZAP (Docker):</p>
-<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-u<span class="w"> </span>zap<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">8081</span>:8081<span class="w"> </span>-i<span class="w"> </span>owasp/zap2docker-stable<span class="w"> </span>zap-webswing.sh
-</code></pre></div>
-
+<pre><code class="language-bash">docker run -u zap -p 8080:8080 -p 8081:8081 -i owasp/zap2docker-stable zap-webswing.sh
+</code></pre>
 <h3 id="3-sca-software-composition-analysis">3. SCA (Software Composition Analysis)<a class="headerlink" href="#3-sca-software-composition-analysis" title="Permanent link">&para;</a></h3>
 <p>Dependabot (.github/dependabot.yml):</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">updates</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;npm&quot;</span>
-<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
-<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;weekly&quot;</span>
-</code></pre></div>
-
+<pre><code class="language-yaml">version: 2
+updates:
+  - package-ecosystem: &quot;npm&quot;
+    directory: &quot;/&quot;
+    schedule:
+      interval: &quot;weekly&quot;
+</code></pre>
 <h2 id="automatizacion-de-pruebas-de-seguridad">Automatización de pruebas de seguridad<a class="headerlink" href="#automatizacion-de-pruebas-de-seguridad" title="Permanent link">&para;</a></h2>
 <h3 id="1-nikto">1. Nikto<a class="headerlink" href="#1-nikto" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>nikto<span class="w"> </span>-h<span class="w"> </span>https://tu-aplicacion.es
-</code></pre></div>
-
+<pre><code class="language-bash">nikto -h https://tu-aplicacion.es
+</code></pre>
 <h3 id="2-nmap">2. Nmap<a class="headerlink" href="#2-nmap" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>nmap<span class="w"> </span>-sV<span class="w"> </span>-sC<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>,443<span class="w"> </span>tu-servidor.es
-</code></pre></div>
-
+<pre><code class="language-bash">nmap -sV -sC -p 80,443 tu-servidor.es
+</code></pre>
 <h2 id="analisis-estatico-del-codigo">Análisis estático del código<a class="headerlink" href="#analisis-estatico-del-codigo" title="Permanent link">&para;</a></h2>
 <h3 id="1-sonarqube-sonarlint">1. SonarQube + SonarLint<a class="headerlink" href="#1-sonarqube-sonarlint" title="Permanent link">&para;</a></h3>
 <p>Docker Compose:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">sonarqube</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonarqube:community</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9000:9000&quot;</span>
-</code></pre></div>
-
+<pre><code class="language-yaml">version: '3'
+services:
+  sonarqube:
+    image: sonarqube:community
+    ports:
+      - &quot;9000:9000&quot;
+</code></pre>
 <h3 id="2-snyk">2. Snyk<a class="headerlink" href="#2-snyk" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>snyk<span class="w"> </span>auth
-snyk<span class="w"> </span><span class="nb">test</span>
-</code></pre></div>
-
+<pre><code class="language-bash">snyk auth
+snyk test
+</code></pre>
 <h2 id="cicd-escaneos-de-seguridad">CI/CD: escaneos de seguridad<a class="headerlink" href="#cicd-escaneos-de-seguridad" title="Permanent link">&para;</a></h2>
 <p>GitHub Actions (ejemplo):</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security Scan</span>
-<span class="nt">on</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">develop</span><span class="w"> </span><span class="p p-Indicator">]</span>
-<span class="nt">jobs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">security-scan</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v3</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;18.x&#39;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Snyk</span>
-<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snyk/actions/node@master</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">SNYK_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SNYK_TOKEN }}</span>
-<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--severity-threshold=high</span>
-</code></pre></div>
-
+<pre><code class="language-yaml">name: Security Scan
+on:
+  push:
+    branches: [ main, develop ]
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Run Snyk
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+</code></pre>
 <h2 id="laboratorios-de-practica">Laboratorios de práctica<a class="headerlink" href="#laboratorios-de-practica" title="Permanent link">&para;</a></h2>
 <ul>
 <li>OWASP Juice Shop (Docker): <code>docker run --rm -p 3000:3000 bkimminich/juice-shop</code></li>
@@ -1178,7 +1169,7 @@ snyk<span class="w"> </span><span class="nb">test</span>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

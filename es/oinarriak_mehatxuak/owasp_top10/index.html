@@ -1692,24 +1692,21 @@
 <ul>
 <li>SQL Injection (inyección SQL):</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- Ejemplo: Entrada del usuario: &#39; OR &#39;1&#39;=&#39;1&#39; --</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="c1">-- AND password = &#39;...&#39;</span>
-</code></pre></div>
-
+<pre><code class="language-sql">-- Ejemplo: Entrada del usuario: ' OR '1'='1' --
+SELECT * FROM users WHERE username = '' OR '1'='1' -- AND password = '...'
+</code></pre>
 <ul>
 <li>OS Command Injection (inyección de comandos del SO):</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Ejemplo</span>
-ping<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="p">;</span><span class="w"> </span>ls<span class="w"> </span>-l
-</code></pre></div>
-
+<pre><code class="language-bash"># Ejemplo
+ping 127.0.0.1 ; ls -l
+</code></pre>
 <ul>
 <li>LDAP Injection:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Ejemplo</span>
-*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*
-</code></pre></div>
-
+<pre><code class="language-bash"># Ejemplo
+*)(uid=*))(|(uid=*
+</code></pre>
 <h3 id="prevencion_2">Prevención<a class="headerlink" href="#prevencion_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Usar consultas parametrizadas (prepared statements)</li>
@@ -1795,7 +1792,7 @@ ping<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </s
 </ul>
 <h3 id="retos_6">Retos<a class="headerlink" href="#retos_6" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="../ariketak/identification_and_authentication_failures.md">Identification and Authentication Failures</a></li>
+<li><a href="../../ariketak/identification_authentication_failures/">Identification Authentication Failures</a></li>
 </ul>
 <h2 id="8-software-and-data-integrity-failures-fallas-de-integridad-de-software-y-datos">8. Software and Data Integrity Failures (Fallas de integridad de software y datos)<a class="headerlink" href="#8-software-and-data-integrity-failures-fallas-de-integridad-de-software-y-datos" title="Permanent link">&para;</a></h2>
 <p>Riesgos cuando no se verifica la integridad y procedencia de código y datos.
@@ -1814,7 +1811,7 @@ ping<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </s
 </ul>
 <h3 id="retos_7">Retos<a class="headerlink" href="#retos_7" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="../ariketak/software_and_data_integrity_failures.md">Software and Data Integrity Failures</a></li>
+<li><a href="../../ariketak/software_data_integrity_failures/">Software Data Integrity Failures</a></li>
 </ul>
 <h2 id="9-security-logging-and-monitoring-failures-fallas-de-registro-y-monitoreo">9. Security Logging and Monitoring Failures (Fallas de registro y monitoreo)<a class="headerlink" href="#9-security-logging-and-monitoring-failures-fallas-de-registro-y-monitoreo" title="Permanent link">&para;</a></h2>
 <p>Falta de capacidad para detectar y responder a incidentes.
@@ -1912,7 +1909,7 @@ ping<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </s
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
