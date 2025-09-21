@@ -1,32 +1,26 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="eu" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Lecciones y recursos sobre ciberseguridad">
       
-      
-        <meta name="author" content="FP Txurdinaga">
-      
-      
-        <link rel="canonical" href="https://ciberseguridad-fptxurdinaga.eus/oinarriak_mehatxuak/web_oinarriak/">
       
       
         <link rel="prev" href="../sarrera/">
       
       
-        <link rel="next" href="../owasp_top10/">
+        <link rel="next" href="../web_hacking_sarrera/">
       
       
-      <link rel="icon" href="../../assets/images/favicon-96x96-1.png">
+      <link rel="icon" href="http://fptxurdinaga.eus/wp-content/uploads/2022/10/favicon-96x96-1.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>1.2. Fundamentos del funcionamiento web - Ciberseguridad en el Desarrollo Web</title>
+        <title>1.2. Webaren funtzionamenduaren oinarriak - Zibersegurtasuna Web Garapenean - 2025-2026</title>
       
     
     
@@ -52,7 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../css/custom.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -66,10 +60,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#1984c2" data-md-color-accent="#ff6b00">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,8 +74,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#12-fundamentos-del-funcionamiento-web" class="md-skip">
-          Skip to content
+        <a href="#12-webaren-funtzionamenduaren-oinarriak" class="md-skip">
+          Joan zuzenean edukira
         </a>
       
     </div>
@@ -90,11 +86,13 @@
     
       
 
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-header__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Atalburua">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-header__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
       
-  <img src="../../assets/images/logo2.png" alt="logo">
+  <img src="../../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,13 +103,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Ciberseguridad en el Desarrollo Web
+            Zibersegurtasuna Web Garapenean - 2025-2026
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1.2. Fundamentos del funcionamiento web
+              1.2. Webaren funtzionamenduaren oinarriak
             
           </span>
         </div>
@@ -119,8 +117,56 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
     
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-label="Modu iluna"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modu iluna" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Hautatu hizkuntza">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="eu" class="md-select__link">
+              Euskara
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../es/oinarriak_mehatxuak/web_oinarriak/" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
     
     
       
@@ -133,16 +179,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Bilatu" placeholder="Bilatu" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Bilatu">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Garbitu" aria-label="Garbitu" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -153,7 +199,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Bilaketa hasieratzen
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -173,116 +219,6 @@
       
         
           
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Inicio
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../sarrera/" class="md-tabs__link">
-          
-  
-  
-  1. Fundamentos y amenazas comunes
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../eraso_defentsak/injekzioak/" class="md-tabs__link">
-          
-  
-  
-  2. Ataques y defensas básicas
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../datu_babesa/datu_sentikorrak/" class="md-tabs__link">
-          
-  
-  
-  3. Protección de datos y herramientas prácticas
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../ariketak/injection/" class="md-tabs__link">
-          
-  
-  
-  4. Ejercicios
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -296,19 +232,15 @@
                     
 
 
-  
 
-
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Nabigazioa" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-nav__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-nav__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
       
-  <img src="../../assets/images/logo2.png" alt="logo">
+  <img src="../../images/logo.png" alt="logo">
 
     </a>
-    Ciberseguridad en el Desarrollo Web
+    Zibersegurtasuna Web Garapenean - 2025-2026
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -325,7 +257,7 @@
   
   
   <span class="md-ellipsis">
-    Inicio
+    Hasiera
     
   </span>
   
@@ -345,13 +277,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
         
-        
-      
-      
         
       
     
@@ -368,7 +307,7 @@
   
   
   <span class="md-ellipsis">
-    1. Fundamentos y amenazas comunes
+    1. Oinarriak eta mehatxu arruntak
     
   </span>
   
@@ -379,7 +318,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            1. Fundamentos y amenazas comunes
+            1. Oinarriak eta mehatxu arruntak
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -395,7 +334,7 @@
   
   
   <span class="md-ellipsis">
-    1.1. Introducción a la Ciberseguridad en el Desarrollo Web
+    1.1. Web Garapenean Zibersegurtasunaren Sarrera
     
   </span>
   
@@ -427,7 +366,7 @@
   
   
   <span class="md-ellipsis">
-    1.2. Fundamentos del funcionamiento web
+    1.2. Webaren funtzionamenduaren oinarriak
     
   </span>
   
@@ -440,7 +379,7 @@
   
   
   <span class="md-ellipsis">
-    1.2. Fundamentos del funcionamiento web
+    1.2. Webaren funtzionamenduaren oinarriak
     
   </span>
   
@@ -449,7 +388,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Edukiak">
   
   
   
@@ -458,88 +397,79 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Edukiak
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccion" class="md-nav__link">
+  <a href="#sarrera" class="md-nav__link">
     <span class="md-ellipsis">
-      Introducción
+      Sarrera
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#como-funciona-un-sitio-web" class="md-nav__link">
+  <a href="#webgune-batek-nola-funtzionatzen-duen" class="md-nav__link">
     <span class="md-ellipsis">
-      Cómo funciona un sitio web
+      Webgune batek nola funtzionatzen duen
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cómo funciona un sitio web">
+    <nav class="md-nav" aria-label="Webgune batek nola funtzionatzen duen">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dns-sistema-de-nombres-de-dominio" class="md-nav__link">
+  <a href="#dns-domain-name-system" class="md-nav__link">
     <span class="md-ellipsis">
-      DNS (Sistema de Nombres de Dominio)
+      DNS (Domain Name System)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#detalles-sobre-http" class="md-nav__link">
+  <a href="#http-xehetasunez" class="md-nav__link">
     <span class="md-ellipsis">
-      Detalles sobre HTTP
+      HTTP xehetasunez
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Detalles sobre HTTP">
+    <nav class="md-nav" aria-label="HTTP xehetasunez">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#metodos-http" class="md-nav__link">
+  <a href="#http-metodoak" class="md-nav__link">
     <span class="md-ellipsis">
-      Métodos HTTP
+      HTTP Metodoak
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#codigos-de-estado-http" class="md-nav__link">
+  <a href="#http-egoera-kodeak" class="md-nav__link">
     <span class="md-ellipsis">
-      Códigos de estado HTTP
+      HTTP Egoera Kodeak
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#codigos-de-estado-http_1" class="md-nav__link">
+  <a href="#goiburuak" class="md-nav__link">
     <span class="md-ellipsis">
-      Códigos de Estado HTTP
+      Goiburuak
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#encabezados" class="md-nav__link">
+  <a href="#cookie-ak" class="md-nav__link">
     <span class="md-ellipsis">
-      Encabezados
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cookies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cookies
+      Cookie-ak
     </span>
   </a>
   
@@ -551,18 +481,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#como-funcionan-los-sitios-web" class="md-nav__link">
+  <a href="#nola-funtzionatzen-dute-webguneek" class="md-nav__link">
     <span class="md-ellipsis">
-      ¿Cómo funcionan los sitios web?
+      Nola funtzionatzen dute webguneek?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#otros-componentes-importantes" class="md-nav__link">
+  <a href="#beste-osagai-garrantzitsu-batzuk" class="md-nav__link">
     <span class="md-ellipsis">
-      Otros componentes importantes:
+      Beste osagai garrantzitsu batzuk:
     </span>
   </a>
   
@@ -574,9 +504,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proximos-pasos" class="md-nav__link">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
     <span class="md-ellipsis">
-      Próximos pasos
+      Hurrengo urratsak
     </span>
   </a>
   
@@ -598,12 +528,35 @@
   
   
     <li class="md-nav__item">
+      <a href="../web_hacking_sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Web Hacking-erako sarrera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../owasp_top10/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    1.3. Visión general de vulnerabilidades web comunes (OWASP Top 10)
+    1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)
     
   </span>
   
@@ -629,15 +582,23 @@
   
     
     
-    
-    
       
+        
+      
+        
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -646,12 +607,12 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    2. Ataques y defensas básicas
+    2. Eraso eta defentsa oinarrizkoak
     
   </span>
   
@@ -662,7 +623,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            2. Ataques y defensas básicas
+            2. Eraso eta defentsa oinarrizkoak
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -678,7 +639,7 @@
   
   
   <span class="md-ellipsis">
-    2.1. Defensas contra inyecciones
+    2.1. Injekzioen aurkako defentsak
     
   </span>
   
@@ -701,7 +662,7 @@
   
   
   <span class="md-ellipsis">
-    2.2. Seguridad de autenticación y sesiones
+    2.2. Autentifikazio eta saioen segurtasuna
     
   </span>
   
@@ -724,7 +685,7 @@
   
   
   <span class="md-ellipsis">
-    2.3. Control de acceso y configuración segura
+    2.3. Sarbide-kontrola eta konfigurazio segurua
     
   </span>
   
@@ -750,15 +711,23 @@
   
     
     
-    
-    
       
+        
+      
+        
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -767,12 +736,12 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    3. Protección de datos y herramientas prácticas
+    3. Datuen babesa eta tresna praktikoak
     
   </span>
   
@@ -783,7 +752,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            3. Protección de datos y herramientas prácticas
+            3. Datuen babesa eta tresna praktikoak
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -799,7 +768,7 @@
   
   
   <span class="md-ellipsis">
-    3.1. Protección de datos sensibles
+    3.1. Datu sentikorren babesa
     
   </span>
   
@@ -822,7 +791,7 @@
   
   
   <span class="md-ellipsis">
-    3.2. Seguridad de APIs y dependencias
+    3.2. APIen eta dependentzien segurtasuna
     
   </span>
   
@@ -845,289 +814,7 @@
   
   
   <span class="md-ellipsis">
-    3.3. Introducción a herramientas prácticas
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    4. Ejercicios
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            4. Ejercicios
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/injection/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.1. Inyecciones
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/broken_access_control/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.2. Fallos de control de acceso
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/cryptographic_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.3. Fallos criptográficos
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/identification_authentication_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.4. Fallos de autenticación
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/insecure_design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.5. Diseño inseguro
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/security_misconfiguration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.5. Configuraciones inseguras
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/vulnerable_obsolete_components/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.6. Componentes vulnerables
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/software_data_integrity_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.7. Fallos de integridad
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/security_logging_monitoring_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.8. Fallos de registro y monitoreo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/server_side_request_forgery/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.9. Falsificación de peticiones del lado del servidor
+    3.3. Tresna praktikoen sarrera
     
   </span>
   
@@ -1152,6 +839,143 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Edukiak">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Edukiak
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sarrera" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sarrera
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webgune-batek-nola-funtzionatzen-duen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webgune batek nola funtzionatzen duen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Webgune batek nola funtzionatzen duen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns-domain-name-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS (Domain Name System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-xehetasunez" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP xehetasunez
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP xehetasunez">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http-metodoak" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Metodoak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-egoera-kodeak" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Egoera Kodeak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goiburuak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Goiburuak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie-ak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookie-ak
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nola-funtzionatzen-dute-webguneek" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nola funtzionatzen dute webguneek?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beste-osagai-garrantzitsu-batzuk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beste osagai garrantzitsu batzuk:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurrengo urratsak
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1161,173 +985,167 @@
 
 
 
-<h1 id="12-fundamentos-del-funcionamiento-web">1.2 Fundamentos del funcionamiento web<a class="headerlink" href="#12-fundamentos-del-funcionamiento-web" title="Permanent link">&para;</a></h1>
-<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
-<p>Entender el funcionamiento de los sitios web es fundamental desde el punto de vista de la ciberseguridad. En esta sección, explicaremos cómo funcionan los sitios web, sus componentes principales y su comunicación.</p>
-<h2 id="como-funciona-un-sitio-web">Cómo funciona un sitio web<a class="headerlink" href="#como-funciona-un-sitio-web" title="Permanent link">&para;</a></h2>
-<h3 id="dns-sistema-de-nombres-de-dominio">DNS (Sistema de Nombres de Dominio)<a class="headerlink" href="#dns-sistema-de-nombres-de-dominio" title="Permanent link">&para;</a></h3>
-<p>Para que un sitio web funcione, varios componentes y procesos automatizados trabajan juntos. En primer lugar, se utiliza el sistema DNS para traducir un nombre de dominio (por ejemplo, google.com) a una dirección IP. Los dominios siguen una jerarquía (subdominios, dominios de segundo nivel, TLDs) y diferentes registros DNS (A, AAAA, CNAME, MX, TXT...) ofrecen diferentes tipos de información.</p>
+<h1 id="12-webaren-funtzionamenduaren-oinarriak">1.2 Webaren funtzionamenduaren oinarriak<a class="headerlink" href="#12-webaren-funtzionamenduaren-oinarriak" title="Permanent link">&para;</a></h1>
+<h2 id="sarrera">Sarrera<a class="headerlink" href="#sarrera" title="Permanent link">&para;</a></h2>
+<p>Webguneen funtzionamendua ulertzea ezinbestekoa da zibersegurtasunaren ikuspegitik. Atal honetan, webguneek nola funtzionatzen duten azalduko dugu, haien osagai nagusiak eta haien arteko komunikazioa.</p>
+<h2 id="webgune-batek-nola-funtzionatzen-duen">Webgune batek nola funtzionatzen duen<a class="headerlink" href="#webgune-batek-nola-funtzionatzen-duen" title="Permanent link">&para;</a></h2>
+<h3 id="dns-domain-name-system">DNS (Domain Name System)<a class="headerlink" href="#dns-domain-name-system" title="Permanent link">&para;</a></h3>
+<p>Webgune bat funtzionatzeko hainbat osagai eta prozesu automatizatu elkarlanean aritzen dira. Lehenik, DNS sistema erabiltzen da domeinu bat (adib. google.com) IP helbide batera itzultzeko. Domeinuek hierarkia bat jarraitzen dute (azpidomeinuak, bigarren mailako domeinuak, TLD-ak), eta DNS erregistro ezberdinak (A, AAAA, CNAME, MX, TXT…) informazio mota desberdinak eskaintzen dituzte.</p>
 <p><img alt="DNS" src="../images/dns1.png" /></p>
-<p><strong>Al realizar una solicitud DNS</strong>, primero se consulta la caché; luego, se activan el servidor DNS del ISP, los servidores raíz, los servidores TLD y los servidores autoritativos hasta obtener la dirección IP. La respuesta de la solicitud tiene un TTL (Time To Live) que especifica cuánto tiempo debe almacenarse en caché.</p>
+<p><strong>DNS eskaera bat egiterakoan</strong>, lehenik cachea begiratzen da; ondoren, ISParen DNS zerbitzaria, erro zerbitzariak, TLD zerbitzariak eta autoritatezko zerbitzariak aktibatzen dira IP helbidea lortu arte. Eskaeraren erantzunak TTL (Time To Live) du, cachean zenbat denboraz gorde behar den zehazteko.</p>
 <p><img alt="DNS" src="../images/dns2.png" /></p>
-<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Paso</span><span class="p">:</span><span class="w"> </span><span class="n">Tu</span><span class="w"> </span><span class="ow">Or</span><span class="n">denador</span>
-<span class="n">Primero</span><span class="p">,</span><span class="w"> </span><span class="n">revisa</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">local</span><span class="mf">.</span><span class="w"> </span><span class="n">Es</span><span class="w"> </span><span class="nb">pos</span><span class="n">ible</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">hayas</span><span class="w"> </span><span class="n">visitado</span><span class="w"> </span><span class="n">ese</span><span class="w"> </span><span class="n">sitio</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">recientemente</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">recuerde</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">dirección</span><span class="w"> </span><span class="n">IP</span><span class="mf">.</span>
-<span class="n">Resultado</span><span class="p">:</span>
-<span class="err">✅</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">encuentra</span><span class="p">:</span><span class="w"> </span><span class="n">Se</span><span class="w"> </span><span class="n">conecta</span><span class="w"> </span><span class="n">directamente</span>
-<span class="err">❌</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">encuentra</span><span class="p">:</span><span class="w"> </span><span class="n">Pasa</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">siguiente</span><span class="w"> </span><span class="n">paso</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="mf">1.</span><span class="w"> </span><span class="nl">Urratsa:</span><span class="w"> </span><span class="n">Zure</span><span class="w"> </span><span class="n">Ordenagailua</span>
+<span class="w">    </span><span class="n">Lehenik</span><span class="w"> </span><span class="n">bere</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">lokalean</span><span class="w"> </span><span class="n">begiratzen</span><span class="w"> </span><span class="n">du</span><span class="p">.</span><span class="w">  </span><span class="n">Baliteke</span><span class="w"> </span><span class="n">duela</span><span class="w"> </span><span class="n">gutxi</span><span class="w"> </span><span class="n">webgune</span><span class="w"> </span><span class="n">hori</span><span class="w"> </span><span class="n">bisitatu</span><span class="w"> </span><span class="n">izana</span><span class="w"> </span><span class="n">eta</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">helbidea</span><span class="w"> </span><span class="n">oroitzea</span><span class="p">.</span>
+<span class="w">    </span><span class="nl">Emaitza:</span>
+<span class="w">    </span><span class="err">✅</span><span class="w"> </span><span class="n">Aurkitzen</span><span class="w"> </span><span class="nl">badu:</span><span class="w"> </span><span class="n">Zuzenean</span><span class="w"> </span><span class="n">konektatzen</span><span class="w"> </span><span class="n">da</span>
+<span class="w">    </span><span class="err">❌</span><span class="w"> </span><span class="n">Ez</span><span class="w"> </span><span class="n">badu</span><span class="w"> </span><span class="nl">aurkitzen:</span><span class="w"> </span><span class="n">Hurrengo</span><span class="w"> </span><span class="n">urratsera</span><span class="w"> </span><span class="n">pasatzen</span><span class="w"> </span><span class="n">da</span>
 
-<span class="mf">2.</span><span class="w"> </span><span class="n">Paso</span><span class="p">:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">Recursivo</span>
-<span class="n">Es</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">proporcionado</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">proveedor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="nb">Int</span><span class="n">ernet</span><span class="w"> </span><span class="p">(</span><span class="n">ISP</span><span class="p">)</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">uno</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">hayas</span><span class="w"> </span><span class="n">elegido</span><span class="mf">.</span>
-<span class="n">También</span><span class="w"> </span><span class="n">revisa</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">local</span><span class="mf">.</span>
-<span class="n">Por</span><span class="w"> </span><span class="n">ejemplo</span><span class="p">,</span><span class="w"> </span><span class="n">sitios</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">populares</span><span class="w"> </span><span class="n">como</span><span class="w"> </span><span class="kr">Go</span><span class="n">ogle</span><span class="p">,</span><span class="w"> </span><span class="n">Facebook</span><span class="p">,</span><span class="w"> </span><span class="n">Twitter</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="n">buscan</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="nb">fre</span><span class="n">cuencia</span><span class="p">,</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">probablemente</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">encontrará</span><span class="w"> </span><span class="n">aquí</span><span class="mf">.</span>
-<span class="n">Resultado</span><span class="p">:</span>
-<span class="err">✅</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">encuentra</span><span class="p">:</span><span class="w"> </span><span class="n">Se</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">devuelve</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="ow">or</span><span class="n">denador</span>
-<span class="err">❌</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">encuentra</span><span class="p">:</span><span class="w"> </span><span class="n">Se</span><span class="w"> </span><span class="n">dirige</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">servidores</span><span class="w"> </span><span class="n">raíz</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="nb">Int</span><span class="n">ernet</span>
 
-<span class="mf">3.</span><span class="w"> </span><span class="n">Paso</span><span class="p">:</span><span class="w"> </span><span class="n">Servidores</span><span class="w"> </span><span class="n">Raíz</span><span class="w"> </span><span class="p">(</span><span class="n">Root</span><span class="w"> </span><span class="n">DNS</span><span class="p">)</span>
-<span class="n">Son</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="s">&quot;columna vertebral&quot;</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="nb">Int</span><span class="n">ernet</span><span class="mf">.</span><span class="w"> </span><span class="n">Buscan</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">(</span><span class="mf">.</span><span class="n">com</span><span class="p">,</span><span class="w"> </span><span class="mf">.</span><span class="ow">or</span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="mf">.</span><span class="n">es</span><span class="mf">...</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">dirigen</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">correspondiente</span><span class="mf">.</span>
-<span class="n">En</span><span class="w"> </span><span class="n">nuestro</span><span class="w"> </span><span class="n">ejemplo</span><span class="p">:</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">www</span><span class="mf">.</span><span class="n">tryhackme</span><span class="mf">.</span><span class="n">com</span><span class="w"> </span><span class="n">buscan</span><span class="w"> </span><span class="mf">.</span><span class="n">com</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">dirigen</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="mf">.</span><span class="n">com</span><span class="mf">.</span>
+<span class="w">    </span><span class="mf">2.</span><span class="w"> </span><span class="nl">Urratsa:</span><span class="w"> </span><span class="n">Rekurtsiboko</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">Zerbitzaria</span>
+<span class="w">    </span><span class="n">Zure</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="n">hornitzaileak</span><span class="w"> </span><span class="p">(</span><span class="n">ISP</span><span class="p">)</span><span class="w"> </span><span class="n">ematen</span><span class="w"> </span><span class="n">duen</span><span class="w"> </span><span class="n">zerbitzaria</span><span class="w"> </span><span class="p">(</span><span class="n">edo</span><span class="w"> </span><span class="n">zuk</span><span class="w"> </span><span class="n">aukeratutako</span><span class="w"> </span><span class="n">bat</span><span class="p">).</span>
+<span class="w">    </span><span class="n">Berak</span><span class="w"> </span><span class="n">ere</span><span class="w"> </span><span class="n">bere</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">lokalean</span><span class="w"> </span><span class="n">begiratzen</span><span class="w"> </span><span class="n">du</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Adibidez</span><span class="p">,</span><span class="w"> </span><span class="n">Google</span><span class="p">,</span><span class="w"> </span><span class="n">Facebook</span><span class="p">,</span><span class="w"> </span><span class="n">Twitter</span><span class="w"> </span><span class="n">bezalako</span><span class="w"> </span><span class="n">webgune</span><span class="w"> </span><span class="n">ospetsuak</span><span class="w"> </span><span class="n">maiz</span><span class="w"> </span><span class="n">bilatu</span><span class="w"> </span><span class="n">ohi</span><span class="w"> </span><span class="n">dira</span><span class="p">,</span><span class="w"> </span><span class="n">beraz</span><span class="w"> </span><span class="n">seguruenik</span><span class="w"> </span><span class="n">hemen</span><span class="w"> </span><span class="n">aurkituko</span><span class="w"> </span><span class="n">ditu</span><span class="p">.</span>
+<span class="w">    </span><span class="nl">Emaitza:</span>
+<span class="w">    </span><span class="err">✅</span><span class="w"> </span><span class="n">Aurkitzen</span><span class="w"> </span><span class="nl">badu:</span><span class="w"> </span><span class="n">Itzultzen</span><span class="w"> </span><span class="n">dio</span><span class="w"> </span><span class="n">zure</span><span class="w"> </span><span class="n">ordenagailuari</span>
+<span class="w">    </span><span class="err">❌</span><span class="w"> </span><span class="n">Ez</span><span class="w"> </span><span class="n">badu</span><span class="w"> </span><span class="nl">aurkitzen:</span><span class="w"> </span><span class="n">Interneten</span><span class="w"> </span><span class="n">erro</span><span class="o">-</span><span class="n">zerbitzarietara</span><span class="w"> </span><span class="n">joaten</span><span class="w"> </span><span class="n">da</span>
 
-<span class="mf">4.</span><span class="w"> </span><span class="n">Paso</span><span class="p">:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">TLD</span>
-<span class="n">Indica</span><span class="w"> </span><span class="n">dónde</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="n">encuentra</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">nombres</span><span class="w"> </span><span class="n">autoritativo</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">dominio</span><span class="mf">.</span>
-<span class="n">Por</span><span class="w"> </span><span class="n">ejemplo</span><span class="p">,</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">servidores</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">nombres</span><span class="w"> </span><span class="n">autoritativos</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">tryhackme</span><span class="mf">.</span><span class="n">com</span><span class="w"> </span><span class="n">son</span><span class="p">:</span>
-<span class="n">kip</span><span class="mf">.</span><span class="n">ns</span><span class="mf">.</span><span class="n">cloudflare</span><span class="mf">.</span><span class="n">com</span>
-<span class="n">uma</span><span class="mf">.</span><span class="n">ns</span><span class="mf">.</span><span class="n">cloudflare</span><span class="mf">.</span><span class="n">com</span>
 
-<span class="n">Hay</span><span class="w"> </span><span class="n">dos</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">redundancia</span><span class="p">,</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="n">si</span><span class="w"> </span><span class="n">uno</span><span class="w"> </span><span class="n">falla</span><span class="mf">.</span>
+<span class="w">    </span><span class="mf">3.</span><span class="w"> </span><span class="nl">Urratsa:</span><span class="w"> </span><span class="n">Erro</span><span class="o">-</span><span class="n">zerbitzariak</span><span class="w"> </span><span class="p">(</span><span class="n">Root</span><span class="w"> </span><span class="n">DNS</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Interneten</span><span class="w"> </span><span class="s">&quot;bizkarrezurra&quot;</span><span class="w"> </span><span class="n">dira</span><span class="w"> </span><span class="n">hauek</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">(.</span><span class="n">com</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">org</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">es</span><span class="p">...)</span><span class="w"> </span><span class="n">begiratzen</span><span class="w"> </span><span class="n">dute</span><span class="w"> </span><span class="n">eta</span><span class="w"> </span><span class="n">egokiko</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">zerbitzarira</span><span class="w"> </span><span class="n">bidaltzen</span><span class="w"> </span><span class="n">zaituzte</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Gure</span><span class="w"> </span><span class="nl">adibidean:</span><span class="w"> </span><span class="n">www</span><span class="p">.</span><span class="n">tryhackme</span><span class="p">.</span><span class="n">com</span><span class="o">-</span><span class="n">en</span><span class="w"> </span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">ikusten</span><span class="w"> </span><span class="n">dute</span><span class="w"> </span><span class="n">eta</span><span class="w"> </span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">zerbitzarira</span><span class="w"> </span><span class="n">bidaltzen</span><span class="w"> </span><span class="n">zaituzte</span><span class="p">.</span>
 
-<span class="mf">5.</span><span class="w"> </span><span class="n">Paso</span><span class="p">:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Nombres</span><span class="w"> </span><span class="n">Autoritativo</span>
-<span class="n">El</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="kr">cont</span><span class="n">iene</span><span class="w"> </span><span class="kr">to</span><span class="n">dos</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">registros</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">ese</span><span class="w"> </span><span class="n">dominio</span><span class="mf">.</span>
-<span class="err">¿</span><span class="n">Qué</span><span class="w"> </span><span class="n">hace</span><span class="err">?</span>
-<span class="n">Busca</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">dirección</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">necesaria</span><span class="w"> </span><span class="p">(</span><span class="n">registro</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
-<span class="n">La</span><span class="w"> </span><span class="n">devuelve</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">recursivo</span>
-<span class="n">El</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">recursivo</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">guarda</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">futuras</span><span class="w"> </span><span class="n">solicitudes</span>
-<span class="n">Finalmente</span><span class="p">,</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">envía</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="ow">or</span><span class="n">denador</span>
+<span class="w">    </span><span class="mf">4.</span><span class="w"> </span><span class="nl">Urratsa:</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">Zerbitzaria</span>
+<span class="w">    </span><span class="n">Domeinuaren</span><span class="w"> </span><span class="n">autoritatezko</span><span class="w"> </span><span class="n">zerbitzaria</span><span class="w"> </span><span class="n">non</span><span class="w"> </span><span class="n">dagoen</span><span class="w"> </span><span class="n">esaten</span><span class="w"> </span><span class="n">du</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Adibidez</span><span class="p">,</span><span class="w"> </span><span class="n">tryhackme</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">domeinuaren</span><span class="w"> </span><span class="n">autoritatezko</span><span class="w"> </span><span class="n">zerbitzariak</span><span class="w"> </span><span class="nl">dira:</span>
+<span class="w">    </span><span class="n">kip</span><span class="p">.</span><span class="n">ns</span><span class="p">.</span><span class="n">cloudflare</span><span class="p">.</span><span class="n">com</span>
+<span class="w">    </span><span class="n">uma</span><span class="p">.</span><span class="n">ns</span><span class="p">.</span><span class="n">cloudflare</span><span class="p">.</span><span class="n">com</span>
+
+<span class="w">    </span><span class="n">Bi</span><span class="w"> </span><span class="n">egoten</span><span class="w"> </span><span class="n">dira</span><span class="p">,</span><span class="w"> </span><span class="n">bat</span><span class="w"> </span><span class="n">hondatzen</span><span class="w"> </span><span class="n">bada</span><span class="p">,</span><span class="w"> </span><span class="n">bestea</span><span class="w"> </span><span class="n">erabiltzeko</span><span class="w"> </span><span class="p">(</span><span class="n">babeskopia</span><span class="p">).</span>
+
+<span class="w">    </span><span class="mf">5.</span><span class="w"> </span><span class="nl">Urratsa:</span><span class="w"> </span><span class="n">Autoritatezko</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">Zerbitzaria</span>
+<span class="w">    </span><span class="n">Domeinu</span><span class="w"> </span><span class="n">horren</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">erregistro</span><span class="w"> </span><span class="n">guztiak</span><span class="w"> </span><span class="n">gordetzen</span><span class="w"> </span><span class="n">dituen</span><span class="w"> </span><span class="n">zerbitzaria</span><span class="p">.</span>
+<span class="w">    </span><span class="n">Zer</span><span class="w"> </span><span class="n">egiten</span><span class="w"> </span><span class="n">du</span><span class="o">?</span>
+<span class="w">    </span><span class="n">Behar</span><span class="w"> </span><span class="n">den</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">helbidea</span><span class="w"> </span><span class="n">bilatzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="n">erregistroa</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Itzultzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">Rekurtsiboko</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">zerbitzarira</span>
+<span class="w">    </span><span class="n">Rekurtsibokoak</span><span class="w"> </span><span class="n">bere</span><span class="w"> </span><span class="n">cache</span><span class="o">-</span><span class="n">an</span><span class="w"> </span><span class="n">gordetzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">etorkizuneko</span><span class="w"> </span><span class="n">eskaeretarako</span>
+<span class="w">    </span><span class="n">Azkenean</span><span class="w"> </span><span class="n">zure</span><span class="w"> </span><span class="n">ordenagailuari</span><span class="w"> </span><span class="n">bidaltzen</span><span class="w"> </span><span class="n">dio</span>
 </code></pre></div>
 
-<h3 id="detalles-sobre-http">Detalles sobre HTTP<a class="headerlink" href="#detalles-sobre-http" title="Permanent link">&para;</a></h3>
-<p>Una vez obtenida la dirección IP, se realiza una solicitud al servidor mediante HTTP o HTTPS.</p>
-<p>Es un conjunto de reglas para comunicarse con servidores web y transmitir datos de sitios web.</p>
-<p>Puede transmitir diferentes tipos de datos:</p>
+<h3 id="http-xehetasunez">HTTP xehetasunez<a class="headerlink" href="#http-xehetasunez" title="Permanent link">&para;</a></h3>
+<p>IP helbidea lortuta, HTTP edo HTTPS bidezko eskaera egiten da zerbitzarira. </p>
+<p>Web zerbitzariekin komunikatzeko eta webguneetako datuak transmititzeko arau multzoa da. </p>
+<p>Mota askotako datuak trasmititu ditzake: </p>
 <ul>
-<li>HTML (contenido del sitio web)</li>
-<li>Imágenes (JPG, PNG, GIF...)</li>
-<li>Videos (MP4, AVI...)</li>
-<li>Otros archivos (PDF, documentos...)</li>
+<li>HTML (webgunearen edukia)</li>
+<li>Irudiak (JPG, PNG, GIF...)</li>
+<li>Bideoak (MP4, AVI...)</li>
+<li>Bestelako fitxategiak (PDF, dokumentuak...)</li>
 </ul>
-<p>La versión HTTPS es segura y cifra la comunicación.</p>
-<p>Las solicitudes HTTP incluyen encabezados (Host, User-Agent, Cookie...), y el servidor devuelve una respuesta HTTP con un código de estado (200, 404, 500...) y contenido (HTML, JSON, imágenes...).</p>
-<p><strong>URL</strong> tiene varias partes: protocolo, usuario, anfitrión, puerto, ruta, parámetros y fragmento. Según la solicitud, el servidor devuelve un recurso específico.</p>
-<p>Tomemos este ejemplo: http://user:password@tryhackme.com:80/view-room?id=1#task3</p>
+<p>HTTPS bertsioa segurua da eta komunikazioa zifratzen du. </p>
+<p>HTTP eskaerek goiburuak daramatzate (Host, User-Agent, Cookie...), eta zerbitzariak HTTP erantzuna itzultzen du: egoera kode batekin (200, 404, 500...) eta eduki batekin (HTML, JSON, irudiak...).</p>
+<p><strong>URL</strong> egitura honek hainbat atal ditu: protokoloa, erabiltzailea, ostalaria, ataka, bidea, parametroak eta fragmentua. Eskaeraren arabera, zerbitzariak baliabide jakin bat itzultzen du.</p>
+<p>Adibide hau hartzen badugu: <a href="http://user:password@tryhackme.com:80/view-room?id=1#task3">http://user:password@tryhackme.com:80/view-room?id=1#task3</a></p>
 <p><img alt="URL" src="../images/url1.png" /></p>
 <ul>
-<li><strong>Scheme (Esquema)</strong>: La parte http que indica el protocolo a usar. Puede ser HTTP, HTTPS o FTP, por ejemplo.</li>
-<li><strong>User (Usuario)</strong>: La parte user:password es para nombre de usuario y contraseña en servicios que requieren autenticación. No se usa mucho hoy en día por razones de seguridad.</li>
-<li><strong>Host (Anfitrión)</strong>: tryhackme.com es el nombre de dominio o dirección IP del servidor. Podría ser algo como google.com o 192.168.1.1.</li>
-<li><strong>Port (Puerto)</strong>: 80 es el número de puerto del servidor. El puerto predeterminado para HTTP es 80, y para HTTPS es 443. Puede ser cualquier número del 1 al 65535.</li>
-<li><strong>Path (Ruta)</strong>: /view-room es la ubicación del archivo o página que deseas. Podría ser algo como /blog o /images/photo.jpg.</li>
-<li><strong>Query String (Cadena de consulta)</strong>: ?id=1 es para enviar información adicional. Por ejemplo, /blog?id=1&amp;category=tech.</li>
-<li><strong>Fragment (Fragmento)</strong>: #task3 es para ir a una sección específica de la página. Se usa para saltar a una sección determinada en una página larga.</li>
+<li><strong>Scheme (Eskema)</strong>: http zatia da erabili beharreko protokoloa adierazten duena. HTTP, HTTPS edo FTP izan daiteke adibidez.</li>
+<li><strong>User (Erabiltzailea)</strong>: user:password zatia da sarbidea behar duten zerbitzuetarako erabiltzaile-izena eta pasahitza. Gaur egun ez da asko erabiltzen ez delako segurua.</li>
+<li><strong>Host (Ostalaria)</strong>: tryhackme.com zatia da zerbitzariaren domeinu-izena edo IP helbidea. google.com edo 192.168.1.1 bezalako zerbait izan daiteke.</li>
+<li><strong>Port (Ataka)</strong>: 80 zatia da zerbitzariaren ataka zenbakia. HTTP-rentzat 80 da lehenetsita, eta HTTPS-rentzat 443. Edozein zenbaki izan daiteke 1etik 65535era.</li>
+<li><strong>Path (Bidea)</strong>: /view-room zatia da nahi dugun fitxategiaren edo orriaren kokapena. /blog edo /images/photo.jpg bezalako zerbait izan daiteke.</li>
+<li><strong>Query String (Kontsulta katea)</strong>: ?id=1 zatia da informazio gehigarria bidaltzeko. /blog?id=1&amp;category=tech adibidez.</li>
+<li><strong>Fragment (Zatia)</strong>: #task3 zatia da orriaren zati zehatz batera joateko. Orri luze batean sekzioa jakin batera salto egiteko erabiltzen da.</li>
 </ul>
-<h4 id="metodos-http">Métodos HTTP<a class="headerlink" href="#metodos-http" title="Permanent link">&para;</a></h4>
-<p>Los métodos HTTP son una forma de que el cliente indique su intención al realizar una solicitud HTTP. Hay varios métodos HTTP, pero explicaremos los más comunes, aunque generalmente se utilizan los métodos GET y POST.</p>
-<ul>
-<li><strong>GET</strong>: Se utiliza para obtener información de un servidor web. Por ejemplo, para ver una página web o obtener datos.</li>
-<li><strong>POST</strong>: Se utiliza para enviar datos a un servidor web y, posiblemente, crear un nuevo registro. Por ejemplo, al completar un formulario.</li>
-<li><strong>PUT</strong>: Se utiliza para enviar datos a un servidor web y actualizar información existente.</li>
-<li><strong>DELETE</strong>: Se utiliza para eliminar información o registros de un servidor web.</li>
-</ul>
-<h4 id="codigos-de-estado-http">Códigos de estado HTTP<a class="headerlink" href="#codigos-de-estado-http" title="Permanent link">&para;</a></h4>
-<p>Los códigos de estado HTTP indican el estado de la respuesta del servidor a una solicitud. Estos códigos se pueden dividir en cinco categorías:</p>
+<h4 id="http-metodoak">HTTP Metodoak<a class="headerlink" href="#http-metodoak" title="Permanent link">&para;</a></h4>
+<p>HTTP metodoak bezeroari bere asmoa adierazteko modu bat dira HTTP eskaera bat egiterakoan. HTTP metodo asko daude, baina ohikoenak azalduko ditugu, nahiz eta gehienetan GET eta POST metodoekin lan egingo duzun.</p>
 <ul>
 <li>
-<p><strong>100-199 - Información de respuesta</strong>
-Se utiliza para obtener información de un servidor web. Por ejemplo, para ver una página web o recuperar algunos datos.</p>
+<p><strong>GET Eskaera</strong>
+Web zerbitzari batetik informazioa lortzeko erabiltzen da. Adibidez, web orri bat ikusteko edo datu batzuk eskuratzeko.</p>
 </li>
 <li>
-<p><strong>Solicitud POST</strong>
-Se utiliza para enviar datos a un servidor web y, posiblemente, crear nuevos registros. Por ejemplo, al completar un formulario.</p>
+<p><strong>POST Eskaera</strong>
+Web zerbitzarira datuak bidaltzeko eta, litekeena da, erregistro berriak sortzeko erabiltzen da. Formulario bat betetzean, adibidez.</p>
 </li>
 <li>
-<p><strong>Solicitud PUT</strong>
-Se utiliza para enviar datos a un servidor web y actualizar información existente.</p>
+<p><strong>PUT Eskaera</strong>
+Web zerbitzarira datuak bidaltzeko eta dagoeneko badagoen informazioa eguneratzeko erabiltzen da.</p>
 </li>
 <li>
-<p><strong>Solicitud DELETE</strong>
-Se utiliza para eliminar información o registros de un servidor web.</p>
+<p><strong>DELETE Eskaera</strong>
+Web zerbitzaritik informazioa edo erregistroak ezabatzeko erabiltzen da.</p>
 </li>
 </ul>
-<h4 id="codigos-de-estado-http_1">Códigos de Estado HTTP<a class="headerlink" href="#codigos-de-estado-http_1" title="Permanent link">&para;</a></h4>
-<p>Los códigos de estado HTTP indican el estado de la respuesta del servidor a una solicitud. </p>
-<p>Estos códigos de estado se pueden dividir en 5 categorías diferentes:</p>
+<h4 id="http-egoera-kodeak">HTTP Egoera Kodeak<a class="headerlink" href="#http-egoera-kodeak" title="Permanent link">&para;</a></h4>
+<p>HTTP egoera kodeak zerbitzariak eskaeraren erantzun egoera adierazten ditu. </p>
+<p>Egoera kode hauek 5 talde ezberdinetan banatu daitezke:</p>
 <ul>
-<li><strong>100-199 - Respuesta de Información</strong></li>
+<li><strong>100-199 - Informazio Erantzuna</strong></li>
 </ul>
-<p>Se envían para notificar al cliente que la primera parte de su solicitud ha sido aceptada y debe continuar enviando el resto. Estos códigos ya no son muy comunes.</p>
+<p>Hauek bezeroari jakinarazteko bidaltzen dira bere eskeararen lehen zatia onartu dela eta gainerakoa bidaltzen jarraitu behar duela. Kode hauek ez dira jada oso ohikoak.</p>
 <ul>
-<li><strong>200-299 - Éxito</strong></li>
+<li><strong>200-299 - Arrakasta</strong></li>
 </ul>
-<p>Este grupo de códigos se utiliza para notificar al cliente que su solicitud se ha completado correctamente.</p>
+<p>Kode talde hau bezeroari bere eskaera ondo burutu dela jakinarazteko erabiltzen da.</p>
 <ul>
-<li><strong>300-399 - Redirección</strong></li>
+<li><strong>300-399 - Birbideraketa</strong></li>
 </ul>
-<p>Se utilizan para redirigir la solicitud del cliente a otro recurso. Esto puede ser a otra página web o a un sitio web completamente diferente.</p>
+<p>Bezeroaren eskaera beste baliabide batera birbideratzeko erabiltzen dira. Hau beste web orri batera edo osorik beste webgune batera izan daiteke.</p>
 <ul>
-<li><strong>400-499 - Errores del Cliente</strong></li>
+<li><strong>400-499 - Bezeroaren Erroreak</strong></li>
 </ul>
-<p>Se utiliza para notificar al cliente que ha habido un error en su solicitud.</p>
+<p>Bezeroari bere eskaeran errore bat egon dela jakinarazteko erabiltzen da.</p>
 <ul>
-<li><strong>500-599 - Errores del Servidor</strong></li>
+<li><strong>500-599 - Zerbitzariaren Erroreak</strong></li>
 </ul>
-<p>Se guarda para errores que ocurren en el lado del servidor y normalmente indica que el servidor tiene un problema grave al manejar la solicitud.</p>
-<h4 id="encabezados">Encabezados<a class="headerlink" href="#encabezados" title="Permanent link">&para;</a></h4>
-<p>Los encabezados son pequeños datos adicionales que puedes enviar al hacer solicitudes a un servidor web. Aunque los encabezados no son estrictamente necesarios para hacer una solicitud HTTP, sería difícil ver un sitio web correctamente sin ellos.</p>
-<p><strong>Encabezados de Solicitud Comunes</strong></p>
-<p>Estos son los encabezados que el cliente (normalmente tu navegador) envía al servidor.</p>
+<p>Zerbitzariaren aldean gertatzen diren erroreentza gordetzen da eta normalean zerbitzariak eskaera kudeatzean arazo handia duela adierazten du.</p>
+<h4 id="goiburuak">Goiburuak<a class="headerlink" href="#goiburuak" title="Permanent link">&para;</a></h4>
+<p>Goiburuak web zerbitzarira eskaerak egiterakoan bidali ditzakezun datu gehigarri txikiak dira. Nahiz eta HTTP eskaera bat egiteko goiburu beharrezkoak ez diren, zaila izango da webgune bat behar bezala ikustea haiek gabe.</p>
+<p><strong>Ohiko Eskaera Goiburuak</strong></p>
+<p>Hauek bezeroak (normalean zure nabigatzaileak) zerbitzarira bidaltzen dituen goiburuak dira.</p>
 <ul>
-<li><strong>Host</strong>: Algunos servidores web alojan más de un sitio web, por lo que al proporcionar el encabezado host, puedes indicar cuál deseas, de lo contrario, obtendrás el sitio web predeterminado del servidor.</li>
-<li><strong>User-Agent</strong>: Es el software de tu navegador y su número de versión. Informar al servidor web sobre tu navegador ayuda a formatear correctamente el sitio web para él, ya que algunos elementos HTML, JavaScript y CSS solo están disponibles en navegadores específicos.</li>
-<li><strong>Content-Length</strong>: Al enviar datos a un servidor web, como en un formulario, la longitud del contenido le indica al servidor cuántos datos esperar en la solicitud web. Esto permite al servidor asegurarse de que no se hayan perdido datos.</li>
-<li><strong>Accept-Encoding</strong>: Le dice al servidor web qué métodos de compresión admite el navegador, para que los datos se puedan hacer más pequeños al enviarse a través de Internet.</li>
-<li><strong>Cookie</strong>: Datos que se envían al servidor para recordar tu información (consulta la sección de cookies para más detalles).</li>
+<li><strong>Host</strong>: Web zerbitzari batzuek webgune bat baino gehiago ostatatzen dituzte, beraz host goiburua emanez zein nahi duzun esan diezaiokezu, bestela zerbitzariaren webgune lehenetsia jasoko duzu.</li>
+<li><strong>User-Agent</strong>: Zure nabigatzailearen softwarea eta bertsio zenbakia da. Web zerbitzariari zure nabigatzailearen softwarea jakinarazteak webgunea zure nabigatzailearentzat behar bezala formateatzen laguntzen dio, eta HTML, JavaScript eta CSS elementu batzuk nabigatzaile jakin batzuetan bakarrik daude eskuragarri.</li>
+<li><strong>Content-Length</strong>: Formulario batean bezala web zerbitzarira datuak bidaltzerakoan, eduki luzerak web zerbitzariari web eskaeran zenbat datu espero dituen esaten dio. Modu honetan zerbitzariak ziurtatu dezake ez duela daturik galdu.</li>
+<li><strong>Accept-Encoding</strong>: Web zerbitzariari nabigatzaileak zein konpresio metodo onartzen dituen esaten dio, datuak txikiago egin ahal izateko internetez bidaltzerakoan.</li>
+<li><strong>Cookie</strong>: Zure informazioa gogoratzeko zerbitzarira bidaltzen diren datuak (informazio gehiagorako ikusi cookie-en ataza).</li>
 </ul>
-<p><strong>Encabezados de Respuesta Comunes</strong></p>
-<p>Estos son los encabezados que el servidor devuelve al cliente después de una solicitud.</p>
+<p><strong>Ohiko Erantzun Goiburuak</strong></p>
+<p>Hauek eskaera baten ondoren zerbitzariak bezeroari itzultzen dizkion goiburuak dira.</p>
 <ul>
-<li><strong>Set-Cookie</strong>: Información que debe guardarse y que se devuelve al servidor web en cada solicitud (consulta la sección de cookies para más detalles).</li>
-<li><strong>Cache-Control</strong>: Cuánto tiempo debe almacenarse el contenido de la respuesta en la caché del navegador antes de volver a solicitarlo.</li>
-<li><strong>Content-Type</strong>: Le indica al cliente qué tipo de datos se están devolviendo: HTML, CSS, JavaScript, imágenes, PDF, video, etc. Los navegadores usan el encabezado Content-Type para saber cómo procesar los datos.</li>
-<li><strong>Content-Encoding</strong>: Qué método se ha utilizado para comprimir los datos y hacerlos más pequeños al enviarlos a través de Internet.</li>
+<li><strong>Set-Cookie</strong>: Gorde beharreko informazioa, eskaera bakoitzean web zerbitzarira itzultzen dena (informazio gehiagorako ikusi cookie-en ataza).</li>
+<li><strong>Cache-Control</strong>: Zenbat denboran gorde behar den erantzunaren edukia nabigatzailearen cache-an berriz eskatu aurretik.</li>
+<li><strong>Content-Type</strong>: Bezeroari zer datu mota itzultzen ari den esaten dio: HTML, CSS, JavaScript, irudiak, PDF, bideoa, etab. Content-type goiburua erabiliz nabigatzaileak dakite nola prozesatu datuak.</li>
+<li><strong>Content-Encoding</strong>: Zer metodo erabili den datuak konprimitzeko internetez bidaltzerakoan txikiago egiteko.</li>
 </ul>
-<p>En la práctica, estos encabezados son invisibles para tu navegador, pero proporcionan información esencial al servidor sobre cómo manejar la solicitud.</p>
-<p>Por ejemplo, gracias al encabezado User-Agent, un sitio web puede mostrarse de manera diferente en un dispositivo móvil que en una computadora de escritorio.</p>
-<h4 id="cookies">Cookies<a class="headerlink" href="#cookies" title="Permanent link">&para;</a></h4>
-<p>Las cookies son pequeños datos que se almacenan en tu computadora. Las cookies se guardan cuando recibes un encabezado "Set-Cookie" de un servidor web. En todas las solicitudes posteriores que realices, devolverás los datos de la cookie al servidor web.
-Dado que HTTP no tiene estado (no recuerda tus solicitudes anteriores), las cookies se pueden usar para recordar al servidor web quién eres, guardar configuraciones personales para el sitio web o saber si has estado en ese sitio web antes.</p>
-<h3 id="como-funcionan-los-sitios-web">¿Cómo funcionan los sitios web?<a class="headerlink" href="#como-funcionan-los-sitios-web" title="Permanent link">&para;</a></h3>
-<p>Cuando visitas un sitio web, tu navegador (como Safari o Google Chrome) hace una solicitud a un servidor web pidiendo la información de la página que estás visitando. El servidor responde enviando los datos que tu navegador usará para mostrar la página. Un servidor web no es más que un ordenador dedicado en algún lugar del mundo que maneja tus solicitudes.</p>
-<p><img alt="¿Cómo funcionan los sitios web?" src="../images/nola_funtzionatu.png" /></p>
-<p><strong>Frontend vs Backend</strong>: El Frontend es la parte que ves en tu navegador (HTML, CSS, JS), y el Backend es lo que se ejecuta en el servidor (PHP, Node.js...). El contenido puede ser estático o dinámico, y un servidor puede manejar múltiples sitios web a través de Hosts Virtuales.</p>
-<p>Cuando tu navegador hace una solicitud a un servidor web, hay muchos procesos involucrados, pero por ahora lo que necesitas entender es que haces una solicitud a un servidor, y este responde enviando los datos que tu navegador usará para mostrar la información.</p>
-<p>HTML, CSS y JavaScript son las tecnologías básicas de las páginas web. HTML se usa para la estructura, CSS para el estilo y JavaScript para la interactividad. Los elementos tienen atributos (id, class, src...), y si utilizan entrada del usuario, pueden ser peligrosos si no se filtran correctamente.</p>
-<p>La exposición de datos sensibles a menudo ocurre en el código frontend (en comentarios, archivos JavaScript...) cuando se dejan contraseñas, tokens o enlaces privados. Pueden surgir vulnerabilidades como la <strong>inyección de HTML</strong> cuando la entrada del usuario no se filtra y se muestra directamente en la página.</p>
-<p>Las herramientas de desarrollo del navegador (Developer Tools) son útiles para examinar solicitudes, cookies, código e información desde una perspectiva de seguridad. Tenemos paneles como Inspector, Red, Depurador...</p>
-<h3 id="otros-componentes-importantes">Otros componentes importantes:<a class="headerlink" href="#otros-componentes-importantes" title="Permanent link">&para;</a></h3>
-<p><strong>CDN (Red de Distribución de Contenido)</strong></p>
-<p>Una CDN puede ser un excelente recurso para reducir la carga de tráfico en un sitio web concurrido. Puedes alojar archivos estáticos de tu sitio web, como JavaScript, CSS, imágenes y videos, en miles de servidores en todo el mundo. Cuando un usuario solicita uno de los archivos alojados, la CDN calcula qué servidor está físicamente más cercano y envía la solicitud allí en lugar de al otro lado del mundo.</p>
-<p><strong>Balanceadores de Carga</strong></p>
-<p>Cuando el tráfico de un sitio web comienza a crecer o cuando se ejecuta una aplicación que requiere alta disponibilidad, un solo servidor web podría no ser suficiente.</p>
-<p>Cuando solicitas un sitio web que tiene un balanceador de carga, el balanceador de carga recibirá primero tu solicitud y luego la enviará a uno de los múltiples servidores que tiene detrás.</p>
-<p>Los balanceadores de carga utilizan diferentes algoritmos para decidir qué servidor es el más adecuado para manejar una solicitud.</p>
-<p><strong>WAFs (Cortafuegos de Aplicación Web)</strong></p>
-<p>Detectan y bloquean solicitudes maliciosas.</p>
-<p><strong>Bases de Datos</strong></p>
-<p>Un WAF se sitúa entre tu solicitud web y el servidor web; su objetivo principal es proteger el servidor web de ataques de hacking o denegación de servicio.</p>
+<p>Praktikan, goiburu hauek ikusezinak dira zure nabigatzailearentzat, baina funtsezko informazioa ematen diote zerbitzariari nola kudeatu eskaera. </p>
+<p>Adibidez, User-Agent goiburuagatik webgune bat ezberdin ikus daiteke mugikor batean eta ordenagailu batean.</p>
+<h4 id="cookie-ak">Cookie-ak<a class="headerlink" href="#cookie-ak" title="Permanent link">&para;</a></h4>
+<p>Cookieak zure ordenagailuan gordetzen diren datu txiki bat besterik ez dira. Cookieak gorde egiten dira web zerbitzari batetik "Set-Cookie" goiburua jasotzen duzunean. Ondoren egingo dituzun eskaera guztietan, cookie datuak itzuli egingo dizkiozu web zerbitzariari.
+HTTP estaturik gabea delako (ez ditu zure aurreko eskaerak gogoratzen), cookieak web zerbitzariari zu nor zaren gogorarazteko erabil daitezke, webgunearentzako ezarpen pertsonal batzuk gordetzeko edo webgune hartan lehenago egon zaren jakiteko.</p>
+<h3 id="nola-funtzionatzen-dute-webguneek">Nola funtzionatzen dute webguneek?<a class="headerlink" href="#nola-funtzionatzen-dute-webguneek" title="Permanent link">&para;</a></h3>
+<p>Webgune batera joaten zarenean, zure nabigatzaileak (Safari edo Google Chrome bezala) web zerbitzari batera eskaera bat egiten du bisitatzen ari zaren orriaren informazioa eskatuz. Zerbitzariak zure nabigatzaileak orria erakusteko erabiliko dituen datuak bidaltzen ditu erantzunez. Web zerbitzari bat munduko beste nonbait dagoen ordenagailu dedikatu bat besterik ez da, zure eskaerak kudeatzen dituena.</p>
+<p><img alt="Nola funtzionatzen dute webguneek?" src="../images/nola_funtzionatu.png" /></p>
+<p><strong>Frontend vs Backend</strong>: Frontend-a bezeroaren nabigatzailean ikusten den zatia da (HTML, CSS, JS), eta Backend-a zerbitzarian exekutatzen dena (PHP, Node.js...). Edukia estatikoa edo dinamikoa izan daiteke, eta zerbitzariak Virtual Host bidez hainbat webgune kudea ditzake.</p>
+<p>Zure nabigatzaileak web zerbitzari batera eskaera bat egitean beste prozesu asko daude inplikatuta, baina oraingoz ulertu behar duzuna da zerbitzari batera eskaera bat egiten duzula, eta honek zure nabigatzaileak informazioa erakusteko erabiliko dituen datuak bidaltzen dizkizula erantzunez.</p>
+<p>HTML, CSS eta JavaScript dira web orrien oinarrizko teknologiak. HTML egiturarako, CSS itxurarako eta JavaScript interaktibitatearako erabiltzen dira. Elementuek atributuak dituzte (id, class, src...), eta erabiltzailearen sarrera baliatzen badute, arriskutsuak izan daitezke baldin eta ez badira behar bezala iragazten.</p>
+<p>Datu sentikorraren esposizioa askotan gertatzen da frontend kodean (komentarioetan, JavaScript fitxategietan...) pasahitz, token edo esteka pribatuak uzten direnean. <strong>HTML injekzioa</strong> bezalako ahultasunak sor daitezke erabiltzailearen sarrera iragazten ez denean eta zuzenean orrian bistaratzen denean.</p>
+<p>Nabigatzailearen garatzaile tresnak (Developer Tools) erabilgarriak dira eskaerak, cookie-ak, kodea eta segurtasunaren ikuspegitik informazioa aztertzeko. Inspector, Network, Debugger... panelak eskura ditugu.</p>
+<h3 id="beste-osagai-garrantzitsu-batzuk">Beste osagai garrantzitsu batzuk:<a class="headerlink" href="#beste-osagai-garrantzitsu-batzuk" title="Permanent link">&para;</a></h3>
+<p><strong>CDN-ak</strong></p>
+<p>CDN bat baliabide bikaina izan daiteke webgune okupatu baten trafikoa murrizteko. Zure webguneko fitxategi estatikoak ostatu ditzakezu, JavaScript, CSS, irudiak, bideoak bezala, eta munduan zehar dauden milaka zerbitzarietan ostatu. Erabiltzaile batek ostatutako fitxategietako bat eskatzen duenean, CDN-ak zein den gertuena dagoen zerbitzaria fisikoki kokatuta kalkulatzen du eta eskaera horra bidaltzen du munduko beste aldearen ordez.</p>
+<p><strong>Karga banatzaileak</strong></p>
+<p>Webgune baten trafikoa handia bihurtzen hasten denean edo eskuragarritasun altua behar duen aplikazio bat exekutatzen denean, web zerbitzari bakar bat agian ez da nahikoa izango. </p>
+<p>Karga banatzaile bat duen webgune bat eskatzen duzunean, karga banatzaileak zure eskaera jasoko du lehenik eta ondoren atzean dauden zerbitzari anitzetan batera bidaliko du. </p>
+<p>Karga banatzaileak algoritmo ezberdinak erabiltzen ditu zein zerbitzari egokien den eskaera kudeatzeko erabakitzeko. </p>
+<p><strong>WAF-ak (Web Application Firewall)</strong></p>
+<p>Eskaera gaiztoak detektatu eta blokeatzeko.</p>
+<p><strong>Datu-baseak</strong></p>
+<p>WAF bat zure web eskeararen eta web zerbitzariaren artean kokatzen da; bere helburu nagusia web zerbitzaria hacking edo zerbitzua ukatzeko erasoetatik babestea da. </p>
 <p><img alt="WAF" src="../images/firewall1.png" /></p>
-<h2 id="proximos-pasos">Próximos pasos<a class="headerlink" href="#proximos-pasos" title="Permanent link">&para;</a></h2>
+<h2 id="hurrengo-urratsak">Hurrengo urratsak<a class="headerlink" href="#hurrengo-urratsak" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../owasp_top10/">Visión general de vulnerabilidades web comunes</a></li>
-<li><a href="../../">Volver al inicio</a></li>
+<li><a href="../owasp_top10/">Web ahultasun arrunten ikuspegi orokorra</a></li>
+<li><a href="../../">Atzera itzuli hasierara</a></li>
 </ul>
 
 
@@ -1352,7 +1170,7 @@ Dado que HTTP no tiene estado (no recuerda tus solicitudes anteriores), las cook
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  Igo goraino
 </button>
         
       </main>
@@ -1383,10 +1201,14 @@ Dado que HTTP no tiene estado (no recuerda tus solicitudes anteriores), las cook
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.highlight", "content.code.copy", "navigation.top"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../scripts/checkboxes.js"></script>
+      
+        <script src="../../javascripts/sidebar.js"></script>
       
     
   </body>

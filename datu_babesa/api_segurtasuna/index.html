@@ -1,18 +1,12 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="eu" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Lecciones y recursos sobre ciberseguridad">
       
-      
-        <meta name="author" content="FP Txurdinaga">
-      
-      
-        <link rel="canonical" href="https://ciberseguridad-fptxurdinaga.eus/datu_babesa/api_segurtasuna/">
       
       
         <link rel="prev" href="../datu_sentikorrak/">
@@ -21,12 +15,12 @@
         <link rel="next" href="../tresnak/">
       
       
-      <link rel="icon" href="../../assets/images/favicon-96x96-1.png">
+      <link rel="icon" href="http://fptxurdinaga.eus/wp-content/uploads/2022/10/favicon-96x96-1.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>3.2. Seguridad de APIs y dependencias - Ciberseguridad en el Desarrollo Web</title>
+        <title>3.2. APIen eta dependentzien segurtasuna - Zibersegurtasuna Web Garapenean - 2025-2026</title>
       
     
     
@@ -52,7 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../css/custom.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -66,10 +60,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#1984c2" data-md-color-accent="#ff6b00">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,8 +74,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#32-apis-seguras-y-autenticacion" class="md-skip">
-          Skip to content
+        <a href="#32-api-seguruak-eta-autentifikazioa" class="md-skip">
+          Joan zuzenean edukira
         </a>
       
     </div>
@@ -90,11 +86,13 @@
     
       
 
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-header__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Atalburua">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-header__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
       
-  <img src="../../assets/images/logo2.png" alt="logo">
+  <img src="../../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,13 +103,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Ciberseguridad en el Desarrollo Web
+            Zibersegurtasuna Web Garapenean - 2025-2026
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.2. Seguridad de APIs y dependencias
+              3.2. APIen eta dependentzien segurtasuna
             
           </span>
         </div>
@@ -119,8 +117,56 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
     
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="#004c95" data-md-color-accent="#e95f15"  aria-label="Modu iluna"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modu iluna" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Hautatu hizkuntza">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="eu" class="md-select__link">
+              Euskara
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../es/datu_babesa/api_segurtasuna/" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
     
     
       
@@ -133,16 +179,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Bilatu" placeholder="Bilatu" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Bilatu">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Garbitu" aria-label="Garbitu" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -153,7 +199,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Bilaketa hasieratzen
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -173,116 +219,6 @@
       
         
           
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
-        
-  
-  
-    
-  
-  Inicio
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../oinarriak_mehatxuak/sarrera/" class="md-tabs__link">
-          
-  
-  
-  1. Fundamentos y amenazas comunes
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../eraso_defentsak/injekzioak/" class="md-tabs__link">
-          
-  
-  
-  2. Ataques y defensas básicas
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../datu_sentikorrak/" class="md-tabs__link">
-          
-  
-  
-  3. Protección de datos y herramientas prácticas
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../ariketak/injection/" class="md-tabs__link">
-          
-  
-  
-  4. Ejercicios
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -296,19 +232,15 @@
                     
 
 
-  
 
-
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Nabigazioa" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Ciberseguridad en el Desarrollo Web" class="md-nav__button md-logo" aria-label="Ciberseguridad en el Desarrollo Web" data-md-component="logo">
+    <a href="../.." title="Zibersegurtasuna Web Garapenean - 2025-2026" class="md-nav__button md-logo" aria-label="Zibersegurtasuna Web Garapenean - 2025-2026" data-md-component="logo">
       
-  <img src="../../assets/images/logo2.png" alt="logo">
+  <img src="../../images/logo.png" alt="logo">
 
     </a>
-    Ciberseguridad en el Desarrollo Web
+    Zibersegurtasuna Web Garapenean - 2025-2026
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -325,7 +257,7 @@
   
   
   <span class="md-ellipsis">
-    Inicio
+    Hasiera
     
   </span>
   
@@ -343,15 +275,25 @@
   
     
     
-    
-    
       
+        
+      
+        
+      
+        
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -360,12 +302,12 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    1. Fundamentos y amenazas comunes
+    1. Oinarriak eta mehatxu arruntak
     
   </span>
   
@@ -376,7 +318,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            1. Fundamentos y amenazas comunes
+            1. Oinarriak eta mehatxu arruntak
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -392,7 +334,7 @@
   
   
   <span class="md-ellipsis">
-    1.1. Introducción a la Ciberseguridad en el Desarrollo Web
+    1.1. Web Garapenean Zibersegurtasunaren Sarrera
     
   </span>
   
@@ -415,7 +357,30 @@
   
   
   <span class="md-ellipsis">
-    1.2. Fundamentos del funcionamiento web
+    1.2. Webaren funtzionamenduaren oinarriak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oinarriak_mehatxuak/web_hacking_sarrera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3. Web Hacking-erako sarrera
     
   </span>
   
@@ -438,7 +403,7 @@
   
   
   <span class="md-ellipsis">
-    1.3. Visión general de vulnerabilidades web comunes (OWASP Top 10)
+    1.4. Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)
     
   </span>
   
@@ -464,15 +429,23 @@
   
     
     
-    
-    
       
+        
+      
+        
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -481,12 +454,12 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
-    2. Ataques y defensas básicas
+    2. Eraso eta defentsa oinarrizkoak
     
   </span>
   
@@ -497,7 +470,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            2. Ataques y defensas básicas
+            2. Eraso eta defentsa oinarrizkoak
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -513,7 +486,7 @@
   
   
   <span class="md-ellipsis">
-    2.1. Defensas contra inyecciones
+    2.1. Injekzioen aurkako defentsak
     
   </span>
   
@@ -536,7 +509,7 @@
   
   
   <span class="md-ellipsis">
-    2.2. Seguridad de autenticación y sesiones
+    2.2. Autentifikazio eta saioen segurtasuna
     
   </span>
   
@@ -559,7 +532,7 @@
   
   
   <span class="md-ellipsis">
-    2.3. Control de acceso y configuración segura
+    2.3. Sarbide-kontrola eta konfigurazio segurua
     
   </span>
   
@@ -587,13 +560,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
         
-        
-      
-      
         
       
     
@@ -610,7 +588,7 @@
   
   
   <span class="md-ellipsis">
-    3. Protección de datos y herramientas prácticas
+    3. Datuen babesa eta tresna praktikoak
     
   </span>
   
@@ -621,7 +599,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            3. Protección de datos y herramientas prácticas
+            3. Datuen babesa eta tresna praktikoak
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -637,7 +615,7 @@
   
   
   <span class="md-ellipsis">
-    3.1. Protección de datos sensibles
+    3.1. Datu sentikorren babesa
     
   </span>
   
@@ -669,7 +647,7 @@
   
   
   <span class="md-ellipsis">
-    3.2. Seguridad de APIs y dependencias
+    3.2. APIen eta dependentzien segurtasuna
     
   </span>
   
@@ -682,7 +660,7 @@
   
   
   <span class="md-ellipsis">
-    3.2. Seguridad de APIs y dependencias
+    3.2. APIen eta dependentzien segurtasuna
     
   </span>
   
@@ -691,7 +669,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Edukiak">
   
   
   
@@ -700,33 +678,33 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Edukiak
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#oauth-20-y-openid-connect" class="md-nav__link">
+  <a href="#oauth-20-eta-openid-connect" class="md-nav__link">
     <span class="md-ellipsis">
-      OAuth 2.0 y OpenID Connect
+      OAuth 2.0 eta OpenID Connect
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OAuth 2.0 y OpenID Connect">
+    <nav class="md-nav" aria-label="OAuth 2.0 eta OpenID Connect">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#flujo-completo-de-oauth-20-authorization-code-flow-pkce" class="md-nav__link">
+  <a href="#oauth-20-fluxu-osoa-authorization-code-flow-pkce" class="md-nav__link">
     <span class="md-ellipsis">
-      Flujo Completo de OAuth 2.0 (Authorization Code Flow + PKCE)
+      OAuth 2.0 Fluxu Osoa (Authorization Code Flow + PKCE)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementacion-de-pkce-proof-key-for-code-exchange-react-nodejs" class="md-nav__link">
+  <a href="#pkce-proof-key-for-code-exchange-inplementazioa-react-nodejs" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementación de PKCE (Proof Key for Code Exchange) (React + Node.js)
+      PKCE (Proof Key for Code Exchange) inplementazioa (React + Node.js)
     </span>
   </a>
   
@@ -738,19 +716,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#preferencias-de-seguridad-para-apis-security-headers" class="md-nav__link">
+  <a href="#api-segurtasun-hobespenak-security-headers" class="md-nav__link">
     <span class="md-ellipsis">
-      Preferencias de Seguridad para APIs (Security Headers)
+      API Segurtasun Hobespenak (Security Headers)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Preferencias de Seguridad para APIs (Security Headers)">
+    <nav class="md-nav" aria-label="API Segurtasun Hobespenak (Security Headers)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#uso-de-helmetjs-nodejs" class="md-nav__link">
+  <a href="#helmetjs-erabilita-nodejs" class="md-nav__link">
     <span class="md-ellipsis">
-      Uso de Helmet.js (Node.js)
+      Helmet.js erabilita (Node.js)
     </span>
   </a>
   
@@ -762,19 +740,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mejores-practicas-de-seguridad-para-apis-muy-importante" class="md-nav__link">
+  <a href="#api-segurtasun-hobespenak-oso-garrantzitsua" class="md-nav__link">
     <span class="md-ellipsis">
-      Mejores Prácticas de Seguridad para APIs (¡Muy importante!)
+      API Segurtasun Hobespenak (Oso garrantzitsua!)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Mejores Prácticas de Seguridad para APIs (¡Muy importante!)">
+    <nav class="md-nav" aria-label="API Segurtasun Hobespenak (Oso garrantzitsua!)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-validacion-de-entrada" class="md-nav__link">
+  <a href="#1-sarrera-balidazioa" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Validación de Entrada
+      1. Sarrera balidazioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rate-limiting-atzipen-muga" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Rate Limiting (Atzipen-muga)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-errore-kudeaketa-segurua" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Errore-kudeaketa segurua
     </span>
   </a>
   
@@ -786,18 +782,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-practico" class="md-nav__link">
+  <a href="#ariketa-praktikoa" class="md-nav__link">
     <span class="md-ellipsis">
-      Ejercicio Práctico
+      Ariketa praktikoa
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#siguientes-pasos" class="md-nav__link">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
     <span class="md-ellipsis">
-      Siguientes Pasos
+      Hurrengo urratsak
     </span>
   </a>
   
@@ -824,289 +820,7 @@
   
   
   <span class="md-ellipsis">
-    3.3. Introducción a herramientas prácticas
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    4. Ejercicios
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            4. Ejercicios
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/injection/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.1. Inyecciones
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/broken_access_control/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.2. Fallos de control de acceso
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/cryptographic_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.3. Fallos criptográficos
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/identification_authentication_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.4. Fallos de autenticación
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/insecure_design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.5. Diseño inseguro
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/security_misconfiguration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.5. Configuraciones inseguras
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/vulnerable_obsolete_components/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.6. Componentes vulnerables
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/software_data_integrity_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.7. Fallos de integridad
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/security_logging_monitoring_failures/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.8. Fallos de registro y monitoreo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ariketak/server_side_request_forgery/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    4.9. Falsificación de peticiones del lado del servidor
+    3.3. Tresna praktikoen sarrera
     
   </span>
   
@@ -1131,6 +845,149 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Edukiak">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Edukiak
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#oauth-20-eta-openid-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth 2.0 eta OpenID Connect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OAuth 2.0 eta OpenID Connect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth-20-fluxu-osoa-authorization-code-flow-pkce" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth 2.0 Fluxu Osoa (Authorization Code Flow + PKCE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkce-proof-key-for-code-exchange-inplementazioa-react-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      PKCE (Proof Key for Code Exchange) inplementazioa (React + Node.js)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-segurtasun-hobespenak-security-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Segurtasun Hobespenak (Security Headers)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Segurtasun Hobespenak (Security Headers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helmetjs-erabilita-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helmet.js erabilita (Node.js)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-segurtasun-hobespenak-oso-garrantzitsua" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Segurtasun Hobespenak (Oso garrantzitsua!)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Segurtasun Hobespenak (Oso garrantzitsua!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sarrera-balidazioa" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sarrera balidazioa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rate-limiting-atzipen-muga" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Rate Limiting (Atzipen-muga)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-errore-kudeaketa-segurua" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Errore-kudeaketa segurua
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ariketa-praktikoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ariketa praktikoa
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hurrengo-urratsak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurrengo urratsak
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1140,28 +997,28 @@
 
 
 
-<h1 id="32-apis-seguras-y-autenticacion">3.2 APIs Seguras y Autenticación<a class="headerlink" href="#32-apis-seguras-y-autenticacion" title="Permanent link">&para;</a></h1>
-<h2 id="oauth-20-y-openid-connect">OAuth 2.0 y OpenID Connect<a class="headerlink" href="#oauth-20-y-openid-connect" title="Permanent link">&para;</a></h2>
-<h3 id="flujo-completo-de-oauth-20-authorization-code-flow-pkce">Flujo Completo de OAuth 2.0 (Authorization Code Flow + PKCE)<a class="headerlink" href="#flujo-completo-de-oauth-20-authorization-code-flow-pkce" title="Permanent link">&para;</a></h3>
+<h1 id="32-api-seguruak-eta-autentifikazioa">3.2 API Seguruak eta Autentifikazioa<a class="headerlink" href="#32-api-seguruak-eta-autentifikazioa" title="Permanent link">&para;</a></h1>
+<h2 id="oauth-20-eta-openid-connect">OAuth 2.0 eta OpenID Connect<a class="headerlink" href="#oauth-20-eta-openid-connect" title="Permanent link">&para;</a></h2>
+<h3 id="oauth-20-fluxu-osoa-authorization-code-flow-pkce">OAuth 2.0 Fluxu Osoa (Authorization Code Flow + PKCE)<a class="headerlink" href="#oauth-20-fluxu-osoa-authorization-code-flow-pkce" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Usuario</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Aplicación_Cliente</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Servidor_Autorización</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Servidor_Recursos</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Erabiltzailea</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Autorizazio</span><span class="w"> </span><span class="n">Zerbitzaria</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Baliabide</span><span class="w"> </span><span class="n">Zerbitzaria</span>
 
-<span class="w">    </span><span class="n">Usuario</span><span class="o">-&gt;&gt;</span><span class="n">Aplicación_Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Intenta</span><span class="w"> </span><span class="n">acceder</span>
-<span class="w">    </span><span class="n">Aplicación_Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Usuario</span><span class="o">:</span><span class="w"> </span><span class="n">Redirige</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="n">login</span>
-<span class="w">    </span><span class="n">Usuario</span><span class="o">-&gt;&gt;</span><span class="n">Servidor_Autorización</span><span class="o">:</span><span class="w"> </span><span class="n">Introduce</span><span class="w"> </span><span class="n">credenciales</span>
-<span class="w">    </span><span class="n">Servidor_Autorización</span><span class="o">-&gt;&gt;</span><span class="n">Usuario</span><span class="o">:</span><span class="w"> </span><span class="n">Autenticado</span><span class="p">,</span><span class="w"> </span><span class="n">redirige</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">callback</span>
-<span class="w">    </span><span class="n">Aplicación_Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Servidor_Autorización</span><span class="o">:</span><span class="w"> </span><span class="n">Intercambia</span><span class="w"> </span><span class="n">código</span><span class="w"> </span><span class="n">por</span><span class="w"> </span><span class="kt">token</span>
-<span class="w">    </span><span class="n">Servidor_Autorización</span><span class="o">--&gt;&gt;</span><span class="n">Aplicación_Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Devuelve</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">refresh_token</span>
-<span class="w">    </span><span class="n">Aplicación_Cliente</span><span class="o">-&gt;&gt;</span><span class="n">Servidor_Recursos</span><span class="o">:</span><span class="w"> </span><span class="n">Petición</span><span class="w"> </span><span class="n">con</span><span class="w"> </span><span class="n">access_token</span>
-<span class="w">    </span><span class="n">Servidor_Recursos</span><span class="o">--&gt;&gt;</span><span class="n">Aplicación_Cliente</span><span class="o">:</span><span class="w"> </span><span class="n">Devuelve</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">datos</span>
+<span class="w">    </span><span class="n">Erabiltzailea</span><span class="o">-&gt;&gt;</span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span><span class="o">:</span><span class="w"> </span><span class="n">Sartzen</span><span class="w"> </span><span class="n">saiatzen</span><span class="w"> </span><span class="n">da</span>
+<span class="w">    </span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span><span class="o">-&gt;&gt;</span><span class="n">Erabiltzailea</span><span class="o">:</span><span class="w"> </span><span class="n">Bideratzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="o">/</span><span class="n">login</span><span class="o">-</span><span class="n">era</span>
+<span class="w">    </span><span class="n">Erabiltzailea</span><span class="o">-&gt;&gt;</span><span class="n">Autorizazio</span><span class="w"> </span><span class="n">Zerbitzaria</span><span class="o">:</span><span class="w"> </span><span class="n">Sartu</span><span class="w"> </span><span class="n">kredentzialak</span>
+<span class="w">    </span><span class="n">Autorizazio</span><span class="w"> </span><span class="n">Zerbitzaria</span><span class="o">-&gt;&gt;</span><span class="n">Erabiltzailea</span><span class="o">:</span><span class="w"> </span><span class="n">Autentifikatuta</span><span class="p">,</span><span class="w"> </span><span class="n">bideratzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">callback</span><span class="o">-</span><span class="n">era</span>
+<span class="w">    </span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span><span class="o">-&gt;&gt;</span><span class="n">Autorizazio</span><span class="w"> </span><span class="n">Zerbitzaria</span><span class="o">:</span><span class="w"> </span><span class="n">Trukatzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">kodea</span><span class="w"> </span><span class="kt">token</span><span class="w"> </span><span class="n">baterako</span>
+<span class="w">    </span><span class="n">Autorizazio</span><span class="w"> </span><span class="n">Zerbitzaria</span><span class="o">--&gt;&gt;</span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span><span class="o">:</span><span class="w"> </span><span class="n">Itzultzen</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">access_token</span><span class="w"> </span><span class="n">eta</span><span class="w"> </span><span class="n">refresh_token</span>
+<span class="w">    </span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span><span class="o">-&gt;&gt;</span><span class="n">Baliabide</span><span class="w"> </span><span class="n">Zerbitzaria</span><span class="o">:</span><span class="w"> </span><span class="n">Eskaera</span><span class="w"> </span><span class="n">access_token</span><span class="o">-</span><span class="n">ekin</span>
+<span class="w">    </span><span class="n">Baliabide</span><span class="w"> </span><span class="n">Zerbitzaria</span><span class="o">--&gt;&gt;</span><span class="n">Bezero</span><span class="w"> </span><span class="n">Aplikazioa</span><span class="o">:</span><span class="w"> </span><span class="n">Itzultzen</span><span class="w"> </span><span class="n">ditu</span><span class="w"> </span><span class="n">datuak</span>
 </code></pre></div>
 
-<h3 id="implementacion-de-pkce-proof-key-for-code-exchange-react-nodejs">Implementación de PKCE (Proof Key for Code Exchange) (React + Node.js)<a class="headerlink" href="#implementacion-de-pkce-proof-key-for-code-exchange-react-nodejs" title="Permanent link">&para;</a></h3>
-<p><strong>Lado del Cliente (React):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Funciones auxiliares para generar código PKCE</span>
+<h3 id="pkce-proof-key-for-code-exchange-inplementazioa-react-nodejs">PKCE (Proof Key for Code Exchange) inplementazioa (React + Node.js)<a class="headerlink" href="#pkce-proof-key-for-code-exchange-inplementazioa-react-nodejs" title="Permanent link">&para;</a></h3>
+<p><strong>Bezeroaren aldea (React):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// PKCE kodea sortzeko funtzio lagungarriak</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint32Array</span><span class="p">(</span><span class="nx">length</span><span class="p">);</span>
 <span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">getRandomValues</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>
@@ -1184,21 +1041,21 @@
 <span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/=+$/</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="c1">// Función de inicio de sesión</span>
+<span class="c1">// Login funtzioan</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">handleLogin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 1. Crear code_verifier y code_challenge</span>
+<span class="w">  </span><span class="c1">// 1. Sortu code_verifier eta code_challenge</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeVerifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="mf">64</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hashed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">sha256</span><span class="p">(</span><span class="nx">codeVerifier</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeChallenge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">base64URLEncode</span><span class="p">(</span><span class="nx">hashed</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// 2. Guardar code_verifier en la sesión</span>
+<span class="w">  </span><span class="c1">// 2. Gorde code_verifier sesioan</span>
 <span class="w">  </span><span class="nx">sessionStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;code_verifier&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">codeVerifier</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// 3. Redirigir al usuario al endpoint de autorización</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;https://auth.tu-servidor.com/authorize&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 3. Bideratu erabiltzailea autorizazio-endpointera</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;https://auth.zure-zerbitzaria.com/authorize&#39;</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">response_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;code&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tu_client_id&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">client_id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;zure_client_id&#39;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">redirect_uri</span><span class="o">:</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/callback&#39;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">code_challenge</span><span class="o">:</span><span class="w"> </span><span class="nx">codeChallenge</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">code_challenge_method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;S256&#39;</span><span class="p">,</span>
@@ -1214,7 +1071,7 @@
 <span class="p">};</span>
 </code></pre></div>
 
-<p><strong>Lado del Servidor (Node.js + Express):</strong></p>
+<p><strong>Zerbitzariaren aldea (Node.js + Express):</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createHmac</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsonwebtoken&#39;</span><span class="p">);</span>
@@ -1222,20 +1079,20 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
 
-<span class="c1">// Almacenamiento en memoria (en producción usar una base de datos)</span>
+<span class="c1">// Datuak gordetzeko (produkzioan datu-base bat erabili)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">codeVerifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">refreshTokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
 
-<span class="c1">// 1. Devolver código de autorización</span>
+<span class="c1">// 1. Autorizazio kodea itzuli</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/authorize&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">client_id</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect_uri</span><span class="p">,</span><span class="w"> </span><span class="nx">code_challenge</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// Verificar cliente y URI de redirección</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">client_id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;tu_client_id&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;ID de cliente no válido&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Egiaztatu bezeroa eta redirect_uria</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">client_id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;zure_client_id&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Client ID desegokia&#39;</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Guardar code_challenge (normalmente en una sesión)</span>
+<span class="w">  </span><span class="c1">// Gorde code_challenge (normalean sesio batean)</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="mf">32</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">codeVerifiers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">authCode</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">codeChallenge</span><span class="o">:</span><span class="w"> </span><span class="nx">code_challenge</span><span class="p">,</span>
@@ -1244,8 +1101,8 @@
 <span class="w">    </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
 <span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="c1">// Mostrar página de consentimiento al usuario y luego...</span>
-<span class="w">  </span><span class="c1">// Después de que el usuario dé su consentimiento, redirigir al callback</span>
+<span class="w">  </span><span class="c1">// Erabiltzaileari erakutsi baimen-orria eta gero...</span>
+<span class="w">  </span><span class="c1">// Erabiltzaileak baimena eman ondoren, redirect egiten du callback-era</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">redirectUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="nx">redirect_uri</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authCode</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">);</span>
@@ -1253,30 +1110,30 @@
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">redirectUrl</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
 <span class="p">});</span>
 
-<span class="c1">// 2. Intercambiar código por token</span>
+<span class="c1">// 2. Trukaketa kodea token batekin</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/token&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">client_id</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">code_verifier</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect_uri</span><span class="p">,</span><span class="w"> </span><span class="nx">grant_type</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// Validar parámetros</span>
+<span class="w">  </span><span class="c1">// Egiaztatu parametroak</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">grant_type</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;authorization_code&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Tipo de concesión no válido&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;grant_type baliogabea&#39;</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Validar código</span>
+<span class="w">  </span><span class="c1">// Egiaztatu kodea</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">codeVerifiers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">codeData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Código no válido&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Kodea baliogabea&#39;</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Validar code_verifier</span>
+<span class="w">  </span><span class="c1">// Egiaztatu code_verifier</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hashed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">sha256</span><span class="p">(</span><span class="nx">code_verifier</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codeChallenge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">base64URLEncode</span><span class="p">(</span><span class="nx">hashed</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">codeChallenge</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">codeData</span><span class="p">.</span><span class="nx">codeChallenge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Verificador de código incorrecto&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Code verifier desegokia&#39;</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Crear tokens</span>
+<span class="w">  </span><span class="c1">// Sortu tokenak</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">accessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user123&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">client_id</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
@@ -1287,23 +1144,23 @@
 <span class="w">  </span><span class="nx">refreshTokens</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">refreshToken</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
 <span class="w">    </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user123&#39;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">client_id</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">expiresAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="c1">// 30 días</span>
+<span class="w">    </span><span class="nx">expiresAt</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="c1">// 30 egun</span>
 <span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="c1">// Eliminar código para evitar reutilización</span>
+<span class="w">  </span><span class="c1">// Ezabatu kodea berrerabiltzea eragozteko</span>
 <span class="w">  </span><span class="nx">codeVerifiers</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Devolver tokens</span>
+<span class="w">  </span><span class="c1">// Itzuli tokenak</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">access_token</span><span class="o">:</span><span class="w"> </span><span class="nx">accessToken</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">token_type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bearer&#39;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">expires_in</span><span class="o">:</span><span class="w"> </span><span class="mf">3600</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">refresh_token</span><span class="o">:</span><span class="w"> </span><span class="nx">refreshToken</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">id_token</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;...&#39;</span><span class="w"> </span><span class="c1">// Para OpenID Connect</span>
+<span class="w">    </span><span class="nx">id_token</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;...&#39;</span><span class="w"> </span><span class="c1">// OpenID Connect kasurako</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 
-<span class="c1">// 3. Verificar token (Servidor de Recursos)</span>
+<span class="c1">// 3. Egiaztatu tokena (Resource Server)</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">authenticateToken</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
@@ -1317,28 +1174,25 @@
 <span class="w">  </span><span class="p">});</span>
 <span class="p">}</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/datos&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authenticateToken</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Devolver datos del usuario</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/datuak&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authenticateToken</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Erabiltzailearen datuak itzuli</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span>
-<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Datos obtenidos correctamente&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Datuak lortu dira&#39;</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 
-<span class="c1">// Funciones auxiliares</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">generarCadenaAleatoria</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// Laguntzaile funtzioak</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">generateRandomString</span><span class="p">(</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">).</span><span class="nx">randomBytes</span><span class="p">(</span><span class="nx">length</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sha256</span><span class="p">(</span><span class="nx">plain</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TextEncoder</span><span class="p">();</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">encoder</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">plain</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;SHA-256&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">hash</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">createHmac</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">plain</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">codificarBase64URL</span><span class="p">(</span><span class="nx">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">buffer</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">base64URLEncode</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hex&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\+/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\//g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/=+$/</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span>
@@ -1350,29 +1204,29 @@
 <span class="p">});</span>
 </code></pre></div>
 
-<h2 id="preferencias-de-seguridad-para-apis-security-headers">Preferencias de Seguridad para APIs (Security Headers)<a class="headerlink" href="#preferencias-de-seguridad-para-apis-security-headers" title="Permanent link">&para;</a></h2>
-<h3 id="uso-de-helmetjs-nodejs">Uso de Helmet.js (Node.js)<a class="headerlink" href="#uso-de-helmetjs-nodejs" title="Permanent link">&para;</a></h3>
+<h2 id="api-segurtasun-hobespenak-security-headers">API Segurtasun Hobespenak (Security Headers)<a class="headerlink" href="#api-segurtasun-hobespenak-security-headers" title="Permanent link">&para;</a></h2>
+<h3 id="helmetjs-erabilita-nodejs">Helmet.js erabilita (Node.js)<a class="headerlink" href="#helmetjs-erabilita-nodejs" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">helmet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;helmet&#39;</span><span class="p">);</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
 
-<span class="c1">// Medidas de seguridad generales</span>
+<span class="c1">// Segurtasun-neurri orokorrak</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
 
-<span class="c1">// Política de Seguridad de Contenido (CSP)</span>
+<span class="c1">// Content Security Policy (CSP)</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">helmet</span><span class="p">.</span><span class="nx">contentSecurityPolicy</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">directives</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">defaultSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nx">scriptSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;&#39;unsafe-inline&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Eliminar esto lo antes posible</span>
+<span class="w">        </span><span class="s2">&quot;&#39;unsafe-inline&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Saiestu hau kentzen ahal bezain laster</span>
 <span class="w">        </span><span class="s2">&quot;https://apis.google.com&quot;</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nx">styleSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&#39;unsafe-inline&#39;&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nx">imgSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://*.example.com&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">connectSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://api.tu-servidor.com&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">connectSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://api.zure-zerbitzaria.com&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nx">fontSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://fonts.gstatic.com&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nx">objectSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&#39;none&#39;&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nx">upgradeInsecureRequests</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span>
@@ -1380,16 +1234,16 @@
 <span class="w">  </span><span class="p">})</span>
 <span class="p">);</span>
 
-<span class="c1">// Protección XSS</span>
+<span class="c1">// X-XSS-Protection</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">xssFilter</span><span class="p">());</span>
 
-<span class="c1">// Prevenir MIME-type sniffing</span>
+<span class="c1">// MIME-type sniffing ekidin</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noSniff</span><span class="p">());</span>
 
-<span class="c1">// Prevenir clickjacking</span>
+<span class="c1">// Clickjacking ekidin</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;deny&#39;</span><span class="w"> </span><span class="p">}));</span>
 
-<span class="c1">// HSTS (Forzar HTTPS)</span>
+<span class="c1">// HSTS (HTTPS behartzea)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">oneYearInSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">31536000</span><span class="p">;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hsts</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="nx">oneYearInSeconds</span><span class="p">,</span>
@@ -1397,52 +1251,52 @@
 <span class="w">  </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}));</span>
 
-<span class="c1">// Ocultar X-Powered-By</span>
+<span class="c1">// X-Powered-By ezkutatu</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">hidePoweredBy</span><span class="p">());</span>
 
-<span class="c1">// Control de precarga DNS</span>
+<span class="c1">// DNS Prefetch kontrola</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">dnsPrefetchControl</span><span class="p">({</span><span class="w"> </span><span class="nx">allow</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}));</span>
 
-<span class="c1">// Opciones de descarga (IE8+)</span>
+<span class="c1">// X-Download-Options (IE8+) - kontu fitxategiak zabaltzeko modua kontrolatzeko</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">ieNoOpen</span><span class="p">());</span>
 
-<span class="c1">// Opciones de tipo de contenido</span>
+<span class="c1">// X-Content-Type-Options</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">noSniff</span><span class="p">());</span>
 
-<span class="c1">// Políticas cruzadas de dominios permitidos</span>
+<span class="c1">// X-Permitted-Cross-Domain-Policies</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">permittedCrossDomainPolicies</span><span class="p">());</span>
 
-<span class="c1">// Opciones de marco (previene clickjacking)</span>
+<span class="c1">// X-Frame-Options</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">.</span><span class="nx">frameguard</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;deny&#39;</span><span class="w"> </span><span class="p">}));</span>
 
-<span class="c1">// Filtro XSS (obsoleto, pero para compatibilidad)</span>
+<span class="c1">// XSS Filter (zaharkitua, baina bateragarritasunerako)</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;X-XSS-Protection&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1; mode=block&#39;</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">next</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre></div>
 
-<h2 id="mejores-practicas-de-seguridad-para-apis-muy-importante">Mejores Prácticas de Seguridad para APIs (¡Muy importante!)<a class="headerlink" href="#mejores-practicas-de-seguridad-para-apis-muy-importante" title="Permanent link">&para;</a></h2>
-<h3 id="1-validacion-de-entrada">1. Validación de Entrada<a class="headerlink" href="#1-validacion-de-entrada" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Usando express-validator</span>
+<h2 id="api-segurtasun-hobespenak-oso-garrantzitsua">API Segurtasun Hobespenak (Oso garrantzitsua!)<a class="headerlink" href="#api-segurtasun-hobespenak-oso-garrantzitsua" title="Permanent link">&para;</a></h2>
+<h3 id="1-sarrera-balidazioa">1. Sarrera balidazioa<a class="headerlink" href="#1-sarrera-balidazioa" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">// express-validator erabiliz</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">validationResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-validator&#39;</span><span class="p">);</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/usuarios&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="c1">// Nombre: 2-50 caracteres, solo letras y espacios</span>
-<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api/erabiltzaileak&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="c1">// Izena: 2-50 karaktere, letrak eta zuriuneak bakarrik</span>
+<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;izena&#39;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">isLength</span><span class="p">({</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="p">})</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="sr">/^[\p{L}\s]+$/u</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;El nombre debe tener entre 2 y 50 caracteres y solo puede contener letras y espacios&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;Izenak 2-50 karaktere izan behar ditu eta letrak eta zuriuneak bakarrik&#39;</span><span class="p">),</span>
 
-<span class="w">  </span><span class="c1">// Email: debe ser un correo electrónico válido</span>
+<span class="w">  </span><span class="c1">// Emaila: baliozkoa izan behar da</span>
 <span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">isEmail</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">normalizeEmail</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;Por favor, introduce una dirección de correo electrónico válida&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;Mesedez, sartu helbide elektroniko baliagarri bat&#39;</span><span class="p">),</span>
 
-<span class="w">  </span><span class="c1">// Contraseña: 8+ caracteres, al menos una mayúscula, una minúscula, un número y un carácter especial</span>
-<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;contrasena&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// Pasahitza: 8+ karaktere, letra larri/ xehe bat, zenbaki bat eta karaktere berezi bat</span>
+<span class="w">  </span><span class="nx">body</span><span class="p">(</span><span class="s1">&#39;pasahitza&#39;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">isStrongPassword</span><span class="p">({</span>
 <span class="w">      </span><span class="nx">minLength</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">minLowercase</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
@@ -1450,51 +1304,51 @@
 <span class="w">      </span><span class="nx">minNumbers</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">minSymbols</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
 <span class="w">    </span><span class="p">})</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withMessage</span><span class="p">(</span><span class="s1">&#39;Pasahitzak gutxienez 8 karaktere, letra larri bat, xehe bat, zenbaki bat eta karaktere berezi bat izan behar ditu&#39;</span><span class="p">)</span>
 <span class="p">],</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Verificar resultados de validación</span>
+<span class="w">  </span><span class="c1">// Egiaztatu balidazio-emaitzak</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validationResult</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">array</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Continuar con el procesamiento</span>
+<span class="w">  </span><span class="c1">// Jarraitu prozesamendua</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Crear usuario...</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Usuario creado correctamente&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="c1">// Erabiltzailea sortu...</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Erabiltzailea ondo sortu da&#39;</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error al crear el usuario:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Error en el servidor&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Errorea erabiltzailea sortzean:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Errorea zerbitzarian&#39;</span><span class="w"> </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
+</code></pre></div>
 
-<span class="c1">// 2. Límite de Tasa (Rate Limiting)</span>
+<h3 id="2-rate-limiting-atzipen-muga">2. Rate Limiting (Atzipen-muga)<a class="headerlink" href="#2-rate-limiting-atzipen-muga" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">rateLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-rate-limit&#39;</span><span class="p">);</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">rateLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-rate-limit&#39;</span><span class="p">);</span>
-
-<span class="c1">// Límite de tasa básico</span>
+<span class="c1">// Oinarrizko rate limiting</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">apiLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Ventana de 15 minutos</span>
-<span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// Número máximo de solicitudes por ventana</span>
-<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Demasiadas solicitudes, por favor inténtalo de nuevo más tarde&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">standardHeaders</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Incluir información de límite en las cabeceras `RateLimit-*`</span>
-<span class="w">  </span><span class="nx">legacyHeaders</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// Deshabilitar las cabeceras `X-RateLimit-*`</span>
+<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 15 minutuko leihoa</span>
+<span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="c1">// Leiho bakoitzeko gehienezko eskaera kopurua</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Eskaera gehiegi, saiatu berriro beranduago&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">standardHeaders</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Return rate limit info in the `RateLimit-*` headers</span>
+<span class="w">  </span><span class="nx">legacyHeaders</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// Disable the `X-RateLimit-*` headers</span>
 <span class="p">});</span>
 
-<span class="c1">// Aplicar límite a la API</span>
+<span class="c1">// APIrako muga aplikatu</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">apiLimiter</span><span class="p">);</span>
 
-<span class="c1">// Límite de tasa basado en el usuario</span>
+<span class="c1">// Erabiltzailearen araberako rate limiting</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1 hora</span>
+<span class="w">  </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Ordu 1</span>
 <span class="w">  </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Obtener ID de usuario (por ejemplo, del token)</span>
+<span class="w">    </span><span class="c1">// Erabiltzailearen IDa lortu (adibidez, tokenetik)</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// Obtener plan del usuario (por ejemplo, de una base de datos)</span>
+<span class="w">    </span><span class="c1">// Erabiltzailearen plana lortu (adibidez, datu-base batetik)</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getUserPlan</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// Devolver límite según el plan</span>
+<span class="w">    </span><span class="c1">// Planaren arabera itzuli muga</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">userPlan</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;free&#39;</span><span class="o">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;pro&#39;</span><span class="o">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
@@ -1503,27 +1357,27 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">keyGenerator</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ip</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Tu plan de usuario tiene un límite de solicitudes por hora&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Zure erabiltzaile-planak muga bat du orduko eskaeretan&#39;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/usuario/datos&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">userLimiter</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/erabiltzaile/datuak&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">userLimiter</span><span class="p">);</span>
+</code></pre></div>
 
-<span class="c1">// 3. Manejo Seguro de Errores</span>
-
-<span class="c1">// Manejador de errores global</span>
+<h3 id="3-errore-kudeaketa-segurua">3. Errore-kudeaketa segurua<a class="headerlink" href="#3-errore-kudeaketa-segurua" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Errore-kudeatzaile orokorra</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Mensaje de error genérico</span>
+<span class="w">  </span><span class="c1">// Errore-mezu orokorra</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Error en el servidor&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Errorea zerbitzarian&#39;</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;internal_server_error&#39;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="c1">// Usando una cabecera request-id</span>
+<span class="w">      </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="c1">// request-id header bat erabiliz</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="c1">// Información adicional en desarrollo</span>
+<span class="w">  </span><span class="c1">// Garapenerako informazio gehiago</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">details</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
@@ -1532,18 +1386,18 @@
 <span class="w">    </span><span class="p">};</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Código de estado HTTP</span>
+<span class="w">  </span><span class="c1">// HTTP egoera kodea</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">500</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// Enviar respuesta</span>
+<span class="w">  </span><span class="c1">// Erantzuna bidali</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="c1">// Manejo de 404</span>
+<span class="c1">// 404 kudeaketa</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;No se encontró el recurso solicitado&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Ez da baliabidea aurkitu&#39;</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;not_found&#39;</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">path</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1551,17 +1405,17 @@
 <span class="p">});</span>
 </code></pre></div>
 
-<h2 id="ejercicio-practico">Ejercicio Práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
+<h2 id="ariketa-praktikoa">Ariketa praktikoa<a class="headerlink" href="#ariketa-praktikoa" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Implementa OAuth 2.0 + PKCE en tu aplicación React/Node.js</li>
-<li>Configura CSP en tu sitio web y prueba con Content-Security-Policy-Report-Only</li>
-<li>Verifica la seguridad de tu API usando OWASP ZAP o Burp Suite</li>
-<li>Implementa límite de tasa (rate limiting) en tus APIs críticas</li>
+<li>Inplementatu OAuth 2.0 + PKCE zure React/Node.js aplikazioan</li>
+<li>Konfiguratu CSP zure webgunean eta probatu Content-Security-Policy-Report-Only</li>
+<li>Egiaztatu zure API-aren segurtasuna OWASP ZAP edo Burp Suite erabiliz</li>
+<li>Inplementatu rate limiting zure API kritikoetan</li>
 </ol>
-<h2 id="siguientes-pasos">Siguientes Pasos<a class="headerlink" href="#siguientes-pasos" title="Permanent link">&para;</a></h2>
+<h2 id="hurrengo-urratsak">Hurrengo urratsak<a class="headerlink" href="#hurrengo-urratsak" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../tresnak/">Herramientas prácticas y evaluación de seguridad</a></li>
-<li><a href="../datu_sentikorrak/">Volver a la sección anterior</a></li>
+<li><a href="../tresnak/">Tresna praktikoak eta segurtasun-ebaluazioa</a></li>
+<li><a href="../datu_sentikorrak/">Atzera itzuli aurreko atalera</a></li>
 </ul>
 
 
@@ -1586,7 +1440,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
+  Igo goraino
 </button>
         
       </main>
@@ -1617,10 +1471,14 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.highlight", "content.code.copy", "navigation.top"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../scripts/checkboxes.js"></script>
+      
+        <script src="../../javascripts/sidebar.js"></script>
       
     
   </body>
