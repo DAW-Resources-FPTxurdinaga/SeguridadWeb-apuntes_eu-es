@@ -1009,81 +1009,76 @@
 <h4 id="1-cifrado-simetrico-aes">1. Cifrado simétrico (AES)<a class="headerlink" href="#1-cifrado-simetrico-aes" title="Permanent link">&para;</a></h4>
 <p>Se usa la misma clave para cifrar y descifrar.</p>
 <p>Ejemplo en Python (PyCryptodome):</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Cipher</span><span class="w"> </span><span class="kn">import</span> <span class="n">AES</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Random</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_random_bytes</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Util.Padding</span><span class="w"> </span><span class="kn">import</span> <span class="n">pad</span><span class="p">,</span> <span class="n">unpad</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<pre><code class="language-python">from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+from Crypto.Util.Padding import pad, unpad
+import base64
 
-<span class="k">def</span><span class="w"> </span><span class="nf">cifrar</span><span class="p">(</span><span class="n">mensaje</span><span class="p">,</span> <span class="n">clave</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">clave</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">clave</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>  <span class="c1"># 256 bits</span>
-    <span class="n">iv</span> <span class="o">=</span> <span class="n">get_random_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-    <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">clave</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
-    <span class="n">bloqueado</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">mensaje</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span>
-    <span class="n">texto_cifrado</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">bloqueado</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">iv</span> <span class="o">+</span> <span class="n">texto_cifrado</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+def cifrar(mensaje, clave=None):
+    if clave is None:
+        clave = get_random_bytes(32)  # 256 bits
+    iv = get_random_bytes(16)
+    cipher = AES.new(clave, AES.MODE_CBC, iv)
+    bloqueado = pad(mensaje.encode('utf-8'), AES.block_size)
+    texto_cifrado = cipher.encrypt(bloqueado)
+    return base64.b64encode(iv + texto_cifrado).decode('utf-8')
 
-<span class="c1"># ... función descifrar análoga ...</span>
-</code></pre></div>
-
+# ... función descifrar análoga ...
+</code></pre>
 <h4 id="2-cifrado-asimetrico-rsa">2. Cifrado asimétrico (RSA)<a class="headerlink" href="#2-cifrado-asimetrico-rsa" title="Permanent link">&para;</a></h4>
 <p>Usa un par de claves pública/privada.</p>
 <p>Ejemplo en Python (cryptography):</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.hazmat.primitives.asymmetric</span><span class="w"> </span><span class="kn">import</span> <span class="n">rsa</span><span class="p">,</span> <span class="n">padding</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.hazmat.primitives</span><span class="w"> </span><span class="kn">import</span> <span class="n">serialization</span><span class="p">,</span> <span class="n">hashes</span>
+<pre><code class="language-python">from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import serialization, hashes
 
-<span class="k">def</span><span class="w"> </span><span class="nf">generar_claves</span><span class="p">():</span>
-    <span class="n">privada</span> <span class="o">=</span> <span class="n">rsa</span><span class="o">.</span><span class="n">generate_private_key</span><span class="p">(</span><span class="n">public_exponent</span><span class="o">=</span><span class="mi">65537</span><span class="p">,</span> <span class="n">key_size</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">publica</span> <span class="o">=</span> <span class="n">privada</span><span class="o">.</span><span class="n">public_key</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">privada</span><span class="p">,</span> <span class="n">publica</span>
-</code></pre></div>
-
+def generar_claves():
+    privada = rsa.generate_private_key(public_exponent=65537, key_size=4096)
+    publica = privada.public_key()
+    return privada, publica
+</code></pre>
 <h2 id="transmision-de-datos-tlshttps">Transmisión de datos (TLS/HTTPS)<a class="headerlink" href="#transmision-de-datos-tlshttps" title="Permanent link">&para;</a></h2>
 <h3 id="configurar-https-en-nodejs-express">Configurar HTTPS en Node.js (Express)<a class="headerlink" href="#configurar-https-en-nodejs-express" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">helmet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;helmet&#39;</span><span class="p">);</span>
+<pre><code class="language-javascript">const https = require('https');
+const fs = require('fs');
+const express = require('express');
+const helmet = require('helmet');
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
+const app = express();
+app.use(helmet());
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;path/to/private.key&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">cert</span><span class="o">:</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;path/to/certificate.crt&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">minVersion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TLSv1.2&#39;</span>
-<span class="p">};</span>
+const options = {
+  key: fs.readFileSync('path/to/private.key'),
+  cert: fs.readFileSync('path/to/certificate.crt'),
+  minVersion: 'TLSv1.2'
+};
 
-<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mf">443</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Servidor HTTPS en 443...&#39;</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-
+https.createServer(options, app).listen(443, () =&gt; {
+  console.log('Servidor HTTPS en 443...');
+});
+</code></pre>
 <h2 id="consejos-para-almacenamiento">Consejos para almacenamiento<a class="headerlink" href="#consejos-para-almacenamiento" title="Permanent link">&para;</a></h2>
 <ul>
 <li>No almacenes datos sensibles si no es necesario</li>
 <li>Minimiza datos recopilados y almacenados</li>
 <li>Enmascara datos al mostrarlos</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">enmascararCuenta</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">4</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">4</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">function enmascararCuenta(n) {
+  if (!n) return '';
+  return '*'.repeat(Math.max(0, n.length - 4)) + n.slice(-4);
+}
+</code></pre>
 <h2 id="gestion-segura-de-tokens">Gestión segura de tokens<a class="headerlink" href="#gestion-segura-de-tokens" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Prefiere cookies HTTP-only seguras para almacenar tokens</li>
 <li>Define expiración adecuada y rotación de tokens</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;strict&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span>
-<span class="p">});</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">res.cookie('token', token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'strict',
+  maxAge: 24 * 60 * 60 * 1000
+});
+</code></pre>
 <h2 id="ejercicio-practico">Ejercicio práctico<a class="headerlink" href="#ejercicio-practico" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Implementa cifrado simétrico para datos sensibles</li>
@@ -1150,7 +1145,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

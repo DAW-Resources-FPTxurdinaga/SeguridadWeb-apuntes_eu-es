@@ -9,7 +9,7 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.indexes
-    - navigation.instant
+    # - navigation.instant  # Disabled: not compatible with Material i18n language switcher contextual link
     - navigation.expand # Esto permite expandir/colapsar, pero necesitamos ajustar el CSS
   palette:
     - scheme: default
@@ -30,7 +30,6 @@ extra_javascript:
 plugins:
 - search
 - i18n:
-    default_language: eu
     docs_structure: folder
     languages:
       - locale: eu
@@ -77,9 +76,3 @@ nav:
     - '3.1. Datu sentikorren babesa': datu_babesa/datu_sentikorrak.md
     - '3.2. APIen eta dependentzien segurtasuna': datu_babesa/api_segurtasuna.md
     - '3.3. Tresna praktikoen sarrera': datu_babesa/tresnak.md
-
-markdown_extensions:
-  - admonition
-  - codehilite
-  - toc:
-      permalink: true

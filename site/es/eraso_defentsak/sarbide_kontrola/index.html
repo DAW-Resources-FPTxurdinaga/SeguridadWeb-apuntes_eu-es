@@ -1002,73 +1002,71 @@
 <h3 id="1-rbac-control-de-acceso-basado-en-roles">1. RBAC (Control de acceso basado en roles)<a class="headerlink" href="#1-rbac-control-de-acceso-basado-en-roles" title="Permanent link">&para;</a></h3>
 <p>Los usuarios se clasifican por roles y cada rol tiene un conjunto de permisos.</p>
 <p>Ejemplo (Node.js + Express):</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Definición de roles</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">ROLES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">ADMIN</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">EDITOR</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;editor&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">USER</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">ENVIAR</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;enviar&#39;</span>
-<span class="p">};</span>
+<pre><code class="language-javascript">// Definición de roles
+const ROLES = {
+  ADMIN: 'admin',
+  EDITOR: 'editor',
+  USER: 'user',
+  ENVIAR: 'enviar'
+};
 
-<span class="c1">// Permisos por rol</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">PERMISSIONS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">ADMIN</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;leer&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;escribir&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;eliminar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;editar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;enviar&#39;</span><span class="p">],</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">EDITOR</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;leer&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;escribir&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;enviar&#39;</span><span class="p">],</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">USER</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;leer&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;enviar&#39;</span><span class="p">],</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">ENVIAR</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;enviar&#39;</span><span class="p">]</span>
-<span class="p">};</span>
+// Permisos por rol
+const PERMISSIONS = {
+  [ROLES.ADMIN]: ['leer', 'escribir', 'eliminar', 'editar', 'enviar'],
+  [ROLES.EDITOR]: ['leer', 'escribir', 'enviar'],
+  [ROLES.USER]: ['leer', 'enviar'],
+  [ROLES.ENVIAR]: ['enviar']
+};
 
-<span class="c1">// Middleware para verificar permisos</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">checkPermission</span><span class="p">(</span><span class="nx">accion</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rolUsuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">rol</span><span class="p">;</span><span class="w"> </span><span class="c1">// viene del middleware de autenticación</span>
+// Middleware para verificar permisos
+function checkPermission(accion) {
+  return (req, res, next) =&gt; {
+    const rolUsuario = req.user.rol; // viene del middleware de autenticación
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">rolUsuario</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">PERMISSIONS</span><span class="p">[</span><span class="nx">rolUsuario</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">PERMISSIONS</span><span class="p">[</span><span class="nx">rolUsuario</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">accion</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;No tienes permiso para esta acción&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">}</span>
+    if (!rolUsuario || !PERMISSIONS[rolUsuario] || !PERMISSIONS[rolUsuario].includes(accion)) {
+      return res.status(403).json({ error: 'No tienes permiso para esta acción' });
+    }
+    next();
+  };
+}
 
-<span class="c1">// Uso de ejemplo</span>
-<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;/api/usuarios/:id&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">authenticateUser</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">checkPermission</span><span class="p">(</span><span class="s1">&#39;eliminar&#39;</span><span class="p">),</span>
-<span class="w">  </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Código para eliminar usuario</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">);</span>
-</code></pre></div>
-
+// Uso de ejemplo
+app.delete('/api/usuarios/:id',
+  authenticateUser,
+  checkPermission('eliminar'),
+  (req, res) =&gt; {
+    // Código para eliminar usuario
+  }
+);
+</code></pre>
 <h3 id="2-abac-control-de-acceso-basado-en-atributos">2. ABAC (Control de acceso basado en atributos)<a class="headerlink" href="#2-abac-control-de-acceso-basado-en-atributos" title="Permanent link">&para;</a></h3>
 <p>Decide el acceso según atributos del usuario y del recurso.</p>
 <p>Ejemplo (Python + Policy):</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<pre><code class="language-python">from functools import wraps
 
-<span class="k">def</span><span class="w"> </span><span class="nf">check_access</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">recurso</span><span class="p">,</span> <span class="n">accion</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">accion</span> <span class="o">==</span> <span class="s2">&quot;leer&quot;</span> <span class="ow">and</span> <span class="n">recurso</span><span class="o">.</span><span class="n">dueno</span> <span class="o">==</span> <span class="n">usuario</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">accion</span> <span class="o">==</span> <span class="s2">&quot;editar&quot;</span> <span class="ow">and</span> <span class="n">usuario</span><span class="o">.</span><span class="n">rol</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">accion</span> <span class="o">==</span> <span class="s2">&quot;enviar&quot;</span> <span class="ow">and</span> <span class="n">usuario</span><span class="o">.</span><span class="n">estado</span> <span class="o">==</span> <span class="s2">&quot;activo&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="kc">False</span>
+def check_access(usuario, recurso, accion):
+    if accion == &quot;leer&quot; and recurso.dueno == usuario.id:
+        return True
+    if accion == &quot;editar&quot; and usuario.rol == &quot;admin&quot;:
+        return True
+    if accion == &quot;enviar&quot; and usuario.estado == &quot;activo&quot;:
+        return True
+    return False
 
-<span class="k">def</span><span class="w"> </span><span class="nf">access_required</span><span class="p">(</span><span class="n">accion</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">decorated_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">usuario</span> <span class="o">=</span> <span class="n">get_jwt_identity</span><span class="p">()</span>
-            <span class="n">recurso</span> <span class="o">=</span> <span class="n">get_recurso</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;recurso_id&#39;</span><span class="p">])</span>
+def access_required(accion):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            usuario = get_jwt_identity()
+            recurso = get_recurso(kwargs['recurso_id'])
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">check_access</span><span class="p">(</span><span class="n">usuario</span><span class="p">,</span> <span class="n">recurso</span><span class="p">,</span> <span class="n">accion</span><span class="p">):</span>
-                <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;No autorizado&quot;</span><span class="p">},</span> <span class="mi">403</span>
+            if not check_access(usuario, recurso, accion):
+                return {&quot;error&quot;: &quot;No autorizado&quot;}, 403
 
-            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">decorated_function</span>
-    <span class="k">return</span> <span class="n">decorator</span>
-</code></pre></div>
-
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
+</code></pre>
 <h2 id="ataques-idor-insecure-direct-object-reference">Ataques IDOR (Insecure Direct Object Reference)<a class="headerlink" href="#ataques-idor-insecure-direct-object-reference" title="Permanent link">&para;</a></h2>
 <h3 id="que-es-idor">¿Qué es IDOR?<a class="headerlink" href="#que-es-idor" title="Permanent link">&para;</a></h3>
 <p>Un fallo en el que el usuario accede directamente a recursos que no le pertenecen.</p>
@@ -1076,68 +1074,63 @@
 <ol>
 <li>Validar el acceso por recurso</li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/usuarios/:id&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Usuario</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">rol</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;No autorizado&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">usuario</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Usuario no encontrado&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">app.get('/api/usuarios/:id', async (req, res) =&gt; {
+  try {
+    const usuario = await Usuario.findById(req.params.id);
+    if (req.user.id !== usuario.id &amp;&amp; req.user.rol !== 'admin') {
+      return res.status(403).json({ error: 'No autorizado' });
+    }
+    res.json(usuario);
+  } catch (error) {
+    res.status(404).json({ error: 'Usuario no encontrado' });
+  }
+});
+</code></pre>
 <ol>
 <li>Usar UUID o tokens seguros en lugar de IDs secuenciales</li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<pre><code class="language-python">import uuid
+from django.db import models
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Documento</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">nombre</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">contenido</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">dueno</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
-</code></pre></div>
-
+class Documento(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    nombre = models.CharField(max_length=255)
+    contenido = models.TextField()
+    dueno = models.ForeignKey(User, on_delete=models.CASCADE)
+</code></pre>
 <h2 id="configuracion-segura">Configuración segura<a class="headerlink" href="#configuracion-segura" title="Permanent link">&para;</a></h2>
 <h3 id="configuracion-por-entorno">Configuración por entorno<a class="headerlink" href="#configuracion-por-entorno" title="Permanent link">&para;</a></h3>
 <p>config/development.js</p>
-<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">5432</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;miapp_dev&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;postgres&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="nx">debug</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;http://localhost:8080&#39;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">auth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">jwtSecret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clave_dev&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">passwordSaltRounds</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">module.exports = {
+  database: { host: 'localhost', port: 5432, name: 'miapp_dev', user: 'postgres' },
+  server: { port: 3000, debug: true, cors: { origin: ['http://localhost:8080'] } },
+  auth: { jwtSecret: 'clave_dev', passwordSaltRounds: 10 }
+};
+</code></pre>
 <p>config/production.js</p>
-<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_HOST</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PORT</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_NAME</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_USER</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PASSWORD</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="nx">debug</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;https://tuapp.es&#39;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">auth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">jwtSecret</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="nx">passwordSaltRounds</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">module.exports = {
+  database: {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    name: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD
+  },
+  server: { port: process.env.PORT || 3000, debug: false, cors: { origin: ['https://tuapp.es'] } },
+  auth: { jwtSecret: process.env.JWT_SECRET, passwordSaltRounds: 12 }
+};
+</code></pre>
 <h3 id="principios-de-configuracion-segura">Principios de configuración segura<a class="headerlink" href="#principios-de-configuracion-segura" title="Permanent link">&para;</a></h3>
 <ol>
 <li>No commitear secretos</li>
 <li>Endurecer cabeceras HTTP</li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="err">X-Content-Type-Options: nosniff</span>
-<span class="err">X-Frame-Options: DENY</span>
-<span class="err">X-XSS-Protection: 1; mode=block</span>
-<span class="err">Content-Security-Policy: default-src &#39;self&#39;</span>
-<span class="err">Strict-Transport-Security: max-age=31536000; includeSubDomains</span>
-</code></pre></div>
-
+<pre><code class="language-http">X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self'
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+</code></pre>
 <ol>
 <li>Logging seguro (sin datos sensibles)</li>
 </ol>
@@ -1207,7 +1200,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

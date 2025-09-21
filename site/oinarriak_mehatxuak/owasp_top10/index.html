@@ -1693,47 +1693,46 @@
 <li><strong>SQL Injekzioa (SQL Injection)</strong>: </li>
 </ul>
 <p>Hau da injekzio-eraso ohikoena. Datu-baseetan eragiten du.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">-- Adibidez: Erabiltzailearen sarrera: &#39; OR &#39;1&#39;=&#39;1&#39; --</span>
+<pre><code class="language-sql">-- Adibidez: Erabiltzailearen sarrera: ' OR '1'='1' --
 
-<span class="c1">-- SQL kontsulta:</span>
+-- SQL kontsulta:
 
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="c1">-- AND password = &#39;...&#39;</span>
+SELECT * FROM users WHERE username = '' OR '1'='1' -- AND password = '...'
 
-<span class="c1">-- Aurreko SQL-ean geratuko dena izango da guk sartutako kodearen ondoren dagoen guztia ez dela exekutatuko.</span>
-</code></pre></div>
-
+-- Aurreko SQL-ean geratuko dena izango da guk sartutako kodearen ondoren dagoen guztia ez dela exekutatuko.
+</code></pre>
 <ul>
 <li><strong>OS Komando Injekzioa (OS Command Injection)</strong>: </li>
 </ul>
 <p>OS Komando Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa egiteko, erasotzaileak webgunearen bidez lortzen du zerbitzariaren sistema eragilean komandoak sartzea eta exekutatzea.</p>
-<div class="codehilite"><pre><span></span><code>--<span class="w"> </span>Adibidez:
-ping<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="p">;</span><span class="w"> </span>ls<span class="w"> </span>-l
+<pre><code class="language-bash">-- Adibidez:
+ping 127.0.0.1 ; ls -l
 
---<span class="w"> </span>Imajinatu<span class="w"> </span>web-aplikazio<span class="w"> </span>batek<span class="w"> </span>formulario<span class="w"> </span>bat<span class="w"> </span>duela,<span class="w"> </span>non<span class="w"> </span>erabiltzaileak<span class="w"> </span>IP<span class="w"> </span>helbide<span class="w"> </span>bat<span class="w"> </span>sartzen<span class="w"> </span>duen.<span class="w"> </span>Aplikazioak,<span class="w"> </span>atzealdean,<span class="w"> </span>sistema<span class="w"> </span>eragilearen<span class="w"> </span>ping<span class="w"> </span>komandoa<span class="w"> </span>exekutatzen<span class="w"> </span>du,<span class="w"> </span>helbidea<span class="w"> </span>eskuragarri<span class="w"> </span>dagoen<span class="w"> </span>egiaztatzeko.
-Emandako<span class="w"> </span>adibidearekin,<span class="w"> </span>ping<span class="w"> </span>egin<span class="w"> </span>ostean,<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>exekutatzean,<span class="w"> </span>Unix<span class="w"> </span>eta<span class="w"> </span>Linux<span class="w"> </span>sistemetan,<span class="w"> </span>komando<span class="w"> </span>honek<span class="w"> </span>uneko<span class="w"> </span>direktorioko<span class="w"> </span>fitxategiak<span class="w"> </span>eta<span class="w"> </span>karpetak<span class="w"> </span>zerrendatzen<span class="w"> </span>ditu.
-</code></pre></div>
+-- Imajinatu web-aplikazio batek formulario bat duela, non erabiltzaileak IP helbide bat sartzen duen. Aplikazioak, atzealdean, sistema eragilearen ping komandoa exekutatzen du, helbidea eskuragarri dagoen egiaztatzeko.
+Emandako adibidearekin, ping egin ostean, ls -l exekutatzean, Unix eta Linux sistemetan, komando honek uneko direktorioko fitxategiak eta karpetak zerrendatzen ditu.
 
+</code></pre>
 <ul>
 <li><strong>LDAP Injekzioa (LDAP Injection)</strong>: </li>
 </ul>
 <p>LDAP protokoloa (Lightweight Directory Access Protocol) sareko direktorio-zerbitzuak atzitzeko eta kudeatzeko erabiltzen den protokolo estandar bat da. LDAP-en funtzio nagusia autentifikazioa eta baimenen kudeaketa zentralizatzea da.</p>
 <p>LDAP Injekzioa ez da nabigatzailean gertatzen, baizik eta zerbitzarian. Erasoa egiteko, erasotzaileak webgunearen bidez lortzen du zerbitzariaren sistema eragilean komandoak sartzea eta exekutatzea.</p>
-<div class="codehilite"><pre><span></span><code>--<span class="w"> </span>Adibidez:
-*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*
+<pre><code class="language-bash">-- Adibidez:
+*)(uid=*))(|(uid=*
 
---<span class="w"> </span>Imajinatu<span class="w"> </span>web-aplikazio<span class="w"> </span>batek<span class="w"> </span>erabiltzaileen<span class="w"> </span>autentifikazioa<span class="w"> </span>LDAP<span class="w"> </span>zerbitzari<span class="w"> </span>baten<span class="w"> </span>bidez<span class="w"> </span>egiten<span class="w"> </span>duela.<span class="w"> </span>Erabiltzaileak<span class="w"> </span>bere<span class="w"> </span>UID<span class="w"> </span><span class="o">(</span>erabiltzaile-identifikatzailea<span class="o">)</span><span class="w"> </span>eta<span class="w"> </span>pasahitza<span class="w"> </span>sartzen<span class="w"> </span>ditu,<span class="w"> </span>eta<span class="w"> </span>aplikazioak<span class="w"> </span>LDAP<span class="w"> </span>kontsulta<span class="w"> </span>bat<span class="w"> </span>eraikitzen<span class="w"> </span>du<span class="w"> </span>horrekin.
--<span class="w"> </span>Jatorrizko<span class="w"> </span>LDAP<span class="w"> </span>kontsulta<span class="w"> </span><span class="o">(</span>normalean<span class="w"> </span>ezkutuan<span class="o">)</span>:
-<span class="o">(</span><span class="nv">uid</span><span class="o">=</span>erabiltzailearen_sarrera<span class="o">)(</span><span class="nv">userPassword</span><span class="o">=</span>pasahitza<span class="o">)</span>
--<span class="w"> </span>Erasoa:<span class="w"> </span>Erasotzaileak<span class="w"> </span>LDAP<span class="w"> </span>sintaxiaren<span class="w"> </span>karaktere<span class="w"> </span>bereziak<span class="w"> </span><span class="o">(</span>adibidez,<span class="w"> </span>*,<span class="w"> </span><span class="o">(</span>,<span class="w"> </span><span class="p">|</span><span class="o">)</span><span class="w"> </span>erabiltzen<span class="w"> </span>ditu<span class="w"> </span>kontsultaren<span class="w"> </span>logika<span class="w"> </span>aldatzeko.<span class="w"> </span>Horrek<span class="w"> </span>SQL<span class="w"> </span>Injekzioaren<span class="w"> </span><span class="s1">&#39; OR &#39;</span><span class="m">1</span><span class="s1">&#39;=&#39;</span><span class="m">1</span><span class="err">&#39;</span><span class="w"> </span>adibidearen<span class="w"> </span>antzeko<span class="w"> </span>efektua<span class="w"> </span>sortzen<span class="w"> </span>du.
+-- Imajinatu web-aplikazio batek erabiltzaileen autentifikazioa LDAP zerbitzari baten bidez egiten duela. Erabiltzaileak bere UID (erabiltzaile-identifikatzailea) eta pasahitza sartzen ditu, eta aplikazioak LDAP kontsulta bat eraikitzen du horrekin.
+- Jatorrizko LDAP kontsulta (normalean ezkutuan):
+(uid=erabiltzailearen_sarrera)(userPassword=pasahitza)
+- Erasoa: Erasotzaileak LDAP sintaxiaren karaktere bereziak (adibidez, *, (, |) erabiltzen ditu kontsultaren logika aldatzeko. Horrek SQL Injekzioaren ' OR '1'='1' adibidearen antzeko efektua sortzen du.
 
-*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*
+*)(uid=*))(|(uid=*
 
--<span class="w"> </span>Lortutako<span class="w"> </span>kontsulta:
-<span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">)(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">))(</span><span class="p">|</span><span class="o">(</span><span class="nv">uid</span><span class="o">=</span>*<span class="o">)(</span><span class="nv">userPassword</span><span class="o">=</span>pasahitza<span class="o">)</span>
+- Lortutako kontsulta:
+(uid=*)(uid=*))(|(uid=*)(userPassword=pasahitza)
 
--<span class="w"> </span>Ondorioa:<span class="w"> </span>Kontsulta<span class="w"> </span>hau,<span class="w"> </span>LDAP-ek<span class="w"> </span>aztertuta,<span class="w"> </span>hainbat<span class="w"> </span>baldintza<span class="w"> </span>sortzen<span class="w"> </span>ditu.<span class="w"> </span>Horrek<span class="w"> </span>uid<span class="w"> </span>eta<span class="w"> </span>pasahitz-baldintza<span class="w"> </span>originala<span class="w"> </span>saihesten<span class="w"> </span>du,<span class="w"> </span>eta<span class="w"> </span>erabiltzaile<span class="w"> </span>guztien<span class="w"> </span>datuak<span class="w"> </span>itzultzen<span class="w"> </span>ditu<span class="w"> </span>edo<span class="w"> </span>autentifikazioa<span class="w"> </span>gainditzen<span class="w"> </span>du.<span class="w"> </span>Erasotzaileak<span class="w"> </span>lortzen<span class="w"> </span>du<span class="w"> </span>LDAP<span class="w"> </span>zerbitzarian<span class="w"> </span>saioa<span class="w"> </span>hastea,<span class="w"> </span>pasahitza<span class="w"> </span>jakin<span class="w"> </span>gabe,<span class="w"> </span>edo<span class="w"> </span>erabiltzaile-informazio<span class="w"> </span>sentikorra<span class="w"> </span>lortzea.
-</code></pre></div>
+- Ondorioa: Kontsulta hau, LDAP-ek aztertuta, hainbat baldintza sortzen ditu. Horrek uid eta pasahitz-baldintza originala saihesten du, eta erabiltzaile guztien datuak itzultzen ditu edo autentifikazioa gainditzen du. Erasotzaileak lortzen du LDAP zerbitzarian saioa hastea, pasahitza jakin gabe, edo erabiltzaile-informazio sentikorra lortzea.
 
+</code></pre>
 <h3 id="prebentzioa_2">Prebentzioa<a class="headerlink" href="#prebentzioa_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Parametro kontsultak erabili (prepared statements)</li>
@@ -1936,7 +1935,7 @@ Emandako<span class="w"> </span>adibidearekin,<span class="w"> </span>ping<span 
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>

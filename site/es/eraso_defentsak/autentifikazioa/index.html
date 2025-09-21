@@ -1073,27 +1073,26 @@
 </ul>
 <h3 id="hashear-contrasenas">Hashear contraseñas<a class="headerlink" href="#hashear-contrasenas" title="Permanent link">&para;</a></h3>
 <h4 id="usando-bcrypt-python">Usando bcrypt (Python)<a class="headerlink" href="#usando-bcrypt-python" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bcrypt</span>
+<pre><code class="language-python">import bcrypt
 
-<span class="k">def</span><span class="w"> </span><span class="nf">crear_contrasena</span><span class="p">(</span><span class="n">contrasena</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-    <span class="c1"># Generar sal aleatoria</span>
-    <span class="n">sal</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">()</span>
-    <span class="c1"># Hashear contraseña</span>
-    <span class="n">hash_bytes</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">contrasena</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">sal</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">hash_bytes</span>
+def crear_contrasena(contrasena: str) -&gt; bytes:
+    # Generar sal aleatoria
+    sal = bcrypt.gensalt()
+    # Hashear contraseña
+    hash_bytes = bcrypt.hashpw(contrasena.encode('utf-8'), sal)
+    return hash_bytes
 
-<span class="k">def</span><span class="w"> </span><span class="nf">verificar_contrasena</span><span class="p">(</span><span class="n">contrasena</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">hash_almacenado</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">checkpw</span><span class="p">(</span><span class="n">contrasena</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">hash_almacenado</span><span class="p">)</span>
+def verificar_contrasena(contrasena: str, hash_almacenado: bytes) -&gt; bool:
+    return bcrypt.checkpw(contrasena.encode('utf-8'), hash_almacenado)
 
-<span class="c1"># Ejemplo</span>
-<span class="n">contrasena_usuario</span> <span class="o">=</span> <span class="s2">&quot;mi_secreto&quot;</span>
-<span class="n">hash_bytes</span> <span class="o">=</span> <span class="n">crear_contrasena</span><span class="p">(</span><span class="n">contrasena_usuario</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hash almacenado: </span><span class="si">{</span><span class="n">hash_bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+# Ejemplo
+contrasena_usuario = &quot;mi_secreto&quot;
+hash_bytes = crear_contrasena(contrasena_usuario)
+print(f&quot;Hash almacenado: {hash_bytes.decode()}&quot;)
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contraseña incorrecta:&quot;</span><span class="p">,</span> <span class="n">verificar_contrasena</span><span class="p">(</span><span class="s2">&quot;otra&quot;</span><span class="p">,</span> <span class="n">hash_bytes</span><span class="p">))</span>  <span class="c1"># False</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contraseña correcta:&quot;</span><span class="p">,</span> <span class="n">verificar_contrasena</span><span class="p">(</span><span class="n">contrasena_usuario</span><span class="p">,</span> <span class="n">hash_bytes</span><span class="p">))</span>  <span class="c1"># True</span>
-</code></pre></div>
-
+print(&quot;Contraseña incorrecta:&quot;, verificar_contrasena(&quot;otra&quot;, hash_bytes))  # False
+print(&quot;Contraseña correcta:&quot;, verificar_contrasena(contrasena_usuario, hash_bytes))  # True
+</code></pre>
 <h3 id="por-que-es-importante-la-sal-salt">¿Por qué es importante la sal (Salt)?<a class="headerlink" href="#por-que-es-importante-la-sal-salt" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Mismas contraseñas producen hashes distintos</li>
@@ -1103,51 +1102,49 @@
 <h2 id="gestion-segura-de-sesiones">Gestión segura de sesiones<a class="headerlink" href="#gestion-segura-de-sesiones" title="Permanent link">&para;</a></h2>
 <h3 id="configurar-cookies-seguras">Configurar cookies seguras<a class="headerlink" href="#configurar-cookies-seguras" title="Permanent link">&para;</a></h3>
 <p>Ejemplo en Express.js:</p>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express-session&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">crypto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+<pre><code class="language-javascript">const session = require('express-session');
+const crypto = require('crypto');
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">SESSION_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">32</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+const SESSION_SECRET = crypto.randomBytes(32).toString('hex');
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">session</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="nx">SESSION_SECRET</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;sessionId&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">resave</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">saveUninitialized</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;lax&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">domain</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;.tu-dominio.es&#39;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}));</span>
-</code></pre></div>
-
+app.use(session({
+  secret: SESSION_SECRET,
+  name: 'sessionId',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'lax',
+    maxAge: 1000 * 60 * 60 * 24,
+    domain: '.tu-dominio.es'
+  }
+}));
+</code></pre>
 <h3 id="jwt-json-web-tokens">JWT (JSON Web Tokens)<a class="headerlink" href="#jwt-json-web-tokens" title="Permanent link">&para;</a></h3>
 <p>Crear y verificar un token (Node.js):</p>
-<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jsonwebtoken&#39;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">crypto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+<pre><code class="language-javascript">const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">64</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">crearToken</span><span class="p">(</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">usuario</span><span class="p">.</span><span class="nx">email</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">JWT_SECRET</span><span class="p">,</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1h&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TuApp&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">audience</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tuapp.es&#39;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">}</span>
+function crearToken(usuario) {
+  return jwt.sign(
+    { sub: usuario.id, email: usuario.email },
+    JWT_SECRET,
+    { expiresIn: '1h', issuer: 'TuApp', audience: 'tuapp.es' }
+  );
+}
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">verificarToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TuApp&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">audience</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tuapp.es&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">valido</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">contenido</span><span class="o">:</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">valido</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
+function verificarToken(token) {
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET, { issuer: 'TuApp', audience: 'tuapp.es' });
+    return { valido: true, contenido: decoded };
+  } catch (error) {
+    return { valido: false, error: error.message };
+  }
+}
+</code></pre>
 <h2 id="autenticacion-multifactor-mfa">Autenticación multifactor (MFA)<a class="headerlink" href="#autenticacion-multifactor-mfa" title="Permanent link">&para;</a></h2>
 <h3 id="por-que-usar-mfa">¿Por qué usar MFA?<a class="headerlink" href="#por-que-usar-mfa" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1162,21 +1159,20 @@
 <li>Aplicaciones corporativas de aprobación</li>
 </ol>
 <h3 id="implementacion-otp">Implementación OTP<a class="headerlink" href="#implementacion-otp" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyotp</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">qrcode</span>
+<pre><code class="language-python">import pyotp
+import qrcode
 
-<span class="k">def</span><span class="w"> </span><span class="nf">configurar_mfa</span><span class="p">(</span><span class="n">usuario</span><span class="p">):</span>
-    <span class="n">clave</span> <span class="o">=</span> <span class="n">pyotp</span><span class="o">.</span><span class="n">random_base32</span><span class="p">()</span>
-    <span class="n">totp_uri</span> <span class="o">=</span> <span class="n">pyotp</span><span class="o">.</span><span class="n">totp</span><span class="o">.</span><span class="n">TOTP</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span><span class="o">.</span><span class="n">provisioning_uri</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">usuario</span><span class="p">,</span> <span class="n">issuer_name</span><span class="o">=</span><span class="s1">&#39;Tu App&#39;</span><span class="p">)</span>
-    <span class="n">qr</span> <span class="o">=</span> <span class="n">qrcode</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">totp_uri</span><span class="p">)</span>
-    <span class="n">qr</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mfa_</span><span class="si">{</span><span class="n">usuario</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">clave</span>
+def configurar_mfa(usuario):
+    clave = pyotp.random_base32()
+    totp_uri = pyotp.totp.TOTP(clave).provisioning_uri(name=usuario, issuer_name='Tu App')
+    qr = qrcode.make(totp_uri)
+    qr.save(f'mfa_{usuario}.png')
+    return clave
 
-<span class="k">def</span><span class="w"> </span><span class="nf">verificar_codigo</span><span class="p">(</span><span class="n">clave</span><span class="p">,</span> <span class="n">codigo_usuario</span><span class="p">):</span>
-    <span class="n">totp</span> <span class="o">=</span> <span class="n">pyotp</span><span class="o">.</span><span class="n">TOTP</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">totp</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">codigo_usuario</span><span class="p">)</span>
-</code></pre></div>
-
+def verificar_codigo(clave, codigo_usuario):
+    totp = pyotp.TOTP(clave)
+    return totp.verify(codigo_usuario)
+</code></pre>
 <h2 id="consejos-para-la-seguridad-de-sesion">Consejos para la seguridad de sesión<a class="headerlink" href="#consejos-para-la-seguridad-de-sesion" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Usar identificadores largos y aleatorios</li>
@@ -1245,7 +1241,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>

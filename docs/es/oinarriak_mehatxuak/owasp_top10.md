@@ -158,7 +158,7 @@ Problemas para identificar y autenticar usuarios.
 
 ### Retos
 
-- [Identification and Authentication Failures](../ariketak/identification_and_authentication_failures.md)
+- [Identification Authentication Failures](../ariketak/identification_authentication_failures.md)
 
 ## 8. Software and Data Integrity Failures (Fallas de integridad de software y datos)
 
@@ -177,7 +177,7 @@ Riesgos cuando no se verifica la integridad y procedencia de código y datos.
 
 ### Retos
 
-- [Software and Data Integrity Failures](../ariketak/software_and_data_integrity_failures.md)
+- [Software Data Integrity Failures](../ariketak/software_data_integrity_failures.md)
 
 ## 9. Security Logging and Monitoring Failures (Fallas de registro y monitoreo)
 

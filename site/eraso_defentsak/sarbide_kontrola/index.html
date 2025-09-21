@@ -1002,83 +1002,81 @@
 <h3 id="1-rbac-role-based-access-control">1. RBAC (Role-Based Access Control)<a class="headerlink" href="#1-rbac-role-based-access-control" title="Permanent link">&para;</a></h3>
 <p>Erabiltzaileak rol ezberdinetan sailkatzen dira eta rol bakoitzak baimen multzo bat du.</p>
 <p><strong>Adibidea (Node.js + Express):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Rolen definizioa</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">ROLES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">ADMIN</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">EDITOR</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;editor&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">USER</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">BIDALI</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bidali&#39;</span>
-<span class="p">};</span>
+<pre><code class="language-javascript">// Rolen definizioa
+const ROLES = {
+  ADMIN: 'admin',
+  EDITOR: 'editor',
+  USER: 'user',
+  BIDALI: 'bidali'
+};
 
-<span class="c1">// Baimenen definizioa rol bakoitzarentzat</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">PERMISSIONS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">ADMIN</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;irakurri&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;idatzi&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ezabatu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;aldatu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bidali&#39;</span><span class="p">],</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">EDITOR</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;irakurri&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;idatzi&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bidali&#39;</span><span class="p">],</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">USER</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;irakurri&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bidali&#39;</span><span class="p">],</span>
-<span class="w">  </span><span class="p">[</span><span class="nx">ROLES</span><span class="p">.</span><span class="nx">BIDALI</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;bidali&#39;</span><span class="p">]</span>
-<span class="p">};</span>
+// Baimenen definizioa rol bakoitzarentzat
+const PERMISSIONS = {
+  [ROLES.ADMIN]: ['irakurri', 'idatzi', 'ezabatu', 'aldatu', 'bidali'],
+  [ROLES.EDITOR]: ['irakurri', 'idatzi', 'bidali'],
+  [ROLES.USER]: ['irakurri', 'bidali'],
+  [ROLES.BIDALI]: ['bidali']
+};
 
-<span class="c1">// Middleware baimenak egiaztatzeko</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">checkPermission</span><span class="p">(</span><span class="nx">ekintza</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">erabiltzaileRola</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">rola</span><span class="p">;</span><span class="w"> </span><span class="c1">// Autentifikazio middlewaretik dator</span>
+// Middleware baimenak egiaztatzeko
+function checkPermission(ekintza) {
+  return (req, res, next) =&gt; {
+    const erabiltzaileRola = req.user.rola; // Autentifikazio middlewaretik dator
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">erabiltzaileRola</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">PERMISSIONS</span><span class="p">[</span><span class="nx">erabiltzaileRola</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
-<span class="w">        </span><span class="o">!</span><span class="nx">PERMISSIONS</span><span class="p">[</span><span class="nx">erabiltzaileRola</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">ekintza</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Ez duzu baimenik ekintza hau egiteko&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">}</span>
+    if (!erabiltzaileRola || !PERMISSIONS[erabiltzaileRola] || 
+        !PERMISSIONS[erabiltzaileRola].includes(ekintza)) {
+      return res.status(403).json({ error: 'Ez duzu baimenik ekintza hau egiteko' });
+    }
+    next();
+  };
+}
 
-<span class="c1">// Erabilera adibidea</span>
-<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;/api/erabiltzaileak/:id&#39;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">  </span><span class="nx">authenticateUser</span><span class="p">,</span><span class="w"> </span><span class="c1">// Lehenik autentifikatu</span>
-<span class="w">  </span><span class="nx">checkPermission</span><span class="p">(</span><span class="s1">&#39;ezabatu&#39;</span><span class="p">),</span><span class="w"> </span><span class="c1">// Ondoren baimena egiaztatu</span>
-<span class="w">  </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Kodea erabiltzailea ezabatzeko</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">);</span>
-</code></pre></div>
-
+// Erabilera adibidea
+app.delete('/api/erabiltzaileak/:id', 
+  authenticateUser, // Lehenik autentifikatu
+  checkPermission('ezabatu'), // Ondoren baimena egiaztatu
+  (req, res) =&gt; {
+    // Kodea erabiltzailea ezabatzeko
+  }
+);
+</code></pre>
 <h3 id="2-abac-attribute-based-access-control">2. ABAC (Attribute-Based Access Control)<a class="headerlink" href="#2-abac-attribute-based-access-control" title="Permanent link">&para;</a></h3>
 <p>Erabiltzailearen eta baliabidearen atributuen arabera erabakitzen du sarbidea.</p>
 <p><strong>Adibidea (Python + Policy):</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<pre><code class="language-python">from functools import wraps
 
-<span class="k">def</span><span class="w"> </span><span class="nf">check_access</span><span class="p">(</span><span class="n">erabiltzailea</span><span class="p">,</span> <span class="n">baliabidea</span><span class="p">,</span> <span class="n">ekintza</span><span class="p">):</span>
-    <span class="c1"># Adibide sinple bat</span>
-    <span class="k">if</span> <span class="n">ekintza</span> <span class="o">==</span> <span class="s2">&quot;irakurri&quot;</span> <span class="ow">and</span> <span class="n">baliabidea</span><span class="o">.</span><span class="n">jabea</span> <span class="o">==</span> <span class="n">erabiltzailea</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">ekintza</span> <span class="o">==</span> <span class="s2">&quot;editatu&quot;</span> <span class="ow">and</span> <span class="n">erabiltzailea</span><span class="o">.</span><span class="n">rola</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">ekintza</span> <span class="o">==</span> <span class="s2">&quot;bidali&quot;</span> <span class="ow">and</span> <span class="n">erabiltzailea</span><span class="o">.</span><span class="n">egoera</span> <span class="o">==</span> <span class="s2">&quot;aktiboa&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="kc">False</span>
+def check_access(erabiltzailea, baliabidea, ekintza):
+    # Adibide sinple bat
+    if ekintza == &quot;irakurri&quot; and baliabidea.jabea == erabiltzailea.id:
+        return True
+    if ekintza == &quot;editatu&quot; and erabiltzailea.rola == &quot;admin&quot;:
+        return True
+    if ekintza == &quot;bidali&quot; and erabiltzailea.egoera == &quot;aktiboa&quot;:
+        return True
+    return False
 
-<span class="k">def</span><span class="w"> </span><span class="nf">access_required</span><span class="p">(</span><span class="n">ekintza</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">decorated_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">erabiltzailea</span> <span class="o">=</span> <span class="n">get_jwt_identity</span><span class="p">()</span>
-            <span class="n">baliabidea</span> <span class="o">=</span> <span class="n">get_baliabidea</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;balibide_id&#39;</span><span class="p">])</span>
+def access_required(ekintza):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            erabiltzailea = get_jwt_identity()
+            baliabidea = get_baliabidea(kwargs['balibide_id'])
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">check_access</span><span class="p">(</span><span class="n">erabiltzailea</span><span class="p">,</span> <span class="n">baliabidea</span><span class="p">,</span> <span class="n">ekintza</span><span class="p">):</span>
-                <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Ez duzu baimenik&quot;</span><span class="p">},</span> <span class="mi">403</span>
+            if not check_access(erabiltzailea, baliabidea, ekintza):
+                return {&quot;error&quot;: &quot;Ez duzu baimenik&quot;}, 403
 
-            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">decorated_function</span>
-    <span class="k">return</span> <span class="n">decorator</span>
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
 
-<span class="c1"># Erabilera adibidea</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/dokumentua/&lt;int:dokumentu_id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PUT&#39;</span><span class="p">])</span>
-<span class="nd">@jwt_required</span><span class="p">()</span>
-<span class="nd">@access_required</span><span class="p">(</span><span class="s1">&#39;editatu&#39;</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">editatu_dokumentua</span><span class="p">(</span><span class="n">dokumentu_id</span><span class="p">):</span>
-    <span class="c1"># Dokumentua editatzeko kodea</span>
-    <span class="k">pass</span>
-</code></pre></div>
-
+# Erabilera adibidea
+@app.route('/dokumentua/&lt;int:dokumentu_id&gt;', methods=['PUT'])
+@jwt_required()
+@access_required('editatu')
+def editatu_dokumentua(dokumentu_id):
+    # Dokumentua editatzeko kodea
+    pass
+</code></pre>
 <h2 id="idor-insecure-direct-object-reference-erasoak">IDOR (Insecure Direct Object Reference) erasoak<a class="headerlink" href="#idor-insecure-direct-object-reference-erasoak" title="Permanent link">&para;</a></h2>
 <h3 id="zer-da-idor">Zer da IDOR?<a class="headerlink" href="#zer-da-idor" title="Permanent link">&para;</a></h3>
 <p>Erabiltzaileak baliabideetarako sarbide zuzena duela uste duen baina benetan ez duenean gertatzen den segurtasun akatsa.</p>
@@ -1086,88 +1084,84 @@
 <ol>
 <li><strong>Balidatu sarbidea baliabide bakoitzeko</strong></li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Adibidea Express.js-n</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/erabiltzaileak/:id&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">erabiltzailea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Erabiltzailea</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<pre><code class="language-javascript">// Adibidea Express.js-n
+app.get('/api/erabiltzaileak/:id', async (req, res) =&gt; {
+  try {
+    const erabiltzailea = await Erabiltzailea.findById(req.params.id);
 
-<span class="w">    </span><span class="c1">// Egiaztatu erabiltzaileak baimena duen baliabidea ikusteko</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">erabiltzailea</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">rola</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Ez duzu baimenik&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
+    // Egiaztatu erabiltzaileak baimena duen baliabidea ikusteko
+    if (req.user.id !== erabiltzailea.id &amp;&amp; req.user.rola !== 'admin') {
+      return res.status(403).json({ error: 'Ez duzu baimenik' });
+    }
 
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">erabiltzailea</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Erabiltzailea ez da aurkitu&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-
+    res.json(erabiltzailea);
+  } catch (error) {
+    res.status(404).json({ error: 'Erabiltzailea ez da aurkitu' });
+  }
+});
+</code></pre>
 <ol>
 <li><strong>Erabili UUID edo token seguruak</strong> ID sekuentzialen ordez</li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<pre><code class="language-python">import uuid
+from django.db import models
 
-<span class="k">class</span><span class="w"> </span><span class="nc">Dokumentua</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="c1"># ID sekretua erabiliz</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">izena</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">edukia</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">jabea</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+class Dokumentua(models.Model):
+    # ID sekretua erabiliz
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    izena = models.CharField(max_length=255)
+    edukia = models.TextField()
+    jabea = models.ForeignKey(User, on_delete=models.CASCADE)
 
-<span class="c1"># URL adibidea: /dokumentuak/3F2504E0-4F89-11D3-9A0C-0305E82C3301/</span>
-</code></pre></div>
-
+# URL adibidea: /dokumentuak/3F2504E0-4F89-11D3-9A0C-0305E82C3301/
+</code></pre>
 <h2 id="konfigurazio-segurua">Konfigurazio segurua<a class="headerlink" href="#konfigurazio-segurua" title="Permanent link">&para;</a></h2>
 <h3 id="ingurunearen-araberako-konfigurazioa">Ingurunearen araberako konfigurazioa<a class="headerlink" href="#ingurunearen-araberako-konfigurazioa" title="Permanent link">&para;</a></h3>
 <p><strong>config/development.js</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Garapenerako ezarpenak</span>
-<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">5432</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;nireapp_garapena&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;postgres&#39;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">debug</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;http://localhost:8080&#39;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">auth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">jwtSecret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;garapeneko_giltza_bakarra&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">passwordSaltRounds</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">module.exports = {
+  // Garapenerako ezarpenak
+  database: {
+    host: 'localhost',
+    port: 5432,
+    name: 'nireapp_garapena',
+    user: 'postgres'
+  },
+  server: {
+    port: 3000,
+    debug: true,
+    cors: {
+      origin: ['http://localhost:8080']
+    }
+  },
+  auth: {
+    jwtSecret: 'garapeneko_giltza_bakarra',
+    passwordSaltRounds: 10
+  }
+};
+</code></pre>
 <p><strong>config/production.js</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Produkzioko ezarpenak</span>
-<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_HOST</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PORT</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_NAME</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_USER</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PASSWORD</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">debug</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">cors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">origin</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;https://zureaplikazioa.eus&#39;</span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">auth</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">jwtSecret</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">passwordSaltRounds</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-
+<pre><code class="language-javascript">module.exports = {
+  // Produkzioko ezarpenak
+  database: {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    name: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD
+  },
+  server: {
+    port: process.env.PORT || 3000,
+    debug: false,
+    cors: {
+      origin: ['https://zureaplikazioa.eus']
+    }
+  },
+  auth: {
+    jwtSecret: process.env.JWT_SECRET,
+    passwordSaltRounds: 12
+  }
+};
+</code></pre>
 <h3 id="konfigurazio-seguruaren-printzipioak">Konfigurazio seguruaren printzipioak<a class="headerlink" href="#konfigurazio-seguruaren-printzipioak" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Ez bidali konfigurazio sentikorrak koderik</strong></li>
@@ -1258,7 +1252,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Arbelean kopiatuta", "clipboard.copy": "Kopiatu arbelean", "search.result.more.one": "Bat gehiago orri honetan", "search.result.more.other": "# gehiago orri honetan", "search.result.none": "Bat datorren dokumenturik ez", "search.result.one": "Bat datorren dokumentu bat", "search.result.other": "Bat datozen # dokumentu", "search.result.placeholder": "Idatzi bilatzen hasteko", "search.result.term.missing": "Falta da", "select.version": "Hautatu bertsioa"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>

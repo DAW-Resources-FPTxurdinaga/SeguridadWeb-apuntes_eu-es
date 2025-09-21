@@ -994,43 +994,42 @@
 <p><img alt="DNS" src="../images/dns1.png" /></p>
 <p>Al realizar una solicitud DNS, primero se consulta la caché local; después, el servidor DNS del ISP, los servidores raíz, los servidores TLD y los servidores autoritativos se activan hasta obtener la IP. La respuesta incluye un TTL (Time To Live) que indica cuánto tiempo puede mantenerse en caché.</p>
 <p><img alt="DNS" src="../images/dns2.png" /></p>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="mf">1.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Tu</span><span class="w"> </span><span class="n">ordenador</span>
-<span class="w">    </span><span class="n">Primero</span><span class="w"> </span><span class="n">mira</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">local</span><span class="p">.</span><span class="w"> </span><span class="n">Puede</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">hayas</span><span class="w"> </span><span class="n">visitado</span><span class="w"> </span><span class="n">ese</span><span class="w"> </span><span class="n">sitio</span><span class="w"> </span><span class="n">recientemente</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">recuerde</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">IP</span><span class="p">.</span>
-<span class="w">    </span><span class="nl">Resultado:</span>
-<span class="w">    </span><span class="err">✅</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Conecta</span><span class="w"> </span><span class="n">directamente</span>
-<span class="w">    </span><span class="err">❌</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Pasa</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">siguiente</span><span class="w"> </span><span class="n">paso</span>
+<pre><code>    1. Paso: Tu ordenador
+    Primero mira en su caché local. Puede que hayas visitado ese sitio recientemente y recuerde la IP.
+    Resultado:
+    ✅ Si lo encuentra: Conecta directamente
+    ❌ Si no lo encuentra: Pasa al siguiente paso
 
 
-<span class="w">    </span><span class="mf">2.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">recursivo</span>
-<span class="w">    </span><span class="n">Es</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">proporciona</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">ISP</span><span class="w"> </span><span class="p">(</span><span class="n">o</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">tú</span><span class="w"> </span><span class="n">elijas</span><span class="p">).</span>
-<span class="w">    </span><span class="n">También</span><span class="w"> </span><span class="n">consulta</span><span class="w"> </span><span class="n">su</span><span class="w"> </span><span class="n">propia</span><span class="w"> </span><span class="n">caché</span><span class="w"> </span><span class="n">local</span><span class="p">.</span>
-<span class="w">    </span><span class="n">Sitios</span><span class="w"> </span><span class="n">populares</span><span class="w"> </span><span class="n">como</span><span class="w"> </span><span class="n">Google</span><span class="p">,</span><span class="w"> </span><span class="n">Facebook</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">Twitter</span><span class="w"> </span><span class="n">suelen</span><span class="w"> </span><span class="n">estar</span><span class="w"> </span><span class="n">aquí</span><span class="w"> </span><span class="n">cacheados</span><span class="p">.</span>
-<span class="w">    </span><span class="nl">Resultado:</span>
-<span class="w">    </span><span class="err">✅</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Lo</span><span class="w"> </span><span class="n">devuelve</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">equipo</span>
-<span class="w">    </span><span class="err">❌</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="nl">encuentra:</span><span class="w"> </span><span class="n">Acude</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">servidores</span><span class="w"> </span><span class="n">raíz</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Internet</span>
+    2. Paso: Servidor DNS recursivo
+    Es el servidor que te proporciona tu ISP (o el que tú elijas).
+    También consulta su propia caché local.
+    Sitios populares como Google, Facebook o Twitter suelen estar aquí cacheados.
+    Resultado:
+    ✅ Si lo encuentra: Lo devuelve a tu equipo
+    ❌ Si no lo encuentra: Acude a los servidores raíz de Internet
 
 
-<span class="w">    </span><span class="mf">3.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidores</span><span class="w"> </span><span class="n">raíz</span><span class="w"> </span><span class="p">(</span><span class="n">Root</span><span class="w"> </span><span class="n">DNS</span><span class="p">)</span>
-<span class="w">    </span><span class="n">Son</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="err">“</span><span class="n">columna</span><span class="w"> </span><span class="n">vertebral</span><span class="err">”</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Internet</span><span class="p">.</span><span class="w"> </span><span class="n">Miran</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">(.</span><span class="n">com</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">org</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">es</span><span class="p">...)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">envían</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="n">adecuado</span><span class="p">.</span>
-<span class="w">    </span><span class="n">En</span><span class="w"> </span><span class="n">nuestro</span><span class="w"> </span><span class="nl">ejemplo:</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">www</span><span class="p">.</span><span class="n">tryhackme</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">ven</span><span class="w"> </span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">te</span><span class="w"> </span><span class="n">envían</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">.</span><span class="n">com</span><span class="p">.</span>
+    3. Paso: Servidores raíz (Root DNS)
+    Son la “columna vertebral” de Internet. Miran el TLD (.com, .org, .es...) y te envían al servidor TLD adecuado.
+    En nuestro ejemplo: para www.tryhackme.com ven .com y te envían al TLD .com.
 
-<span class="w">    </span><span class="mf">4.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">TLD</span>
-<span class="w">    </span><span class="n">Indica</span><span class="w"> </span><span class="n">dónde</span><span class="w"> </span><span class="n">está</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">servidor</span><span class="w"> </span><span class="n">autoritativo</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">dominio</span><span class="p">.</span>
-<span class="w">    </span><span class="n">Por</span><span class="w"> </span><span class="n">ejemplo</span><span class="p">,</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">tryhackme</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">servidores</span><span class="w"> </span><span class="n">autoritativos</span><span class="w"> </span><span class="nl">son:</span>
-<span class="w">    </span><span class="n">kip</span><span class="p">.</span><span class="n">ns</span><span class="p">.</span><span class="n">cloudflare</span><span class="p">.</span><span class="n">com</span>
-<span class="w">    </span><span class="n">uma</span><span class="p">.</span><span class="n">ns</span><span class="p">.</span><span class="n">cloudflare</span><span class="p">.</span><span class="n">com</span>
+    4. Paso: Servidor TLD
+    Indica dónde está el servidor autoritativo del dominio.
+    Por ejemplo, para tryhackme.com los servidores autoritativos son:
+    kip.ns.cloudflare.com
+    uma.ns.cloudflare.com
 
-<span class="w">    </span><span class="n">Hay</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">menos</span><span class="w"> </span><span class="n">dos</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">redundancia</span><span class="p">.</span>
+    Hay al menos dos para redundancia.
 
-<span class="w">    </span><span class="mf">5.</span><span class="w"> </span><span class="nl">Paso:</span><span class="w"> </span><span class="n">Servidor</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">autoritativo</span>
-<span class="w">    </span><span class="n">Servidor</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">almacena</span><span class="w"> </span><span class="n">todos</span><span class="w"> </span><span class="n">los</span><span class="w"> </span><span class="n">registros</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">ese</span><span class="w"> </span><span class="n">dominio</span><span class="p">.</span>
-<span class="w">    </span><span class="err">¿</span><span class="n">Qué</span><span class="w"> </span><span class="n">hace</span><span class="o">?</span>
-<span class="w">    </span><span class="n">Busca</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">necesaria</span><span class="w"> </span><span class="p">(</span><span class="n">registro</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
-<span class="w">    </span><span class="n">La</span><span class="w"> </span><span class="n">devuelve</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">recursivo</span>
-<span class="w">    </span><span class="n">El</span><span class="w"> </span><span class="n">recursivo</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">cachea</span><span class="w"> </span><span class="n">para</span><span class="w"> </span><span class="n">futuras</span><span class="w"> </span><span class="n">peticiones</span>
-<span class="w">    </span><span class="n">Finalmente</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">envía</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tu</span><span class="w"> </span><span class="n">ordenador</span>
-</code></pre></div>
-
+    5. Paso: Servidor DNS autoritativo
+    Servidor que almacena todos los registros DNS de ese dominio.
+    ¿Qué hace?
+    Busca la IP necesaria (registro A)
+    La devuelve al DNS recursivo
+    El recursivo la cachea para futuras peticiones
+    Finalmente la envía a tu ordenador
+</code></pre>
 <h3 id="http-en-detalle">HTTP en detalle<a class="headerlink" href="#http-en-detalle" title="Permanent link">&para;</a></h3>
 <p>Una vez obtenida la IP, se realiza una solicitud HTTP o HTTPS al servidor.</p>
 <p>Es el conjunto de reglas para comunicarse con servidores web y transmitir datos.</p>
@@ -1152,7 +1151,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
