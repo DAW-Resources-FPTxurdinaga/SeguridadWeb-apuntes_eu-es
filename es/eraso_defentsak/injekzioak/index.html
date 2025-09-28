@@ -1120,10 +1120,10 @@
 <h3 id="como-funciona">¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permanent link">&para;</a></h3>
 <pre><code class="language-sql">-- Entrada del usuario: ' OR '1'='1
 -- Consulta original:
-SELECT * FROM users WHERE username = '' AND password = 'hasia'
+SELECT * FROM users WHERE username = '' AND password = 'secreto'
 
 -- Tras la inyección:
-SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'hasia'
+SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'secreto'
 -- Como '1'='1' siempre es verdadero, la consulta devolverá todos los usuarios
 </code></pre>
 <h3 id="como-prevenirla">¿Cómo prevenirla?<a class="headerlink" href="#como-prevenirla" title="Permanent link">&para;</a></h3>
@@ -1132,7 +1132,7 @@ SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'hasia'
 <pre><code class="language-python">import sqlite3
 
 def login_seguro(usuario, contrasena):
-    conn = sqlite3.connect('datu_basea.db')
+    conn = sqlite3.connect('base_de_datos.db')
     cursor = conn.cursor()
 
     # Consulta parametrizada
@@ -1145,10 +1145,11 @@ def login_seguro(usuario, contrasena):
 </code></pre>
 <p><strong>Ejemplo en PHP (PDO):</strong></p>
 <pre><code class="language-php">&lt;?php
-$usuario = $_POST['erabiltzailea'];
-$contrasena = $_POST['pasahitza'];
 
-$pdo = new PDO('mysql:host=localhost;dbname=nire_db', 'erabiltzailea', 'pasahitza');
+$usuario = $_POST['usuario'];
+$contrasena = $_POST['contrasena'];
+
+$pdo = new PDO('mysql:host=localhost;dbname=mi_db', 'usuario', 'contrasena');
 $stmt = $pdo-&gt;prepare('SELECT * FROM users WHERE username = :usuario AND password = :contrasena');
 $stmt-&gt;execute(['usuario' =&gt; $usuario, 'contrasena' =&gt; $contrasena]);
 $fila = $stmt-&gt;fetch();
@@ -1157,8 +1158,8 @@ $fila = $stmt-&gt;fetch();
 <h2 id="xss-cross-site-scripting">XSS (Cross-Site Scripting)<a class="headerlink" href="#xss-cross-site-scripting" title="Permanent link">&para;</a></h2>
 <h3 id="tipos-de-xss">Tipos de XSS<a class="headerlink" href="#tipos-de-xss" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Reflected XSS (Ispatuta)</li>
-<li>Stored XSS (Gordeta)</li>
+<li>Reflected XSS (Reflejado)</li>
+<li>Stored XSS (Almacenado)</li>
 <li>DOM XSS</li>
 </ol>
 <h3 id="como-prevenir-xss">¿Cómo prevenir XSS?<a class="headerlink" href="#como-prevenir-xss" title="Permanent link">&para;</a></h3>
@@ -1176,14 +1177,14 @@ $fila = $stmt-&gt;fetch();
 };
 
 // Uso
-document.getElementById('izena').textContent = escapeHtml(sarreraArriskutsua);
+document.getElementById('nombre').textContent = escapeHtml(entradaMaliciosa);
 </code></pre>
 <h4 id="2-usar-apis-seguras">2. Usar APIs seguras<a class="headerlink" href="#2-usar-apis-seguras" title="Permanent link">&para;</a></h4>
 <pre><code class="language-javascript">// Mal
-document.getElementById('izena').innerHTML = entradaUsuario;
+document.getElementById('nombre').innerHTML = entradaUsuario;
 
 // Mejor
-document.getElementById('izena').textContent = entradaUsuario;
+document.getElementById('nombre').textContent = entradaUsuario;
 </code></pre>
 <h4 id="3-content-security-policy-csp">3. Content Security Policy (CSP)<a class="headerlink" href="#3-content-security-policy-csp" title="Permanent link">&para;</a></h4>
 <pre><code class="language-http">Content-Security-Policy: default-src 'self'; script-src 'self' https://apis.google.com
