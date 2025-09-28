@@ -2,294 +2,294 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/broken_access_control/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/broken_access_control/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/broken_access_control/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/cryptographic_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/cryptographic_failures/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/cryptographic_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/identification_authentication_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/identification_authentication_failures/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/identification_authentication_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/injection/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/injection/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/injection/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/insecure_design/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/insecure_design/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/insecure_design/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/security_logging_monitoring_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/security_logging_monitoring_failures/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/security_logging_monitoring_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/security_misconfiguration/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/security_misconfiguration/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/security_misconfiguration/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/server_side_request_forgery/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/server_side_request_forgery/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/server_side_request_forgery/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/software_data_integrity_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/software_data_integrity_failures/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/software_data_integrity_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/vulnerable_obsolete_components/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/vulnerable_obsolete_components/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/vulnerable_obsolete_components/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/api_segurtasuna/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/api_segurtasuna/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/api_segurtasuna/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/datu_sentikorrak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/datu_sentikorrak/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/datu_sentikorrak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/tresnak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/tresnak/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/tresnak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/autentifikazioa/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/autentifikazioa/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/autentifikazioa/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/injekzioak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/injekzioak/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/injekzioak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/sarbide_kontrola/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/sarbide_kontrola/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/sarbide_kontrola/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/owasp_top10/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/owasp_top10/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/owasp_top10/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/sarrera/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/sarrera/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/sarrera/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/web_hacking_sarrera/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/web_hacking_sarrera/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/web_hacking_sarrera/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/web_oinarriak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/web_oinarriak/"/>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/web_oinarriak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/broken_access_control/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/broken_access_control/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/broken_access_control/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/cryptographic_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/cryptographic_failures/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/cryptographic_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/identification_authentication_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/identification_authentication_failures/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/identification_authentication_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/injection/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/injection/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/injection/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/insecure_design/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/insecure_design/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/insecure_design/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/security_logging_monitoring_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/security_logging_monitoring_failures/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/security_logging_monitoring_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/security_misconfiguration/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/security_misconfiguration/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/security_misconfiguration/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/server_side_request_forgery/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/server_side_request_forgery/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/server_side_request_forgery/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/software_data_integrity_failures/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/software_data_integrity_failures/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/software_data_integrity_failures/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/vulnerable_obsolete_components/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/ariketak/vulnerable_obsolete_components/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/ariketak/vulnerable_obsolete_components/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/api_segurtasuna/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/api_segurtasuna/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/api_segurtasuna/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/datu_sentikorrak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/datu_sentikorrak/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/datu_sentikorrak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/tresnak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/datu_babesa/tresnak/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/datu_babesa/tresnak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/autentifikazioa/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/autentifikazioa/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/autentifikazioa/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/injekzioak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/injekzioak/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/injekzioak/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/sarbide_kontrola/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/eraso_defentsak/sarbide_kontrola/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/eraso_defentsak/sarbide_kontrola/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/owasp_top10/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/owasp_top10/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/owasp_top10/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/sarrera/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/sarrera/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/sarrera/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/web_hacking_sarrera/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/web_hacking_sarrera/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/web_hacking_sarrera/"/>
     </url>
     <url>
         <loc>https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/web_oinarriak/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-28</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/es/oinarriak_mehatxuak/web_oinarriak/"/>
         <xhtml:link rel="alternate" hreflang="eu" href="https://DAW-Resources-FPTxurdinaga.github.io/SeguridadWeb-apuntes_eu-es/oinarriak_mehatxuak/web_oinarriak/"/>

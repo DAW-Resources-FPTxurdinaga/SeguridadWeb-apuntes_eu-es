@@ -704,28 +704,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#erronkak" class="md-nav__link">
+  <a href="#retos" class="md-nav__link">
     <span class="md-ellipsis">
-      Erronkak
+      Retos
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Erronkak">
+    <nav class="md-nav" aria-label="Retos">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-erronka-confidential-document" class="md-nav__link">
+  <a href="#1-reto-confidential-document" class="md-nav__link">
     <span class="md-ellipsis">
-      1. erronka: Confidential Document
+      1. Reto: Confidential Document
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-erronka-sensitive-data-exposure-exposes-credentials" class="md-nav__link">
+  <a href="#2-reto-sensitive-data-exposure-exposes-credentials" class="md-nav__link">
     <span class="md-ellipsis">
-      2. erronka: Sensitive Data Exposure &gt; Exposes credentials
+      2. Reto: Sensitive Data Exposure &gt; Exposes credentials
     </span>
   </a>
   
@@ -737,9 +737,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#estekak" class="md-nav__link">
+  <a href="#enlaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Estekak
+      Enlaces
     </span>
   </a>
   
@@ -762,41 +762,41 @@
 
 
 <h1 id="cryptographic-failures">Cryptographic Failures<a class="headerlink" href="#cryptographic-failures" title="Permanent link">&para;</a></h1>
-<p>Lehenik eta behin, iragaitzazko eta atsedeneko datuen babes-beharrak zehaztu behar dira. Adibidez, pasahitzek, kreditu txartelen zenbakiek, osasun erregistroek, informazio pertsonalak eta negozio sekretuek aparteko babesa behar dute, batez ere datu horiek pribatutasun legeetan sartzen badira.</p>
-<p>Datu horiengatik guztiengatik:</p>
+<p>Primero, es necesario definir las necesidades de protección de los datos en tránsito y en reposo. Por ejemplo, las contraseñas, números de tarjetas de crédito, historiales médicos, información personal y secretos comerciales requieren protección adicional, especialmente si están cubiertos por leyes de privacidad.</p>
+<p>Por todo lo anterior, verifica:</p>
 <ul>
 <li>
-<p>Testu argian transmititzen al da daturen bat? Honek HTTP, SMTP, FTP bezalako protokoloei eragiten die. Interneteko kanpoko trafikoa oso arriskutsua da. Barne-trafiko guztia egiaztatzea, adibidez, karga-orekatzaileen, web-zerbitzarien edo back-end sistemen artean.</p>
+<p>¿Se transmite algún dato en texto claro? Esto afecta a protocolos como HTTP, SMTP o FTP. El tráfico externo en Internet es muy arriesgado. Revisa también el tráfico interno (entre balanceadores, servidores web o sistemas de back-end).</p>
 </li>
 <li>
-<p>Algoritmo edo protokolo kriptografiko zahar edo ahulen bat erabiltzen da, bai lehenespenez, bai kode zaharragoan?</p>
+<p>¿Se están utilizando algoritmos o protocolos criptográficos obsoletos o débiles, ya sea por defecto o en código heredado?</p>
 </li>
 <li>
-<p>Erabiltzen ari diren kriptografia-gako lehenetsiak, sortutako edo berrerabilitako kriptografia-gako ahulak, edo gakoen kudeaketa edo errotazio egokia falta dira? Kriptografia-gakoak iturburu-kodeen biltegietan aztertzen dira?</p>
+<p>¿Se usan claves criptográficas por defecto, generadas de forma insegura o reutilizadas? ¿Faltan una gestión y rotación adecuadas de claves? ¿Aparecen claves en repositorios de código?</p>
 </li>
 <li>
-<p>Enkriptatzea ez da derrigortzen, adibidez, HTTP goiburukoak (nabigatzailea) segurtasun-direktibak edo goiburuak falta dira?</p>
+<p>¿No se fuerza el cifrado, por ejemplo, por ausencia de cabeceras/directivas de seguridad (del navegador) adecuadas?</p>
 </li>
 <li>
-<p>Jasotako zerbitzari-ziurtagiria eta konfiantza-katea behar bezala baliozkotuta daude?</p>
+<p>¿Se validan correctamente los certificados del servidor y la cadena de confianza?</p>
 </li>
 <li>
-<p>Etab...</p>
+<p>Etc.</p>
 </li>
 </ul>
-<h2 id="erronkak">Erronkak<a class="headerlink" href="#erronkak" title="Permanent link">&para;</a></h2>
-<h3 id="1-erronka-confidential-document">1. erronka: Confidential Document<a class="headerlink" href="#1-erronka-confidential-document" title="Permanent link">&para;</a></h3>
+<h2 id="retos">Retos<a class="headerlink" href="#retos" title="Permanent link">&para;</a></h2>
+<h3 id="1-reto-confidential-document">1. Reto: Confidential Document<a class="headerlink" href="#1-reto-confidential-document" title="Permanent link">&para;</a></h3>
 <p>Access a confidential document.
-Saiatuko dugu dokumentu konfidentzial bat topatzen, horretarako begirada bat botako genuke privacy, about us eta horrelakoetan, ezta? </p>
-<h3 id="2-erronka-sensitive-data-exposure-exposes-credentials">2. erronka: Sensitive Data Exposure &gt; Exposes credentials<a class="headerlink" href="#2-erronka-sensitive-data-exposure-exposes-credentials" title="Permanent link">&para;</a></h3>
+Intentaremos localizar un documento confidencial. Para ello conviene revisar secciones como privacy, about us y similares en la aplicación.</p>
+<h3 id="2-reto-sensitive-data-exposure-exposes-credentials">2. Reto: Sensitive Data Exposure &gt; Exposes credentials<a class="headerlink" href="#2-reto-sensitive-data-exposure-exposes-credentials" title="Permanent link">&para;</a></h3>
 <p>A developer was careless with hardcoding unused, but still valid credentials for a testing account on the client-side.</p>
-<h2 id="estekak">Estekak<a class="headerlink" href="#estekak" title="Permanent link">&para;</a></h2>
+<h2 id="enlaces">Enlaces<a class="headerlink" href="#enlaces" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/">OWASP Cryptographic Failures</a></li>
 <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html">OWASP Cryptographic Storage Cheat Sheet</a></li>
 </ul>
 <hr />
-<p><a href="../../oinarriak_mehatxuak/owasp_top10/">← Atzera bueltatu OWASP Top 10-ra</a></p>
+<p><a href="../../oinarriak_mehatxuak/owasp_top10/">← Volver al OWASP Top 10</a></p>
 
 
 

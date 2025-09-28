@@ -1,6 +1,6 @@
 # Ciberseguridad en el Desarrollo Web
 
-Bienvenido a los apuntes de Ciberseguridad para el Desarrollo Web. Este material aborda los conceptos básicos y las buenas prácticas de la seguridad informática aplicadas al desarrollo web. FROGA
+Bienvenido a los apuntes de Ciberseguridad para el Desarrollo Web. Este material aborda los conceptos básicos y las buenas prácticas de la seguridad informática aplicadas al desarrollo web.
 
 ## Estructura del curso
 

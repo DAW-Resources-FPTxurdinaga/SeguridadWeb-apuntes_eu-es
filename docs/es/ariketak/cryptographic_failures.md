@@ -1,40 +1,37 @@
 # Cryptographic Failures
 
-Lehenik eta behin, iragaitzazko eta atsedeneko datuen babes-beharrak zehaztu behar dira. Adibidez, pasahitzek, kreditu txartelen zenbakiek, osasun erregistroek, informazio pertsonalak eta negozio sekretuek aparteko babesa behar dute, batez ere datu horiek pribatutasun legeetan sartzen badira.
+Primero, es necesario definir las necesidades de protección de los datos en tránsito y en reposo. Por ejemplo, las contraseñas, números de tarjetas de crédito, historiales médicos, información personal y secretos comerciales requieren protección adicional, especialmente si están cubiertos por leyes de privacidad.
 
-Datu horiengatik guztiengatik:
+Por todo lo anterior, verifica:
 
-- Testu argian transmititzen al da daturen bat? Honek HTTP, SMTP, FTP bezalako protokoloei eragiten die. Interneteko kanpoko trafikoa oso arriskutsua da. Barne-trafiko guztia egiaztatzea, adibidez, karga-orekatzaileen, web-zerbitzarien edo back-end sistemen artean.
+- ¿Se transmite algún dato en texto claro? Esto afecta a protocolos como HTTP, SMTP o FTP. El tráfico externo en Internet es muy arriesgado. Revisa también el tráfico interno (entre balanceadores, servidores web o sistemas de back-end).
 
-- Algoritmo edo protokolo kriptografiko zahar edo ahulen bat erabiltzen da, bai lehenespenez, bai kode zaharragoan?
+- ¿Se están utilizando algoritmos o protocolos criptográficos obsoletos o débiles, ya sea por defecto o en código heredado?
 
-- Erabiltzen ari diren kriptografia-gako lehenetsiak, sortutako edo berrerabilitako kriptografia-gako ahulak, edo gakoen kudeaketa edo errotazio egokia falta dira? Kriptografia-gakoak iturburu-kodeen biltegietan aztertzen dira?
+- ¿Se usan claves criptográficas por defecto, generadas de forma insegura o reutilizadas? ¿Faltan una gestión y rotación adecuadas de claves? ¿Aparecen claves en repositorios de código?
 
-- Enkriptatzea ez da derrigortzen, adibidez, HTTP goiburukoak (nabigatzailea) segurtasun-direktibak edo goiburuak falta dira?
+- ¿No se fuerza el cifrado, por ejemplo, por ausencia de cabeceras/directivas de seguridad (del navegador) adecuadas?
 
-- Jasotako zerbitzari-ziurtagiria eta konfiantza-katea behar bezala baliozkotuta daude?
+- ¿Se validan correctamente los certificados del servidor y la cadena de confianza?
 
-- Etab...
+- Etc.
 
-## Erronkak
+## Retos
 
-
-### 1. erronka: Confidential Document
+### 1. Reto: Confidential Document
 Access a confidential document.
-Saiatuko dugu dokumentu konfidentzial bat topatzen, horretarako begirada bat botako genuke privacy, about us eta horrelakoetan, ezta? 
+Intentaremos localizar un documento confidencial. Para ello conviene revisar secciones como privacy, about us y similares en la aplicación.
 
-### 2. erronka: Sensitive Data Exposure > Exposes credentials
+### 2. Reto: Sensitive Data Exposure > Exposes credentials
 A developer was careless with hardcoding unused, but still valid credentials for a testing account on the client-side.
 
 
 
-
-
-## Estekak
+## Enlaces
 - [OWASP Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
 - [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)
 
 
 ---
 
-[← Atzera bueltatu OWASP Top 10-ra](../oinarriak_mehatxuak/owasp_top10.md)
+[← Volver al OWASP Top 10](../oinarriak_mehatxuak/owasp_top10.md)

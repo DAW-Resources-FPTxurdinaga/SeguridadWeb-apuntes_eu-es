@@ -9,10 +9,10 @@ La inyección SQL es un tipo de ataque que modifica una consulta a la base de da
 ```sql
 -- Entrada del usuario: ' OR '1'='1
 -- Consulta original:
-SELECT * FROM users WHERE username = '' AND password = 'hasia'
+SELECT * FROM users WHERE username = '' AND password = 'secreto'
 
 -- Tras la inyección:
-SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'hasia'
+SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'secreto'
 -- Como '1'='1' siempre es verdadero, la consulta devolverá todos los usuarios
 ```
 
@@ -25,7 +25,7 @@ SELECT * FROM users WHERE username = '' OR '1'='1' AND password = 'hasia'
 import sqlite3
 
 def login_seguro(usuario, contrasena):
-    conn = sqlite3.connect('datu_basea.db')
+    conn = sqlite3.connect('base_de_datos.db')
     cursor = conn.cursor()
     
     # Consulta parametrizada
@@ -40,10 +40,11 @@ def login_seguro(usuario, contrasena):
 **Ejemplo en PHP (PDO):**
 ```php
 <?php
-$usuario = $_POST['erabiltzailea'];
-$contrasena = $_POST['pasahitza'];
 
-$pdo = new PDO('mysql:host=localhost;dbname=nire_db', 'erabiltzailea', 'pasahitza');
+$usuario = $_POST['usuario'];
+$contrasena = $_POST['contrasena'];
+
+$pdo = new PDO('mysql:host=localhost;dbname=mi_db', 'usuario', 'contrasena');
 $stmt = $pdo->prepare('SELECT * FROM users WHERE username = :usuario AND password = :contrasena');
 $stmt->execute(['usuario' => $usuario, 'contrasena' => $contrasena]);
 $fila = $stmt->fetch();
@@ -54,8 +55,8 @@ $fila = $stmt->fetch();
 
 ### Tipos de XSS
 
-1. Reflected XSS (Ispatuta)
-2. Stored XSS (Gordeta)
+1. Reflected XSS (Reflejado)
+2. Stored XSS (Almacenado)
 3. DOM XSS
 
 ### ¿Cómo prevenir XSS?
@@ -76,17 +77,17 @@ const escapeHtml = (text) => {
 };
 
 // Uso
-document.getElementById('izena').textContent = escapeHtml(sarreraArriskutsua);
+document.getElementById('nombre').textContent = escapeHtml(entradaMaliciosa);
 ```
 
 #### 2. Usar APIs seguras
 
 ```javascript
 // Mal
-document.getElementById('izena').innerHTML = entradaUsuario;
+document.getElementById('nombre').innerHTML = entradaUsuario;
 
 // Mejor
-document.getElementById('izena').textContent = entradaUsuario;
+document.getElementById('nombre').textContent = entradaUsuario;
 ```
 
 #### 3. Content Security Policy (CSP)
