@@ -1,23 +1,36 @@
 # Zibersegurtasuna Web Garapenean
 
-Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek segurtasun informatikoaren oinarrizko kontzeptuak eta praktika onenak lantzen ditu web garapenean. FROGA
+Ongi etorri Web Garapenerako Zibersegurtasunaren apunteetara. Material honek segurtasun informatikoaren oinarrizko kontzeptuak eta praktika onenak lantzen ditu web garapenean. 
 
 ## Ikastaroaren Egitura
 
-### [1. Oinarriak eta mehatxu arruntak](oinarriak_mehatxuak/sarrera.md)
-- [Web Garapenean Zibersegurtasunaren Sarrera](oinarriak_mehatxuak/sarrera.md)
-- [Webaren funtzionamenduaren oinarriak](oinarriak_mehatxuak/web_oinarriak.md)
-- [Web ahultasun arrunten ikuspegi orokorra (OWASP Top 10)](oinarriak_mehatxuak/owasp_top10.md)
+### [1. Oinarriak eta mehatxu arruntak](oinarriak_mehatxuak/sarrera/)
+- [Web Garapenean Zibersegurtasunaren Sarrera](oinarriak_mehatxuak/sarrera/)
+- [Webaren funtzionamenduaren oinarriak](oinarriak_mehatxuak/web_oinarriak/)
+- [Web Hacking-erako sarrera](oinarriak_mehatxuak/web_hacking_sarrera/)
 
-### [2. Eraso eta defentsa oinarrizkoak](eraso_defentsak/injekzioak.md)
-- [Injekzioen aurkako defentsak](eraso_defentsak/injekzioak.md)
-- [Autentifikazio eta saioen segurtasuna](eraso_defentsak/autentifikazioa.md)
-- [Sarbide-kontrola eta konfigurazio segurua](eraso_defentsak/sarbide_kontrola.md)
+### [2. OWASP Top 10](oinarriak_mehatxuak/owasp_top10/)
+- [Aurkezpena (OWASP Top 10)](oinarriak_mehatxuak/owasp_top10/)
+- [Broken Access Control](ariketak/broken_access_control/)
+- [Cryptographic Failures](ariketak/cryptographic_failures/)
+- [Injection](ariketak/injection/)
+- [Insecure Design](ariketak/insecure_design/)
+- [Security Misconfiguration](ariketak/security_misconfiguration/)
+- [Vulnerable and Outdated Components](ariketak/vulnerable_obsolete_components/)
+- [Identification and Authentication Failures](ariketak/identification_authentication_failures/)
+- [Software and Data Integrity Failures](ariketak/software_data_integrity_failures/)
+- [Security Logging and Monitoring Failures](ariketak/security_logging_monitoring_failures/)
+- [Server-Side Request Forgery](ariketak/server_side_request_forgery/)
 
-### [3. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak.md)
-- [Datu sentikorren babesa](datu_babesa/datu_sentikorrak.md)
-- [APIen eta dependentzien segurtasuna](datu_babesa/api_segurtasuna.md)
-- [Tresna praktikoen sarrera](datu_babesa/tresnak.md)
+### [3. Eraso eta defentsa oinarrizkoak](eraso_defentsak/injekzioak/)
+- [Injekzioen aurkako defentsak](eraso_defentsak/injekzioak/)
+- [Autentifikazio eta saioen segurtasuna](eraso_defentsak/autentifikazioa/)
+<!-- - [Sarbide-kontrola eta konfigurazio segurua](eraso_defentsak/sarbide_kontrola/)
+
+ ### [4. Datuen babesa eta tresna praktikoak](datu_babesa/datu_sentikorrak/)
+- [Datu sentikorren babesa](datu_babesa/datu_sentikorrak/)
+- [APIen eta dependentzien segurtasuna](datu_babesa/api_segurtasuna/)
+- [Tresna praktikoen sarrera](datu_babesa/tresnak/) -->
 
 ## Nola erabili apunte hauek
 
